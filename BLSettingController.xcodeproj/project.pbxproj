@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04669DC62113E4E800BFA20A /* BLSettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB22113E4E800BFA20A /* BLSettingSwitchCell.m */; };
+		04669DC72113E4E800BFA20A /* BLSettingStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB32113E4E800BFA20A /* BLSettingStyle.m */; };
+		04669DC82113E4E800BFA20A /* BLSettingBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB62113E4E800BFA20A /* BLSettingBaseCell.m */; };
+		04669DC92113E4E800BFA20A /* BLSettingFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB82113E4E800BFA20A /* BLSettingFactory.m */; };
+		04669DCA2113E4E800BFA20A /* BLSettingAvaterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB92113E4E800BFA20A /* BLSettingAvaterCell.m */; };
+		04669DCB2113E4E800BFA20A /* BLSettingConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DBB2113E4E800BFA20A /* BLSettingConst.m */; };
+		04669DCC2113E4E800BFA20A /* BLSetting.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04669DBD2113E4E800BFA20A /* BLSetting.bundle */; };
+		04669DCD2113E4E800BFA20A /* BLSettingNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DBE2113E4E800BFA20A /* BLSettingNormalCell.m */; };
+		04669DCE2113E4E800BFA20A /* BLSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DBF2113E4E800BFA20A /* BLSettingModel.m */; };
+		04669DCF2113E4E800BFA20A /* BLSettingSegumentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DC12113E4E800BFA20A /* BLSettingSegumentCell.m */; };
+		04669DD02113E4E800BFA20A /* BLSettingRightAssistIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DC52113E4E800BFA20A /* BLSettingRightAssistIcon.m */; };
+		04BE0B1A211149690054E43E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE0B19211149690054E43E /* AppDelegate.m */; };
+		04BE0B22211149690054E43E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BE0B21211149690054E43E /* Assets.xcassets */; };
+		04BE0B25211149690054E43E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BE0B23211149690054E43E /* LaunchScreen.storyboard */; };
+		04BE0B28211149690054E43E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE0B27211149690054E43E /* main.m */; };
+		04BE0B32211149690054E43E /* BLSettingControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE0B31211149690054E43E /* BLSettingControllerTests.m */; };
+		04BE0B3D211149690054E43E /* BLSettingControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE0B3C211149690054E43E /* BLSettingControllerUITests.m */; };
+		04BE0B7C21129BD80054E43E /* DemoGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE0B7921129BD80054E43E /* DemoGroupTableViewController.m */; };
+		04BE0B7D21129BD80054E43E /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE0B7B21129BD80054E43E /* DemoTableViewController.m */; };
+		04BE0B7F21129BE50054E43E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BE0B7E21129BE50054E43E /* Main.storyboard */; };
+		3B8C8FCA7C48237930944643 /* libPods-BLSettingControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC7F9F78F7E39AB26655F73 /* libPods-BLSettingControllerTests.a */; };
+		AF7B8E5556CAD7D1B716CA42 /* libPods-BLSettingController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6CDAC55A6EE760CBE3DDED /* libPods-BLSettingController.a */; };
+		E3E39A81D6781406BECD19A2 /* libPods-BLSettingControllerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4732CC5F901DE5E5E49ED9 /* libPods-BLSettingControllerUITests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04BE0B2E211149690054E43E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04BE0B0D211149690054E43E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04BE0B14211149690054E43E;
+			remoteInfo = BLSettingController;
+		};
+		04BE0B39211149690054E43E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04BE0B0D211149690054E43E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04BE0B14211149690054E43E;
+			remoteInfo = BLSettingController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04669DB02113E4E800BFA20A /* BLSettingConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingConst.h; sourceTree = "<group>"; };
+		04669DB12113E4E800BFA20A /* BLSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSetting.h; sourceTree = "<group>"; };
+		04669DB22113E4E800BFA20A /* BLSettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingSwitchCell.m; sourceTree = "<group>"; };
+		04669DB32113E4E800BFA20A /* BLSettingStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingStyle.m; sourceTree = "<group>"; };
+		04669DB42113E4E800BFA20A /* BLSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingModel.h; sourceTree = "<group>"; };
+		04669DB52113E4E800BFA20A /* BLSettingNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingNormalCell.h; sourceTree = "<group>"; };
+		04669DB62113E4E800BFA20A /* BLSettingBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingBaseCell.m; sourceTree = "<group>"; };
+		04669DB72113E4E800BFA20A /* BLSettingRightAssistIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingRightAssistIcon.h; sourceTree = "<group>"; };
+		04669DB82113E4E800BFA20A /* BLSettingFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingFactory.m; sourceTree = "<group>"; };
+		04669DB92113E4E800BFA20A /* BLSettingAvaterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingAvaterCell.m; sourceTree = "<group>"; };
+		04669DBA2113E4E800BFA20A /* BLSettingSegumentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingSegumentCell.h; sourceTree = "<group>"; };
+		04669DBB2113E4E800BFA20A /* BLSettingConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingConst.m; sourceTree = "<group>"; };
+		04669DBC2113E4E800BFA20A /* BLSettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingSwitchCell.h; sourceTree = "<group>"; };
+		04669DBD2113E4E800BFA20A /* BLSetting.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BLSetting.bundle; sourceTree = "<group>"; };
+		04669DBE2113E4E800BFA20A /* BLSettingNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingNormalCell.m; sourceTree = "<group>"; };
+		04669DBF2113E4E800BFA20A /* BLSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingModel.m; sourceTree = "<group>"; };
+		04669DC02113E4E800BFA20A /* BLSettingStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingStyle.h; sourceTree = "<group>"; };
+		04669DC12113E4E800BFA20A /* BLSettingSegumentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingSegumentCell.m; sourceTree = "<group>"; };
+		04669DC22113E4E800BFA20A /* BLSettingFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingFactory.h; sourceTree = "<group>"; };
+		04669DC32113E4E800BFA20A /* BLSettingAvaterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingAvaterCell.h; sourceTree = "<group>"; };
+		04669DC42113E4E800BFA20A /* BLSettingBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingBaseCell.h; sourceTree = "<group>"; };
+		04669DC52113E4E800BFA20A /* BLSettingRightAssistIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingRightAssistIcon.m; sourceTree = "<group>"; };
+		04BE0B15211149690054E43E /* BLSettingController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLSettingController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04BE0B18211149690054E43E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		04BE0B19211149690054E43E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		04BE0B21211149690054E43E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04BE0B24211149690054E43E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04BE0B26211149690054E43E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04BE0B27211149690054E43E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04BE0B2D211149690054E43E /* BLSettingControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLSettingControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04BE0B31211149690054E43E /* BLSettingControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLSettingControllerTests.m; sourceTree = "<group>"; };
+		04BE0B33211149690054E43E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04BE0B38211149690054E43E /* BLSettingControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLSettingControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04BE0B3C211149690054E43E /* BLSettingControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLSettingControllerUITests.m; sourceTree = "<group>"; };
+		04BE0B3E211149690054E43E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04BE0B7821129BD80054E43E /* DemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableViewController.h; sourceTree = "<group>"; };
+		04BE0B7921129BD80054E43E /* DemoGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoGroupTableViewController.m; sourceTree = "<group>"; };
+		04BE0B7A21129BD80054E43E /* DemoGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoGroupTableViewController.h; sourceTree = "<group>"; };
+		04BE0B7B21129BD80054E43E /* DemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewController.m; sourceTree = "<group>"; };
+		04BE0B7E21129BE50054E43E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2AC7F9F78F7E39AB26655F73 /* libPods-BLSettingControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BLSettingControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42FF77040A02495287DE5D6E /* Pods-BLSettingControllerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLSettingControllerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BLSettingControllerUITests/Pods-BLSettingControllerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5E6CDAC55A6EE760CBE3DDED /* libPods-BLSettingController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BLSettingController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F7648CCC692AB6129302A74 /* Pods-BLSettingController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLSettingController.release.xcconfig"; path = "Pods/Target Support Files/Pods-BLSettingController/Pods-BLSettingController.release.xcconfig"; sourceTree = "<group>"; };
+		B6A9DBA8FA2ABB4660CF37D8 /* Pods-BLSettingControllerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLSettingControllerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BLSettingControllerUITests/Pods-BLSettingControllerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6F75D571FF88DB55E6E4B62 /* Pods-BLSettingControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLSettingControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BLSettingControllerTests/Pods-BLSettingControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CCA19E58D08D9A73A425E38F /* Pods-BLSettingControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLSettingControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BLSettingControllerTests/Pods-BLSettingControllerTests.release.xcconfig"; sourceTree = "<group>"; };
+		CD0DD0FDB602999F1F9E5EC8 /* Pods-BLSettingController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLSettingController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BLSettingController/Pods-BLSettingController.debug.xcconfig"; sourceTree = "<group>"; };
+		FF4732CC5F901DE5E5E49ED9 /* libPods-BLSettingControllerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BLSettingControllerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04BE0B12211149690054E43E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF7B8E5556CAD7D1B716CA42 /* libPods-BLSettingController.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BE0B2A211149690054E43E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B8C8FCA7C48237930944643 /* libPods-BLSettingControllerTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BE0B35211149690054E43E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3E39A81D6781406BECD19A2 /* libPods-BLSettingControllerUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04669DAF2113E4E800BFA20A /* BLSettingCell */ = {
+			isa = PBXGroup;
+			children = (
+				04669DBD2113E4E800BFA20A /* BLSetting.bundle */,
+				04669DB12113E4E800BFA20A /* BLSetting.h */,
+				04669DB02113E4E800BFA20A /* BLSettingConst.h */,
+				04669DBB2113E4E800BFA20A /* BLSettingConst.m */,
+				04669DC02113E4E800BFA20A /* BLSettingStyle.h */,
+				04669DB32113E4E800BFA20A /* BLSettingStyle.m */,
+				04669DB42113E4E800BFA20A /* BLSettingModel.h */,
+				04669DBF2113E4E800BFA20A /* BLSettingModel.m */,
+				04669DC22113E4E800BFA20A /* BLSettingFactory.h */,
+				04669DB82113E4E800BFA20A /* BLSettingFactory.m */,
+				04669DC42113E4E800BFA20A /* BLSettingBaseCell.h */,
+				04669DB62113E4E800BFA20A /* BLSettingBaseCell.m */,
+				04669DB52113E4E800BFA20A /* BLSettingNormalCell.h */,
+				04669DBE2113E4E800BFA20A /* BLSettingNormalCell.m */,
+				04669DC32113E4E800BFA20A /* BLSettingAvaterCell.h */,
+				04669DB92113E4E800BFA20A /* BLSettingAvaterCell.m */,
+				04669DBC2113E4E800BFA20A /* BLSettingSwitchCell.h */,
+				04669DB22113E4E800BFA20A /* BLSettingSwitchCell.m */,
+				04669DBA2113E4E800BFA20A /* BLSettingSegumentCell.h */,
+				04669DC12113E4E800BFA20A /* BLSettingSegumentCell.m */,
+				04669DB72113E4E800BFA20A /* BLSettingRightAssistIcon.h */,
+				04669DC52113E4E800BFA20A /* BLSettingRightAssistIcon.m */,
+			);
+			path = BLSettingCell;
+			sourceTree = "<group>";
+		};
+		04BE0B0C211149690054E43E = {
+			isa = PBXGroup;
+			children = (
+				04BE0B17211149690054E43E /* BLSettingController */,
+				04BE0B30211149690054E43E /* BLSettingControllerTests */,
+				04BE0B3B211149690054E43E /* BLSettingControllerUITests */,
+				04BE0B16211149690054E43E /* Products */,
+				703B9C4B3D3D1EFEFB626CA8 /* Pods */,
+				F866744D2B0677E67458E722 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		04BE0B16211149690054E43E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04BE0B15211149690054E43E /* BLSettingController.app */,
+				04BE0B2D211149690054E43E /* BLSettingControllerTests.xctest */,
+				04BE0B38211149690054E43E /* BLSettingControllerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04BE0B17211149690054E43E /* BLSettingController */ = {
+			isa = PBXGroup;
+			children = (
+				04669DAF2113E4E800BFA20A /* BLSettingCell */,
+				04BE0B18211149690054E43E /* AppDelegate.h */,
+				04BE0B19211149690054E43E /* AppDelegate.m */,
+				04BE0B7A21129BD80054E43E /* DemoGroupTableViewController.h */,
+				04BE0B7921129BD80054E43E /* DemoGroupTableViewController.m */,
+				04BE0B7821129BD80054E43E /* DemoTableViewController.h */,
+				04BE0B7B21129BD80054E43E /* DemoTableViewController.m */,
+				04BE0B7E21129BE50054E43E /* Main.storyboard */,
+				04BE0B21211149690054E43E /* Assets.xcassets */,
+				04BE0B23211149690054E43E /* LaunchScreen.storyboard */,
+				04BE0B26211149690054E43E /* Info.plist */,
+				04BE0B27211149690054E43E /* main.m */,
+			);
+			path = BLSettingController;
+			sourceTree = "<group>";
+		};
+		04BE0B30211149690054E43E /* BLSettingControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				04BE0B31211149690054E43E /* BLSettingControllerTests.m */,
+				04BE0B33211149690054E43E /* Info.plist */,
+			);
+			path = BLSettingControllerTests;
+			sourceTree = "<group>";
+		};
+		04BE0B3B211149690054E43E /* BLSettingControllerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				04BE0B3C211149690054E43E /* BLSettingControllerUITests.m */,
+				04BE0B3E211149690054E43E /* Info.plist */,
+			);
+			path = BLSettingControllerUITests;
+			sourceTree = "<group>";
+		};
+		703B9C4B3D3D1EFEFB626CA8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CD0DD0FDB602999F1F9E5EC8 /* Pods-BLSettingController.debug.xcconfig */,
+				6F7648CCC692AB6129302A74 /* Pods-BLSettingController.release.xcconfig */,
+				B6F75D571FF88DB55E6E4B62 /* Pods-BLSettingControllerTests.debug.xcconfig */,
+				CCA19E58D08D9A73A425E38F /* Pods-BLSettingControllerTests.release.xcconfig */,
+				B6A9DBA8FA2ABB4660CF37D8 /* Pods-BLSettingControllerUITests.debug.xcconfig */,
+				42FF77040A02495287DE5D6E /* Pods-BLSettingControllerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F866744D2B0677E67458E722 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E6CDAC55A6EE760CBE3DDED /* libPods-BLSettingController.a */,
+				2AC7F9F78F7E39AB26655F73 /* libPods-BLSettingControllerTests.a */,
+				FF4732CC5F901DE5E5E49ED9 /* libPods-BLSettingControllerUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04BE0B14211149690054E43E /* BLSettingController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04BE0B41211149690054E43E /* Build configuration list for PBXNativeTarget "BLSettingController" */;
+			buildPhases = (
+				B7AF4BAB8A861C8E28573E79 /* [CP] Check Pods Manifest.lock */,
+				04BE0B11211149690054E43E /* Sources */,
+				04BE0B12211149690054E43E /* Frameworks */,
+				04BE0B13211149690054E43E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BLSettingController;
+			productName = BLSettingController;
+			productReference = 04BE0B15211149690054E43E /* BLSettingController.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04BE0B2C211149690054E43E /* BLSettingControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04BE0B44211149690054E43E /* Build configuration list for PBXNativeTarget "BLSettingControllerTests" */;
+			buildPhases = (
+				153BBDC07CD18BDFCCB9884F /* [CP] Check Pods Manifest.lock */,
+				04BE0B29211149690054E43E /* Sources */,
+				04BE0B2A211149690054E43E /* Frameworks */,
+				04BE0B2B211149690054E43E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04BE0B2F211149690054E43E /* PBXTargetDependency */,
+			);
+			name = BLSettingControllerTests;
+			productName = BLSettingControllerTests;
+			productReference = 04BE0B2D211149690054E43E /* BLSettingControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		04BE0B37211149690054E43E /* BLSettingControllerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04BE0B47211149690054E43E /* Build configuration list for PBXNativeTarget "BLSettingControllerUITests" */;
+			buildPhases = (
+				15EA192DB3354C4E76AA0DA3 /* [CP] Check Pods Manifest.lock */,
+				04BE0B34211149690054E43E /* Sources */,
+				04BE0B35211149690054E43E /* Frameworks */,
+				04BE0B36211149690054E43E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04BE0B3A211149690054E43E /* PBXTargetDependency */,
+			);
+			name = BLSettingControllerUITests;
+			productName = BLSettingControllerUITests;
+			productReference = 04BE0B38211149690054E43E /* BLSettingControllerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04BE0B0D211149690054E43E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = bianla;
+				TargetAttributes = {
+					04BE0B14211149690054E43E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					04BE0B2C211149690054E43E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 04BE0B14211149690054E43E;
+					};
+					04BE0B37211149690054E43E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 04BE0B14211149690054E43E;
+					};
+				};
+			};
+			buildConfigurationList = 04BE0B10211149690054E43E /* Build configuration list for PBXProject "BLSettingController" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04BE0B0C211149690054E43E;
+			productRefGroup = 04BE0B16211149690054E43E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04BE0B14211149690054E43E /* BLSettingController */,
+				04BE0B2C211149690054E43E /* BLSettingControllerTests */,
+				04BE0B37211149690054E43E /* BLSettingControllerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04BE0B13211149690054E43E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04669DCC2113E4E800BFA20A /* BLSetting.bundle in Resources */,
+				04BE0B7F21129BE50054E43E /* Main.storyboard in Resources */,
+				04BE0B25211149690054E43E /* LaunchScreen.storyboard in Resources */,
+				04BE0B22211149690054E43E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BE0B2B211149690054E43E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BE0B36211149690054E43E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		153BBDC07CD18BDFCCB9884F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BLSettingControllerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		15EA192DB3354C4E76AA0DA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BLSettingControllerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7AF4BAB8A861C8E28573E79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BLSettingController-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04BE0B11211149690054E43E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04669DCB2113E4E800BFA20A /* BLSettingConst.m in Sources */,
+				04669DC82113E4E800BFA20A /* BLSettingBaseCell.m in Sources */,
+				04669DC92113E4E800BFA20A /* BLSettingFactory.m in Sources */,
+				04669DC72113E4E800BFA20A /* BLSettingStyle.m in Sources */,
+				04669DCE2113E4E800BFA20A /* BLSettingModel.m in Sources */,
+				04BE0B7D21129BD80054E43E /* DemoTableViewController.m in Sources */,
+				04BE0B28211149690054E43E /* main.m in Sources */,
+				04669DCD2113E4E800BFA20A /* BLSettingNormalCell.m in Sources */,
+				04669DCA2113E4E800BFA20A /* BLSettingAvaterCell.m in Sources */,
+				04669DD02113E4E800BFA20A /* BLSettingRightAssistIcon.m in Sources */,
+				04669DC62113E4E800BFA20A /* BLSettingSwitchCell.m in Sources */,
+				04BE0B1A211149690054E43E /* AppDelegate.m in Sources */,
+				04669DCF2113E4E800BFA20A /* BLSettingSegumentCell.m in Sources */,
+				04BE0B7C21129BD80054E43E /* DemoGroupTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BE0B29211149690054E43E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04BE0B32211149690054E43E /* BLSettingControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BE0B34211149690054E43E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04BE0B3D211149690054E43E /* BLSettingControllerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04BE0B2F211149690054E43E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04BE0B14211149690054E43E /* BLSettingController */;
+			targetProxy = 04BE0B2E211149690054E43E /* PBXContainerItemProxy */;
+		};
+		04BE0B3A211149690054E43E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04BE0B14211149690054E43E /* BLSettingController */;
+			targetProxy = 04BE0B39211149690054E43E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04BE0B23211149690054E43E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04BE0B24211149690054E43E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04BE0B3F211149690054E43E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		04BE0B40211149690054E43E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04BE0B42211149690054E43E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD0DD0FDB602999F1F9E5EC8 /* Pods-BLSettingController.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4D83288DVR;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = BLSettingController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.BLSettingController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04BE0B43211149690054E43E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F7648CCC692AB6129302A74 /* Pods-BLSettingController.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4D83288DVR;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = BLSettingController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.BLSettingController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		04BE0B45211149690054E43E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6F75D571FF88DB55E6E4B62 /* Pods-BLSettingControllerTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BLSettingControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.BLSettingControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BLSettingController.app/BLSettingController";
+			};
+			name = Debug;
+		};
+		04BE0B46211149690054E43E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA19E58D08D9A73A425E38F /* Pods-BLSettingControllerTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BLSettingControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.BLSettingControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BLSettingController.app/BLSettingController";
+			};
+			name = Release;
+		};
+		04BE0B48211149690054E43E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6A9DBA8FA2ABB4660CF37D8 /* Pods-BLSettingControllerUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BLSettingControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.BLSettingControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BLSettingController;
+			};
+			name = Debug;
+		};
+		04BE0B49211149690054E43E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42FF77040A02495287DE5D6E /* Pods-BLSettingControllerUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BLSettingControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.BLSettingControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BLSettingController;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04BE0B10211149690054E43E /* Build configuration list for PBXProject "BLSettingController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04BE0B3F211149690054E43E /* Debug */,
+				04BE0B40211149690054E43E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04BE0B41211149690054E43E /* Build configuration list for PBXNativeTarget "BLSettingController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04BE0B42211149690054E43E /* Debug */,
+				04BE0B43211149690054E43E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04BE0B44211149690054E43E /* Build configuration list for PBXNativeTarget "BLSettingControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04BE0B45211149690054E43E /* Debug */,
+				04BE0B46211149690054E43E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04BE0B47211149690054E43E /* Build configuration list for PBXNativeTarget "BLSettingControllerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04BE0B48211149690054E43E /* Debug */,
+				04BE0B49211149690054E43E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04BE0B0D211149690054E43E /* Project object */;
+}
