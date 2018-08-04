@@ -42,8 +42,9 @@
     [_arrowV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-BLSettingBaseMargin);
         make.centerY.equalTo(self.contentView);
-        make.width.mas_equalTo(_arrowV.image.size.width);
-        make.height.mas_equalTo(_arrowV.image.size.height);
+        CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
+        make.width.mas_equalTo(width);
+        make.height.mas_equalTo(height);
     }];
     
     [self.iconV mas_remakeConstraints:^(MASConstraintMaker *make) {

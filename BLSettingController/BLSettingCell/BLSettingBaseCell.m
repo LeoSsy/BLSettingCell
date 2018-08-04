@@ -183,13 +183,13 @@
     }];
     
     [_titleL mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_iconV.mas_right).offset(0);
+        make.left.equalTo(self.iconV.mas_right).offset(0);
         make.centerY.equalTo(self.contentView);
     }];
     
     [_redPointV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_iconV.mas_right).offset(-self.dataModel.settingStyle.redDotSize*0.5);
-        make.centerY.equalTo(_iconV.mas_top).offset(self.dataModel.settingStyle.redDotSize*0.4);
+        make.left.equalTo(self.iconV.mas_right).offset(-self.dataModel.settingStyle.redDotSize*0.5);
+        make.centerY.equalTo(self.iconV.mas_top).offset(self.dataModel.settingStyle.redDotSize*0.4);
         make.width.height.mas_equalTo(self.dataModel.settingStyle.redDotSize);
     }];
     

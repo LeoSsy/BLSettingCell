@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "BLSettingCell" # 项目名称
-s.version      = "1.0.1"        # 版本号 与 你仓库的 标签号 对应
+s.version      = "1.0.2"        # 版本号 与 你仓库的 标签号 对应
 s.license      = "MIT"          # 开源证书
 s.summary      = "通用设置页面cell,可以灵活扩展，多种样式可配置" # 项目简介
 
@@ -21,5 +21,3 @@ s.dependency "SDWebImage"   #依赖关系，该项目所依赖的其他库
 s.author             = { "BY" => "781739973@qq.com" } # 作者信息
 s.social_media_url   = "https://github.com/LeoSsy" # 个人主页
 end
-
-
