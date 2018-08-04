@@ -99,7 +99,7 @@
         }];
         
         [_descL mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(_arrowV.mas_left).offset(-BLSettingBaseMargin);
+            make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
         }];
     }else{
         _arrowV.hidden = YES;

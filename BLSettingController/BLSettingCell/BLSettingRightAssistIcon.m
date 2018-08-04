@@ -53,7 +53,7 @@
     }];
     
     [_rightIconV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(_arrowV.mas_left).offset(-BLSettingBaseMargin);
+        make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
         make.centerY.equalTo(self.contentView);
         CGFloat width = self.dataModel.settingStyle.leftIconSize.width;CGFloat height = self.dataModel.settingStyle.leftIconSize.height;
         make.width.mas_equalTo(width);
