@@ -73,6 +73,9 @@
     }else{
         self.showArrow = NO;
     }
+    //箭头设置
+    self.showArrow = dataModel.isShowArrow;
+    //设置文字
     if (dataModel.detailTitle) {
         self.descL.text = dataModel.detailTitle;
     }else if (dataModel.detailAttributeString){

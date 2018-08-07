@@ -62,7 +62,6 @@
         });
     };
 
-    
     //开关样式
     BLSettingModel *md11 = [BLSettingFactory switchWithIcon:@"kehu_icon_jilu2" title:@"我的状态开启" switchIsOn:YES];
     md11.cellSwitchBlock = ^(BLSettingModel *model, BOOL switchIsOn) {
@@ -206,6 +205,19 @@
         });
     };
     
+    
+    BLSettingModel *md26 = [BLSettingFactory rightAssistWithIcon:nil title:@"更改头像" detailTitle:nil rightIcon:@"IMG_2604_"];
+    md26.isShowArrow = NO;
+    md26.cellOperationBlock = ^(BLSettingModel *model) {
+        model.detailTitle = @"我被点击了";
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.detailTitle = @"右侧辅助视图";
+            [weakSelf.tableView reloadData];
+        });
+    };
+    
+    [self.datas addObject:md26];
     [self.datas addObject:md25];
     [self.datas addObject:md24];
     [self.datas addObject:md23];

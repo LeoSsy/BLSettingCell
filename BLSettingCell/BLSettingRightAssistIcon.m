@@ -68,6 +68,7 @@
 - (void)configModel:(BLSettingModel *)dataModel{
     if (!dataModel)  return;
     [super configModel:dataModel];
+
     if (dataModel.arrowImageName) {    //设置左侧图标
         self.showArrow = YES;
         if ([dataModel.arrowImageName hasPrefix:@"http://"] || [dataModel.arrowImageName hasPrefix:@"https://"] ) {
@@ -86,6 +87,9 @@
             self.rightIconV.image = [UIImage imageNamed:dataModel.rightImageName];
         }
     }
+    
+    //箭头设置
+    self.showArrow = dataModel.isShowArrow;
 }
 
 /**
