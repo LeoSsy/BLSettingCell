@@ -89,4 +89,9 @@
     return [[BLSettingModel alloc] initWithIcon:iconName title:title detailTitle:detailTitle cellType:BLSettingCellTypeAvater selectSwitchArr:nil selectIndex:0 isShowIcon:iconName?YES:NO isShowArrow:isShowArrow switchIsOn:NO rightIcon:nil settingStyle:settingStyle];
 }
 
++ (UIImage*)bundleForArrowIcon{
+    NSBundle * bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[BLSettingBaseCell class]] pathForResource:@"BLSetting" ofType:@"bundle"]];
+    UIImage *image = [UIImage imageWithContentsOfFile:[bundle pathForResource:@"blsetting_arrow_icon@2x" ofType:@"png"]];
+    return image;
+}
 @end

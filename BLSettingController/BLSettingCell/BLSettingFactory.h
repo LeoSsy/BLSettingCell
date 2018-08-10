@@ -154,4 +154,11 @@
  */
 + (BLSettingModel*)avaterWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle isShowArrow:(BOOL)isShowArrow settingStyle:(BLSettingStyle*)settingStyle;
 
+
+/**
+ 获取bundle中的资源图片
+ @return image
+ */
++ (UIImage*)bundleForArrowIcon;
+
 @end

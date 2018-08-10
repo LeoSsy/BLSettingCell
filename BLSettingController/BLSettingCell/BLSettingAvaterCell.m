@@ -30,7 +30,7 @@
     _descL.textAlignment = NSTextAlignmentRight;
     [ self.contentView addSubview:_descL];
     
-    _arrowV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BLSetting.bundle/blsetting_arrow_icon"]];
+    _arrowV = [[UIImageView alloc] initWithImage:[BLSettingFactory bundleForArrowIcon]];
     [ self.contentView addSubview:_arrowV];
 }
 

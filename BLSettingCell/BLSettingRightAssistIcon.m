@@ -30,7 +30,7 @@
     _rightIconV.contentMode = UIViewContentModeScaleAspectFill;
     [ self.contentView addSubview:_rightIconV];
     
-    _arrowV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BLSetting.bundle/blsetting_arrow_icon"]];
+    _arrowV = [[UIImageView alloc] initWithImage:[BLSettingFactory bundleForArrowIcon]];
     [ self.contentView addSubview:_arrowV];
     
     //判断是否有点击事件

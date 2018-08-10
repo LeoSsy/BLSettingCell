@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BLSettingConst.h"
 #import "BLSettingModel.h"
+#import "BLSettingFactory.h"
 
 @interface BLSettingBaseCell : UITableViewCell
 /**设置模型*/

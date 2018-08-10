@@ -30,8 +30,8 @@
     _descL.textColor = self.dataModel.settingStyle.descColor;
     _descL.textAlignment = NSTextAlignmentRight;
     [ self.contentView addSubview:_descL];
-    
-    _arrowV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.dataModel.arrowImageName]];
+
+    _arrowV = [[UIImageView alloc] initWithImage:[BLSettingFactory bundleForArrowIcon]];
     [ self.contentView addSubview:_arrowV];
      
 }
