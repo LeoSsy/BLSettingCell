@@ -6,10 +6,10 @@
 //  Copyright © 2018年 bianla. All rights reserved.
 //
 
-#import "BLSettingRightAssistIcon.h"
+#import "BLSettingRightAssistIconCell.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-@interface BLSettingRightAssistIcon()
+@interface BLSettingRightAssistIconCell()
 /**右侧图标*/
 @property(nonatomic,strong)UIImageView *rightIconV;
 /**右边的箭头*/
@@ -18,7 +18,7 @@
 @property(nonatomic,assign)BOOL showArrow;
 @end
 
-@implementation BLSettingRightAssistIcon
+@implementation BLSettingRightAssistIconCell
 
 /**
  创建控件
@@ -58,8 +58,8 @@
         CGFloat width = self.dataModel.settingStyle.leftIconSize.width;CGFloat height = self.dataModel.settingStyle.leftIconSize.height;
         make.width.mas_equalTo(width);
         make.height.mas_equalTo(height);
-        if (self.dataModel.settingStyle.leftIconNeedRadius) {
-            self.rightIconV.layer.cornerRadius = width*0.5;
+        if (self.dataModel.settingStyle.leftIconRadius) {
+            self.rightIconV.layer.cornerRadius = self.dataModel.settingStyle.leftIconRadius;
              self.rightIconV.layer.masksToBounds = YES;
         }
     }];
