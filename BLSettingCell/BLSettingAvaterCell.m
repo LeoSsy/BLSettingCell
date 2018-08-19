@@ -51,8 +51,8 @@
         make.left.equalTo(self.contentView).offset(BLSettingBaseMargin);
         make.centerY.equalTo(self.contentView);
         CGFloat width = self.dataModel.settingStyle.leftIconSize.width;CGFloat height = self.dataModel.settingStyle.leftIconSize.height;
-        if (self.dataModel.settingStyle.leftIconNeedRadius) {
-            self.iconV.layer.cornerRadius = width*0.5;
+        if (self.dataModel.settingStyle.rightIconRadius) {
+            self.iconV.layer.cornerRadius = self.dataModel.settingStyle.rightIconRadius;
         }
         make.width.mas_equalTo(width);
         make.height.mas_equalTo(height);
@@ -101,12 +101,28 @@
         self.titleL.text = dataModel.title;
     }else if (dataModel.titleAttributeString){
         self.titleL.attributedText = dataModel.titleAttributeString;
+    }else{
+        self.titleL.text = nil;
     }
     
     if (dataModel.detailTitle) {
         self.descL.text = dataModel.detailTitle;
     }else if (dataModel.detailAttributeString){
         self.descL.attributedText = dataModel.detailAttributeString;
+    }else{
+        self.descL.text = nil;
+    }
+    
+    if (dataModel.settingStyle.titleFont) {
+        _descL.font = dataModel.settingStyle.titleFont;
+    }else if(dataModel.settingStyle.titleFontSize){
+        _descL.font = [UIFont systemFontOfSize:dataModel.settingStyle.titleFontSize];
+    }
+    
+    if (dataModel.settingStyle.descFont) {
+        _descL.font = dataModel.settingStyle.descFont;
+    }else if(dataModel.settingStyle.descTitleFontSize){
+        _descL.font = [UIFont systemFontOfSize:dataModel.settingStyle.descFontSize];
     }
 }
 

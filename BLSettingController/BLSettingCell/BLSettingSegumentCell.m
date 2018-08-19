@@ -9,6 +9,7 @@
 #import "BLSettingSegumentCell.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+
 @interface BLSettingSegumentCell()
 /**右边的segument*/
 @property(nonatomic,strong)UISegmentedControl *segumentV;
@@ -21,7 +22,7 @@
  */
 - (void)buildSubview {
     [super buildSubview];
-    _segumentV = [[UISegmentedControl alloc] initWithItems:self.dataModel.selectSwitchArr];
+    _segumentV = [[UISegmentedControl alloc] initWithItems:self.dataModel.segumentTitleArr];
     [_segumentV addTarget:self action:@selector(segumentChanged:) forControlEvents:UIControlEventValueChanged];
     _segumentV.selectedSegmentIndex = 0;
     _segumentV.tintColor = self.dataModel.settingStyle.segumentTintColor;
@@ -33,20 +34,21 @@
  */
 - (void)setFrameSubview {
     [super setFrameSubview];
+    
     [_segumentV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-BLSettingBaseMargin);
         make.centerY.equalTo(self.contentView);
-        make.width.mas_equalTo(BLSettingBaseSegumentW);
         make.height.equalTo(self.contentView.mas_height).multipliedBy(0.5);
     }];
+    
 }
 
 - (void)configModel:(BLSettingModel *)dataModel{
     if (!dataModel)  return;
     [super configModel:dataModel];
     _segumentV.tintColor = self.dataModel.settingStyle.segumentTintColor;
-    if (dataModel.selectSwitchArr) {
-        if (dataModel.selectIndex >= 0 && dataModel.selectIndex < dataModel.selectSwitchArr.count) {
+    if (dataModel.segumentTitleArr) {
+        if (dataModel.selectIndex >= 0 && dataModel.selectIndex < dataModel.segumentTitleArr.count) {
             [self.segumentV setSelectedSegmentIndex:dataModel.selectIndex];
         }
     }
@@ -56,6 +58,7 @@
     if (dataModel.settingStyle.segSelectedTextStyle) {
         [self.segumentV setTitleTextAttributes:dataModel.settingStyle.segSelectedTextStyle forState:UIControlStateSelected];
     }
+    
 }
 
 #pragma mark event
@@ -64,9 +67,9 @@
  */
 - (void)segumentChanged:(UISegmentedControl *)seg {
     if (!self.dataModel) return;
-    self.dataModel.selectIndex = [seg selectedSegmentIndex];
-    if (self.dataModel.cellSegumentBlock) {
-        self.dataModel.cellSegumentBlock(self.dataModel,self.dataModel.selectSwitchArr, [seg selectedSegmentIndex]);
+    self.dataModel.segumentSelIndex([seg selectedSegmentIndex]);
+    if (self.dataModel.cellSegumentOperation) {
+        self.dataModel.cellSegumentOperation(self.dataModel,self.dataModel.segumentTitleArr, [seg selectedSegmentIndex]);
     }
 }
 

@@ -69,7 +69,7 @@
 - (void)setupCell {
     self.contentView.backgroundColor = [UIColor whiteColor];
     //判断是否有点击事件
-    if (self.dataModel.cellOperationBlock) {
+    if (self.dataModel.cellClickOperation) {
         [self.contentView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellClicked)]];
     }
 }
@@ -96,13 +96,20 @@
         self.titleL.text = dataModel.title;
     }else if (dataModel.titleAttributeString){
         self.titleL.attributedText = dataModel.titleAttributeString;
+    }else{
+        self.titleL.text = nil;
     }
     self.underline.hidden = !dataModel.isShowUnderLine;
     self.underline.backgroundColor = self.dataModel.settingStyle.underlineColor;
 
-    _titleL.font = self.dataModel.settingStyle.titleFont;
     _titleL.textColor = self.dataModel.settingStyle.titleColor;
     _redPointV.backgroundColor = self.dataModel.settingStyle.redDotColor;
+    
+    if (dataModel.settingStyle.titleFont) {
+         self.titleL.font = dataModel.settingStyle.titleFont;
+    }else if(dataModel.settingStyle.titleFontSize){
+         self.titleL.font = [UIFont systemFontOfSize:dataModel.settingStyle.titleFontSize];
+    }
 }
 
 /**
@@ -113,8 +120,8 @@
     if (showIcon) {
         self.iconV.hidden = NO;
         CGFloat width = self.dataModel.settingStyle.leftIconSize.width;CGFloat height = self.dataModel.settingStyle.leftIconSize.height;
-        if (self.dataModel.settingStyle.leftIconNeedRadius) {
-            self.iconV.layer.cornerRadius = width*0.5;
+        if (self.dataModel.settingStyle.leftIconRadius) {
+            self.iconV.layer.cornerRadius = self.dataModel.settingStyle.leftIconRadius;
         }
         [self.iconV mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(width);
@@ -211,8 +218,8 @@
  */
 - (void)cellClicked {
     if (!self.dataModel) return;
-    if (self.dataModel.cellOperationBlock) {
-        self.dataModel.cellOperationBlock(self.dataModel);
+    if (self.dataModel.cellClickOperation) {
+        self.dataModel.cellClickOperation(self.dataModel);
     }
 }
 

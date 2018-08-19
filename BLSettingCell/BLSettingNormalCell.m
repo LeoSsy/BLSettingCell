@@ -26,8 +26,6 @@
 - (void)buildSubview {
     [super buildSubview];
     _descL = [[UILabel alloc] init];
-    _descL.font = self.dataModel.settingStyle.descFont;
-    _descL.textColor = self.dataModel.settingStyle.descColor;
     _descL.textAlignment = NSTextAlignmentRight;
     [ self.contentView addSubview:_descL];
 
@@ -80,7 +78,15 @@
         self.descL.text = dataModel.detailTitle;
     }else if (dataModel.detailAttributeString){
         self.descL.attributedText = dataModel.detailAttributeString;
+    }else{
+        self.descL.text = nil;
     }
+    if (dataModel.settingStyle.descFont) {
+        _descL.font = dataModel.settingStyle.descFont;
+    }else if(dataModel.settingStyle.descTitleFontSize){
+        _descL.font = [UIFont systemFontOfSize:dataModel.settingStyle.descFontSize];
+    }
+    _descL.textColor = dataModel.settingStyle.descColor;
 }
 
 /**

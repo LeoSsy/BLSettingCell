@@ -21,7 +21,7 @@
  */
 - (void)buildSubview {
     [super buildSubview];
-    _segumentV = [[UISegmentedControl alloc] initWithItems:self.dataModel.selectSwitchArr];
+    _segumentV = [[UISegmentedControl alloc] initWithItems:self.dataModel.segumentTitleArr];
     [_segumentV addTarget:self action:@selector(segumentChanged:) forControlEvents:UIControlEventValueChanged];
     _segumentV.selectedSegmentIndex = 0;
     _segumentV.tintColor = self.dataModel.settingStyle.segumentTintColor;
@@ -45,8 +45,8 @@
     if (!dataModel)  return;
     [super configModel:dataModel];
     _segumentV.tintColor = self.dataModel.settingStyle.segumentTintColor;
-    if (dataModel.selectSwitchArr) {
-        if (dataModel.selectIndex >= 0 && dataModel.selectIndex < dataModel.selectSwitchArr.count) {
+    if (dataModel.segumentTitleArr) {
+        if (dataModel.selectIndex >= 0 && dataModel.selectIndex < dataModel.segumentTitleArr.count) {
             [self.segumentV setSelectedSegmentIndex:dataModel.selectIndex];
         }
     }
@@ -64,9 +64,9 @@
  */
 - (void)segumentChanged:(UISegmentedControl *)seg {
     if (!self.dataModel) return;
-    self.dataModel.selectIndex = [seg selectedSegmentIndex];
+    self.dataModel.selIndex([seg selectedSegmentIndex]);
     if (self.dataModel.cellSegumentBlock) {
-        self.dataModel.cellSegumentBlock(self.dataModel,self.dataModel.selectSwitchArr, [seg selectedSegmentIndex]);
+        self.dataModel.cellSegumentBlock(self.dataModel,self.dataModel.segumentTitleArr, [seg selectedSegmentIndex]);
     }
 }
 
