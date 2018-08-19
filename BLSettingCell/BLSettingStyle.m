@@ -14,6 +14,7 @@
 @end
 
 @implementation BLSettingStyle
+
 @synthesize leftImageSize = _leftImageSize;
 @synthesize rightImageSize = _rightImageSize;
 @synthesize addLeftIconRadius = _addLeftIconRadius;
@@ -34,6 +35,13 @@
 @synthesize segumentDrawingColor = _segumentDrawingColor;
 @synthesize segumentNormalTextStyle = _segumentNormalTextStyle;
 @synthesize segumentSelectedTextStyle = _segumentSelectedTextStyle;
+@synthesize textFieldPlaceHolderColor = _textFieldPlaceHolderColor;
+@synthesize textFieldPlaceHolderFont = _textFieldPlaceHolderFont;
+@synthesize textFieldTextFont = _textFieldTextFont;
+@synthesize textFieldTextColor = _textFieldTextColor;
+@synthesize segumentClearRadius = _segumentClearRadius;
+@synthesize segumentClearDivider = _segumentClearDivider;
+
 @synthesize leftIconSize = _leftIconSize;
 @synthesize leftIconRadius = _leftIconRadius;
 @synthesize rightIconSize = _rightIconSize;
@@ -54,6 +62,12 @@
 @synthesize segumentTintColor = _segumentTintColor;
 @synthesize segNormalTextStyle = _segNormalTextStyle;
 @synthesize segSelectedTextStyle = _segSelectedTextStyle;
+@synthesize textFieldPlaceColor = _textFieldPlaceColor;
+@synthesize textFieldPlaceFont = _textFieldPlaceFont;
+@synthesize textFieldFont = _textFieldFont;
+@synthesize textFieldColor = _textFieldColor;
+@synthesize isSegumentClearRadius = _isSegumentClearRadius;
+@synthesize isSegumentClearDivider = _isSegumentClearDivider;
 
 + (BLSettingStyle*)style {
     return [[BLSettingStyle alloc] init];
@@ -111,12 +125,21 @@
     
     _titleColor = BLSETTINGHEXCOLOR(0x4e4e4e);
     
-   _descFont = [UIFont systemFontOfSize:kBLSettingRatioWithWidth(14)];
+    _descFont = [UIFont systemFontOfSize:kBLSettingRatioWithWidth(14)];
     _descColor = BLSETTINGHEXCOLOR(0x4e4e4e);
     
     _switchOnTintColor = BLSETTINGHEXCOLOR(0x38c83d);
     
     _segumentTintColor = BLSETTINGHEXCOLOR(0x38c83d);
+    
+    _textFieldPlaceColor = BLSETTINGHEXCOLOR(0x6f6f6f);
+    
+    _textFieldPlaceFont = [UIFont systemFontOfSize:15];
+    
+    _textFieldFont = [UIFont systemFontOfSize:15];
+    
+    _textFieldColor = BLSETTINGHEXCOLOR(0x38c83d);
+    
 }
 
 
@@ -324,6 +347,28 @@
     return _segumentDrawingColor;
 }
 
+- (SegumentClearRadius)segumentClearRadius {
+    if (!_segumentClearRadius) {
+        __weak typeof(self) weakSelf = self;
+        _segumentClearRadius = ^(BOOL status){
+            _isSegumentClearRadius = status;
+            return weakSelf;
+        };
+    }
+    return _segumentClearRadius;
+}
+
+- (SegumentClearDivider)segumentClearDivider {
+    if (!_segumentClearDivider) {
+        __weak typeof(self) weakSelf = self;
+        _segumentClearDivider = ^(BOOL status){
+            _isSegumentClearDivider = status;
+            return weakSelf;
+        };
+    }
+    return _segumentClearDivider;
+}
+
 -  (ViewTextStyleDictionary)segumentNormalTextStyle {
     if (!_segumentNormalTextStyle) {
         __weak typeof(self) weakSelf = self;
@@ -344,6 +389,50 @@
         };
     }
     return _segumentSelectedTextStyle;
+}
+
+- (PresentColor)textFieldPlaceHolderColor {
+    if (!_textFieldPlaceHolderColor) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldPlaceHolderColor = ^(UIColor *color){
+            _textFieldPlaceColor = color;
+            return weakSelf;
+        };
+    }
+    return _textFieldPlaceHolderColor;
+}
+
+- (TextFont)textFieldPlaceHolderFont {
+    if (!_textFieldPlaceHolderFont) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldPlaceHolderFont = ^(UIFont *font){
+            _textFieldPlaceFont = font;
+            return weakSelf;
+        };
+    }
+    return _textFieldPlaceHolderFont;
+}
+
+- (PresentColor)textFieldTextColor {
+    if (!_textFieldTextColor) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldTextColor = ^(UIColor *color){
+            _textFieldColor = color;
+            return weakSelf;
+        };
+    }
+    return _textFieldTextColor;
+}
+
+- (TextFont)textFieldTextFont {
+    if (!_textFieldTextFont) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldTextFont = ^(UIFont *font){
+            _textFieldFont = font;
+            return weakSelf;
+        };
+    }
+    return _textFieldTextFont;
 }
 
 @end

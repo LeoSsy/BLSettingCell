@@ -14,6 +14,10 @@
 @property(nonatomic,strong)UILabel *descL;
 /**右边的箭头*/
 @property(nonatomic,strong)UIImageView *arrowV;
+/**是否显示箭头 默认显示*/
+@property(nonatomic,assign)BOOL showArrow;
+/**是否显示左侧图标 默认不显示*/
+@property(nonatomic,assign)BOOL showIcon;
 @end
 
 @implementation BLSettingAvaterCell
@@ -61,11 +65,11 @@
     [self.titleL mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconV.mas_right).offset(BLSettingBaseMargin);
         make.height.mas_equalTo(self.titleL.font.pointSize+2);
-        make.bottom.equalTo(self.contentView.mas_centerY).offset(-5);
+        make.bottom.equalTo(self.contentView.mas_centerY).offset(-6);
     }];
     
     [_descL mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleL.mas_bottom).offset(5);
+        make.top.equalTo(self.contentView.mas_centerY).offset(6);
         make.left.equalTo(self.titleL);
     }];
 }
@@ -76,23 +80,8 @@
  */
 - (void)configModel:(BLSettingModel *)dataModel{
     if (!dataModel)  return;
-    if (dataModel.iconImageName) {    //设置左侧图标
-        if ([dataModel.iconImageName hasPrefix:@"http://"] || [dataModel.iconImageName hasPrefix:@"https://"] ) {
-            [self.iconV sd_setImageWithURL:[NSURL URLWithString:dataModel.iconImageName] placeholderImage:nil options:0];
-        }else{
-            self.iconV.image = [UIImage imageNamed:dataModel.iconImageName];
-        }
-    }
-    if (dataModel.arrowImageName) {    //设置左侧图标
-        self.arrowV.hidden = NO;
-        if ([dataModel.arrowImageName hasPrefix:@"http://"] || [dataModel.arrowImageName hasPrefix:@"https://"] ) {
-            [self.arrowV sd_setImageWithURL:[NSURL URLWithString:dataModel.arrowImageName] placeholderImage:nil options:0];
-        }else{
-            self.arrowV.image = [UIImage imageNamed:dataModel.arrowImageName];
-        }
-    }else{
-        self.arrowV.hidden = YES;
-    }
+    
+    self.showArrow = dataModel.isShowArrow;
     
     self.underline.hidden = !dataModel.isShowUnderLine;
     self.underline.backgroundColor = self.dataModel.settingStyle.underlineColor;
@@ -124,6 +113,73 @@
     }else if(dataModel.settingStyle.descTitleFontSize){
         _descL.font = [UIFont systemFontOfSize:dataModel.settingStyle.descFontSize];
     }
+    
+    if (self.dataModel.iconImageName) {    //设置左侧图标
+        self.showIcon = YES;
+        if ([self.dataModel.iconImageName hasPrefix:@"http://"] || [self.dataModel.iconImageName hasPrefix:@"https://"] ) {
+            [self.iconV sd_setImageWithURL:[NSURL URLWithString:self.dataModel.iconImageName] placeholderImage:nil options:0];
+        }else{
+            self.iconV.image = [UIImage imageNamed:self.dataModel.iconImageName];
+        }
+    }else{
+        self.showIcon = NO;
+    }
 }
+
+/**
+ 设置左侧图标是否展示
+ */
+- (void)setShowIcon:(BOOL)showIcon {
+    _showIcon = showIcon;
+    if (showIcon) {
+        self.iconV.hidden = NO;
+        CGFloat width = self.dataModel.settingStyle.leftIconSize.width;CGFloat height = self.dataModel.settingStyle.leftIconSize.height;
+        if (self.dataModel.settingStyle.leftIconRadius) {
+            self.iconV.layer.cornerRadius = self.dataModel.settingStyle.leftIconRadius;
+        }
+        if (self.dataModel.settingStyle.rightIconRadius) {
+            self.iconV.layer.cornerRadius = self.dataModel.settingStyle.rightIconRadius;
+        }
+        [self.iconV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(height);
+        }];
+        [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.iconV.mas_right).offset(BLSettingBaseMargin);
+        }];
+    }else{
+        self.iconV.hidden = YES;
+        [self.iconV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(0);
+            make.height.mas_equalTo(0);
+        }];
+        [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.iconV.mas_right).offset(0);
+        }];
+    }
+}
+
+/**
+ 设置箭头是否显示
+ */
+- (void)setShowArrow:(BOOL)showArrow {
+    _showArrow = showArrow;
+    if (showArrow) {
+        _arrowV.hidden = NO;
+        if (self.dataModel.arrowImageName) {    //设置箭头图标
+            if ([self.dataModel.arrowImageName hasPrefix:@"http://"] || [self.dataModel.arrowImageName hasPrefix:@"https://"] ) {
+                [self.arrowV sd_setImageWithURL:[NSURL URLWithString:self.dataModel.arrowImageName] placeholderImage:nil options:0];
+            }else{
+                self.arrowV.image = [UIImage imageNamed:self.dataModel.arrowImageName];
+            }
+        }else{
+            self.arrowV.image = [BLSettingFactory bundleForArrowIcon];
+        }
+        _arrowV.hidden = NO;
+    }else{
+        _arrowV.hidden = YES;
+    }
+}
+
 
 @end

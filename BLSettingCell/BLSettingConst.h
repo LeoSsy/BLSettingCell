@@ -16,12 +16,11 @@
 
 typedef NS_ENUM(NSUInteger, BLSettingCellType) {
     BLSettingCellTypeNormal,    //默认类型 显示图标 标题 详情 箭头
-    BLSettingCellTypeStandard,  //标准类型 显示图标 标题 详情
-    BLSettingCellTypeArrow,      //箭头类型 显示图标 标题 箭头
     BLSettingCellTypeSwitch,     //开关类型 显示图标 标题 开关
     BLSettingCellTypeSegument, //Segument类型 显示图标 标题 Segument
     BLSettingCellTypeRightAssistIcon,//右侧辅助图标类型 显示图标 标题 详情 右侧图标 箭头
-    BLSettingCellTypeAvater //个人资料大头像类型 带左侧大图标 标题 描述 箭头
+    BLSettingCellTypeAvater,//个人资料大头像类型 带左侧大图标 标题 描述 箭头
+    BLSettingCellTypeRightTextField //文本输入框类型 显示左侧图标 标题 文本框
 };
 
 extern const CGFloat BLSettingBaseMargin; //左右间距

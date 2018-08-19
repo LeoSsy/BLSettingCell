@@ -18,17 +18,22 @@
 @synthesize descTitle = _descTitle;
 @synthesize descAttribute = _descAttribute;
 @synthesize showRedDot = _showRedDot;
-@synthesize showIcon = _showIcon;
 @synthesize showArrow = _showArrow;
 @synthesize showUnderLine = _showUnderLine;
 @synthesize cellH = _cellH;
 @synthesize style = _style;
 @synthesize switchOn = _switchOn;
-@synthesize selIndex = _selIndex;
+@synthesize segumentSelIndex = _segumentSelIndex;
 @synthesize segumentTitlesArr = _segumentTitlesArr;
+@synthesize textFieldPlaceHolder = _textFieldPlaceHolder;
+@synthesize textFieldText = _textFieldText;
+@synthesize textFieldTextMaxLength = _textFieldTextMaxLength;
 @synthesize cellClikedOperation = _cellClikedOperation;
 @synthesize switchOperation = _switchOperation;
 @synthesize segumentOperation = _segumentOperation;
+@synthesize textFieldDidChangeAction = _textFieldDidChangeAction;
+@synthesize textFieldTextReachesMaxLengthAction = _textFieldTextReachesMaxLengthAction;
+
 
 @synthesize iconImageName = _iconImageName;
 @synthesize rightImageName = _rightImageName;
@@ -38,7 +43,6 @@
 @synthesize detailTitle = _detailTitle;
 @synthesize detailAttributeString = _detailAttributeString;
 @synthesize isShowRedPoint = _isShowRedPoint;
-@synthesize isShowIcon = _isShowIcon;
 @synthesize isShowArrow = _isShowArrow;
 @synthesize isShowUnderLine = _isShowUnderLine;
 @synthesize cellType = _cellType;
@@ -47,28 +51,35 @@
 @synthesize switchIsOn = _switchIsOn;
 @synthesize selectIndex = _selectIndex;
 @synthesize segumentTitleArr = _segumentTitleArr;
-@synthesize cellOperationBlock = _cellOperationBlock;
-@synthesize cellSwitchBlock = _cellSwitchBlock;
-@synthesize cellSegumentBlock = _cellSegumentBlock;
+@synthesize textFieldPlaceHolderText = _textFieldPlaceHolderText;
+@synthesize textFieldString = _textFieldString;
+@synthesize textFieldStringMaxLength = _textFieldStringMaxLength;
+@synthesize cellClickOperation = _cellClickOperation;
+@synthesize cellSwitchOperation = _cellSwitchOperation;
+@synthesize cellSegumentOperation = _cellSegumentOperation;
+@synthesize textFieldDidChangeOperation = _textFieldDidChangeOperation;
+@synthesize textFieldTextMaxLengthOperation = _textFieldTextMaxLengthOperation;
 
 + (instancetype)model {
-    return [[self alloc] init];
+    BLSettingModel *model = [[self alloc] init];
+    model.style([BLSettingStyle style])
+    .showUnderLine(YES);
+    return model;
 }
 
-- (instancetype)initWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle cellType:(BLSettingCellType)cellType selectSwitchArr:(NSArray*)selectSwitchArr selectIndex:(NSInteger)selectIndex isShowIcon:(BOOL)isShowIcon isShowArrow:(BOOL)isShowArrow switchIsOn:(BOOL)switchIsOn rightIcon:(NSString*)rightIconName settingStyle:(BLSettingStyle*)settingStyle {
+- (instancetype)initWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle cellType:(BLSettingCellType)cellType segumentTitleArr:(NSArray*)segumentTitlesArr selectIndex:(NSInteger)selectIndex isShowArrow:(BOOL)isShowArrow switchIsOn:(BOOL)switchIsOn rightIcon:(NSString*)rightIconName settingStyle:(BLSettingStyle*)settingStyle {
     if (self = [super init]) {
         _isShowUnderLine = YES;
         _iconImageName = iconName;
         _title =title;
         _cellType = cellType;
-        _isShowIcon = isShowIcon;
         _detailTitle = detailTitle;
-       _isShowArrow = isShowArrow;
+        _isShowArrow = isShowArrow;
         _switchIsOn = switchIsOn;
-        _segumentTitleArr = selectSwitchArr;
+        _segumentTitleArr = segumentTitlesArr;
         _selectIndex = selectIndex;
         _rightImageName = rightIconName;
-        _settingStyle = settingStyle;
+        _settingStyle = settingStyle?settingStyle:[BLSettingStyle style];
     }
     return self;
 }
@@ -178,17 +189,6 @@
     return _showRedDot;
 }
 
-- (DisPlayStatus)showIcon {
-    if (!_showIcon) {
-        __weak typeof(self) weakSelf = self;
-        _showIcon = ^(BOOL status){
-            _isShowIcon = status;
-            return weakSelf;
-        };
-    }
-    return _showIcon;
-}
-
 - (DisPlayStatus)showArrow {
     if (!_showArrow) {
         __weak typeof(self) weakSelf = self;
@@ -244,18 +244,18 @@
     return _style;
 }
 
-- (SelectIndex)selIndex {
-    if (!_selIndex) {
+- (SegumentSelectIndex)segumentSelIndex {
+    if (!_segumentSelIndex) {
         __weak typeof(self) weakSelf = self;
-        _selIndex = ^(NSInteger index){
+        _segumentSelIndex = ^(NSInteger index){
             _selectIndex = index;
             return weakSelf;
         };
     }
-    return _selIndex;
+    return _segumentSelIndex;
 }
 
-- (SelectSwitchArr)segumentTitlesArr {
+- (SegumentTitlsArr)segumentTitlesArr {
     if (!_segumentTitlesArr) {
         __weak typeof(self) weakSelf = self;
         _segumentTitlesArr = ^(NSArray *titleArr){
@@ -269,8 +269,8 @@
 - (CellClikedOperation)cellClikedOperation {
     if (!_cellClikedOperation) {
         __weak typeof(self) weakSelf = self;
-        _cellClikedOperation = ^(cellOperationBlock cellOperationBlock){
-            _cellOperationBlock = cellOperationBlock;
+        _cellClikedOperation = ^(cellClickAction cellOperationBlock){
+            _cellClickOperation = cellOperationBlock;
             return weakSelf;
         };
     }
@@ -280,8 +280,8 @@
 - (CellSwitchOperation)switchOperation {
     if (!_switchOperation) {
         __weak typeof(self) weakSelf = self;
-        _switchOperation = ^(cellSwitchBlock cellSwitchBlock){
-            _cellSwitchBlock = cellSwitchBlock;
+        _switchOperation = ^(cellSwitchAction cellSwitchBlock){
+            _cellSwitchOperation = cellSwitchBlock;
             return weakSelf;
         };
     }
@@ -291,13 +291,69 @@
 - (CellSegumentOperation)segumentOperation {
     if (!_segumentOperation) {
         __weak typeof(self) weakSelf = self;
-        _segumentOperation = ^(cellSegumentBlock cellSegumentBlock){
-            _cellSegumentBlock = cellSegumentBlock;
+        _segumentOperation = ^(cellSegumentAction cellSegumentBlock){
+            _cellSegumentOperation = cellSegumentBlock;
             return weakSelf;
         };
     }
     return _segumentOperation;
 }
+
+- (Text)textFieldPlaceHolder {
+    if (!_textFieldPlaceHolder) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldPlaceHolder = ^(NSString *text){
+            _textFieldPlaceHolderText = text;
+            return weakSelf;
+        };
+    }
+    return _textFieldPlaceHolder;
+}
+
+- (Text)textFieldText {
+    if (!_textFieldText) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldText = ^(NSString *text){
+            _textFieldString = text;
+            return weakSelf;
+        };
+    }
+    return _textFieldText;
+}
+
+- (TextFieldTextMaxLength)textFieldTextMaxLength {
+    if (!_textFieldTextMaxLength) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldTextMaxLength = ^(NSInteger maxLength){
+            _textFieldStringMaxLength = maxLength;
+            return weakSelf;
+        };
+    }
+    return _textFieldTextMaxLength;
+}
+
+- (TextFieldDidChangeAction)textFieldDidChangeAction {
+    if (!_textFieldDidChangeAction) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldDidChangeAction = ^(textFieldDidChangeAction action){
+            _textFieldDidChangeOperation = action;
+            return weakSelf;
+        };
+    }
+    return _textFieldDidChangeAction;
+}
+
+- (TextFieldTextReachesMaxLengthAction)textFieldTextReachesMaxLengthAction{
+    if (!_textFieldTextReachesMaxLengthAction) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldTextReachesMaxLengthAction = ^(textFieldTextReachesMaxLengthAction action){
+            _textFieldTextMaxLengthOperation = action;
+            return weakSelf;
+        };
+    }
+    return _textFieldTextReachesMaxLengthAction;
+}
+
 
 @end
 

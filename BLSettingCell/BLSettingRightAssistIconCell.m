@@ -6,10 +6,10 @@
 //  Copyright © 2018年 bianla. All rights reserved.
 //
 
-#import "BLSettingRightAssistIcon.h"
+#import "BLSettingRightAssistIconCell.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-@interface BLSettingRightAssistIcon()
+@interface BLSettingRightAssistIconCell()
 /**右侧图标*/
 @property(nonatomic,strong)UIImageView *rightIconV;
 /**右边的箭头*/
@@ -18,7 +18,7 @@
 @property(nonatomic,assign)BOOL showArrow;
 @end
 
-@implementation BLSettingRightAssistIcon
+@implementation BLSettingRightAssistIconCell
 
 /**
  创建控件
@@ -34,7 +34,7 @@
     [ self.contentView addSubview:_arrowV];
     
     //判断是否有点击事件
-    if (self.dataModel.cellOperationBlock) {
+    if (self.dataModel.cellClickOperation) {
         [self.contentView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellClicked)]];
     }
 }
@@ -68,17 +68,6 @@
 - (void)configModel:(BLSettingModel *)dataModel{
     if (!dataModel)  return;
     [super configModel:dataModel];
-
-    if (dataModel.arrowImageName) {    //设置左侧图标
-        self.showArrow = YES;
-        if ([dataModel.arrowImageName hasPrefix:@"http://"] || [dataModel.arrowImageName hasPrefix:@"https://"] ) {
-            [self.arrowV sd_setImageWithURL:[NSURL URLWithString:dataModel.arrowImageName] placeholderImage:nil options:0];
-        }else{
-            self.arrowV.image = [UIImage imageNamed:dataModel.arrowImageName];
-        }
-    }else{
-        self.showArrow = NO;
-    }
     //设置左侧图标
     if (dataModel.rightImageName) {
         if ([dataModel.rightImageName hasPrefix:@"http://"] || [dataModel.rightImageName hasPrefix:@"https://"] ) {
@@ -98,6 +87,15 @@
 - (void)setShowArrow:(BOOL)showArrow {
     _showArrow = showArrow;
     if (showArrow) {
+        if (self.dataModel.arrowImageName) {    //设置箭头图标
+            if ([self.dataModel.arrowImageName hasPrefix:@"http://"] || [self.dataModel.arrowImageName hasPrefix:@"https://"] ) {
+                [self.arrowV sd_setImageWithURL:[NSURL URLWithString:self.dataModel.arrowImageName] placeholderImage:nil options:0];
+            }else{
+                self.arrowV.image = [UIImage imageNamed:self.dataModel.arrowImageName];
+            }
+        }else{
+            self.arrowV.image = [BLSettingFactory bundleForArrowIcon];
+        }
         _arrowV.hidden = NO;
         CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -126,8 +124,8 @@
  */
 - (void)cellClicked {
     if (!self.dataModel) return;
-    if (self.dataModel.cellOperationBlock) {
-        self.dataModel.cellOperationBlock(self.dataModel);
+    if (self.dataModel.cellClickOperation) {
+        self.dataModel.cellClickOperation(self.dataModel);
     }
 }
 @end

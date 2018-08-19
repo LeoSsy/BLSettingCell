@@ -57,8 +57,8 @@
 - (void)switchStateChanged:(UISwitch *)switchV {
     if (!self.dataModel) return;
     self.dataModel.switchOn(switchV.isOn);
-    if (self.dataModel.cellSwitchBlock) {
-        self.dataModel.cellSwitchBlock(self.dataModel,switchV.isOn);
+    if (self.dataModel.cellSwitchOperation) {
+        self.dataModel.cellSwitchOperation(self.dataModel,switchV.isOn);
     }
 }
 

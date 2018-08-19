@@ -69,7 +69,7 @@
 - (void)setupCell {
     self.contentView.backgroundColor = [UIColor whiteColor];
     //判断是否有点击事件
-    if (self.dataModel.cellOperationBlock) {
+    if (self.dataModel.cellClickOperation) {
         [self.contentView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellClicked)]];
     }
 }
@@ -218,8 +218,8 @@
  */
 - (void)cellClicked {
     if (!self.dataModel) return;
-    if (self.dataModel.cellOperationBlock) {
-        self.dataModel.cellOperationBlock(self.dataModel);
+    if (self.dataModel.cellClickOperation) {
+        self.dataModel.cellClickOperation(self.dataModel);
     }
 }
 

@@ -15,7 +15,8 @@
 #import "BLSettingNormalCell.h"
 #import "BLSettingSwitchCell.h"
 #import "BLSettingSegumentCell.h"
-#import "BLSettingRightAssistIcon.h"
+#import "BLSettingRightAssistIconCell.h"
 #import "BLSettingAvaterCell.h"
+#import "BLSettingRightTextFieldCell.h"
 #import "BLSettingStyle.h"
 #endif /* BLSetting_h */

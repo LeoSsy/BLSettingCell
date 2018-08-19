@@ -31,7 +31,6 @@
 
     _arrowV = [[UIImageView alloc] initWithImage:[BLSettingFactory bundleForArrowIcon]];
     [ self.contentView addSubview:_arrowV];
-     
 }
 
 /**
@@ -61,16 +60,6 @@
 - (void)configModel:(BLSettingModel *)dataModel{
     if (!dataModel)  return;
     [super configModel:dataModel];
-    if (dataModel.arrowImageName) {    //设置左侧图标
-        self.showArrow = YES;
-        if ([dataModel.arrowImageName hasPrefix:@"http://"] || [dataModel.arrowImageName hasPrefix:@"https://"] ) {
-            [self.arrowV sd_setImageWithURL:[NSURL URLWithString:dataModel.arrowImageName] placeholderImage:nil options:0];
-        }else{
-            self.arrowV.image = [UIImage imageNamed:dataModel.arrowImageName];
-        }
-    }else{
-        self.showArrow = NO;
-    }
     //箭头设置
     self.showArrow = dataModel.isShowArrow;
     //设置文字
@@ -95,9 +84,16 @@
 - (void)setShowArrow:(BOOL)showArrow {
     _showArrow = showArrow;
     if (showArrow) {
-        _arrowV.hidden = NO;
-        CGFloat width = 12;
-        CGFloat height = 12;
+        if (self.dataModel.arrowImageName) {    //设置箭头图标
+            if ([self.dataModel.arrowImageName hasPrefix:@"http://"] || [self.dataModel.arrowImageName hasPrefix:@"https://"] ) {
+                [self.arrowV sd_setImageWithURL:[NSURL URLWithString:self.dataModel.arrowImageName] placeholderImage:nil options:0];
+            }else{
+                self.arrowV.image = [UIImage imageNamed:self.dataModel.arrowImageName];
+            }
+        }else{
+            self.arrowV.image = [BLSettingFactory bundleForArrowIcon];
+        }
+        _arrowV.hidden = NO;CGFloat width = 12;CGFloat height = 12;
         if (self.arrowName) {
             width = self.arrowName.size.width;
             height = self.arrowName.size.height;
