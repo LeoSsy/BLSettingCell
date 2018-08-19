@@ -20,7 +20,9 @@ typedef BLSettingStyle *(^SpaceToSuperViewLRMargin)(UIEdgeInsets insets);
 typedef BLSettingStyle *(^ViewTextStyleDictionary)(NSDictionary * attributedDict);
 typedef BLSettingStyle *(^TextFieldText)(NSString* text);
 typedef BLSettingStyle *(^SegumentClearRadius)(BOOL status);
+typedef BLSettingStyle *(^SegumentBorderWidth)(CGFloat BorderWidth);
 typedef BLSettingStyle *(^SegumentClearDivider)(BOOL status);
+typedef BLSettingStyle *(^SegumentItemW)(NSInteger itemW);
 
 @interface BLSettingStyle : NSObject
 
@@ -71,8 +73,12 @@ typedef BLSettingStyle *(^SegumentClearDivider)(BOOL status);
 @property (nonatomic,copy, readonly) ViewTextStyleDictionary segumentSelectedTextStyle;
 /**segument 设置圆角是否显示*/
 @property (nonatomic,copy, readonly) SegumentClearRadius segumentClearRadius;
+/**segument 边框的宽度.*/
+@property (nonatomic,copy, readonly) SegumentBorderWidth segumentBorderWidth;
 /**segument 设置中间的分割线是否显示.*/
 @property (nonatomic,copy, readonly) SegumentClearDivider segumentClearDivider;
+/**segument 每一个item的宽度*/
+@property (nonatomic,copy, readonly) SegumentItemW segumentItemW;
 
 #pragma mark TextFidled类型cell相关属性设置
 /**textField 占位文字颜色*/
@@ -132,8 +138,12 @@ typedef BLSettingStyle *(^SegumentClearDivider)(BOOL status);
 @property(nonatomic,strong, readonly)NSDictionary *segSelectedTextStyle;
 /**segument 圆角是否显示*/
 @property (nonatomic,assign, readonly) BOOL isSegumentClearRadius;
+/**segument 边框的宽度*/
+@property (nonatomic,assign, readonly) CGFloat segBorderWidth;
 /**segument 中间的分割线是否显示.*/
 @property (nonatomic,assign, readonly) BOOL isSegumentClearDivider;
+/**segument 每一个item的宽度*/
+@property (nonatomic,assign, readonly) NSInteger segItemW;
 
 #pragma mark Textfield类型cell相关属性
 /**textField 占位文字颜色*/

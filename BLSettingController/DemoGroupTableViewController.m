@@ -18,35 +18,267 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    
     _datas = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
-   
+    
+    //默认样式
+    BLSettingModel *md1 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
+    md1.showRedDot(YES).cellH(120).cellClikedOperation(^(BLSettingModel *model) {
+        model.descTitle(@"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.descTitle(@"我是默认样式");
+            [weakSelf.tableView reloadData];
+        });
+    });
+    
+    BLSettingModel *md2  = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:NO cellClickAction:nil];
+    md1.showRedDot(YES).cellH(45).cellClikedOperation(^(BLSettingModel *model) {
+        model.descTitle(@"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.descTitle(@"我是默认样式");
+            [weakSelf.tableView reloadData];
+        });
+    });
+    
+    
+    //开关样式
+    BLSettingModel *md3 = [BLSettingFactory switchWithIcon:@"kehu_icon_jilu2" title:@"我的状态开启" switchIsOn:YES switchAction:^(BLSettingModel *model, BOOL switchIsOn) {
+        model.titleText([NSString stringWithFormat:@"我的状态%@",switchIsOn?@"开启":@"关闭"]) ;
+        [weakSelf.tableView reloadData];
+    }];
+    
+    BLSettingModel *md4 = [BLSettingFactory switchWithIcon:@"kehu_icon_jilu2" title:@"我的状态关闭" switchIsOn:NO switchAction:nil];
+    md4.switchOperation(^(BLSettingModel *model, BOOL switchIsOn) {
+        model.titleText([NSString stringWithFormat:@"我的状态%@",switchIsOn?@"开启":@"关闭"]) ;
+        [weakSelf.tableView reloadData];
+    });
+    
+    //segument
+    BLSettingStyle *stylemh5 = [BLSettingStyle style];
+    stylemh5.segumentItemW(40);
+    BLSettingModel *md5 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"kg",@"斤",@"磅"] selectIndex:1 segumentAction:^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.titleText([NSString stringWithFormat:@"你选择了%@",segumentTitlsArr[selectIndex]]) ;
+        [weakSelf.tableView reloadData];
+    }];
+    md5.style(stylemh5);
+    
+    BLSettingStyle *stylemh6 = [BLSettingStyle style];
+    stylemh6.segumentItemW(35);
+    BLSettingModel *md6 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"kg",@"斤",@"磅"] selectIndex:1 segumentAction:nil];
+    md6.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.titleText([NSString stringWithFormat:@"你选择了%@",segumentTitlsArr[selectIndex]]) ;
+        [weakSelf.tableView reloadData];
+    }).style(stylemh6);
+    
+    BLSettingModel *md7 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标展示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:^(BLSettingModel *model) {
+        model.descTitle(@"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.descTitle(@"右侧辅助视图");
+            [weakSelf.tableView reloadData];
+        });
+    }];
+    
+    BLSettingModel *md8 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标不显示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:nil];
+    md8.cellClikedOperation(^(BLSettingModel *model) {
+        model.descTitle(@"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.descTitle(@"右侧辅助视图");
+            [weakSelf.tableView reloadData];
+        });
+    });
+    
+    
+    //自定义默认样式
+    UIFont *font = [UIFont boldSystemFontOfSize:15];
+    UIColor *color = [UIColor redColor];
+    BLSettingStyle *style = [BLSettingStyle settingStyleWithTitleFont:font titleColor:color descFont:font descColor:color];
+    BLSettingModel *md9 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认类型自定样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
+    md9.style(style);
+    md9.cellClikedOperation(^(BLSettingModel *model) {
+        model.descTitle( @"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.descTitle( @"我是默认样式");
+            [weakSelf.tableView reloadData];
+        });
+    }).style(style);
+    
+    
+    //自定义开关样式
+    UIFont *font1 = [UIFont boldSystemFontOfSize:18];
+    UIColor *color1 = [UIColor blueColor];
+    BLSettingStyle *style1 = [BLSettingStyle settingStyleWithTitleFont:font1 titleColor:color1 descFont:font1 descColor:color1 switchOnTintColor:color1];
+    BLSettingModel *md10 = [BLSettingFactory switchWithIcon:@"kehu_icon_jilu2" title:@"开关自定义样式" switchIsOn:NO switchAction:nil];
+    md10.cellClikedOperation(^(BLSettingModel *model) {
+        model.titleText( @"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.titleText( @"开关自定义样式");
+            [weakSelf.tableView reloadData];
+        });
+    }).style(style1);
+    
+    //自定义segment样式
+    UIFont *font2 = [UIFont boldSystemFontOfSize:16];
+    UIColor *color2 = [UIColor orangeColor];
+    BLSettingStyle *style2 = [BLSettingStyle settingStyleWithTitleFont:font2 titleColor:color2 descFont:font2 descColor:color2 switchOnTintColor:color2];
+    BLSettingModel *md11 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
+    md11.cellClikedOperation(^(BLSettingModel *model) {
+        model.descTitle( @"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.descTitle( @"自定义segment样式");
+            [weakSelf.tableView reloadData];
+        });
+    }).style(style2);
+    
+    //自定义segment样式
+    UIFont *font3 = [UIFont boldSystemFontOfSize:12];
+    UIColor *color3 = [UIColor purpleColor];
+    BLSettingStyle *style3 = [BLSettingStyle settingStyleWithTitleFont:font3 titleColor:color3 descFont:font3 descColor:color3 switchOnTintColor:color3];
+    style3.segumentNormalTextStyle(
+                                   @{
+                                     NSForegroundColorAttributeName:[UIColor yellowColor],
+                                     NSFontAttributeName:[UIFont boldSystemFontOfSize:12]
+                                     }).segumentSelectedTextStyle(
+                                                                  @{
+                                                                    NSForegroundColorAttributeName:[UIColor greenColor],
+                                                                    NSFontAttributeName:[UIFont boldSystemFontOfSize:12]
+                                                                    });
+    BLSettingModel *md12 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"啤酒",@"可乐",@"橙汁"] selectIndex:1 segumentAction:nil];
+    md12.segumentOperation(^(BLSettingModel *model, NSArray *selectSwitchArr, NSInteger selectIndex) {
+        model.titleText([NSString stringWithFormat:@"选择了%@",selectSwitchArr[selectIndex]]) ;
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.titleText(@"自定义segment样式");
+            [weakSelf.tableView reloadData];
+        });
+    }).style(style3);
+    
+    //链式语法创建自定义默认样式
+    BLSettingStyle *style4 = [BLSettingStyle style]
+    .leftTitleFontSize(18)
+    .leftImageSize(CGSizeMake(100, 100))
+    .rightImageSize(CGSizeMake(50, 50))
+    .descTitleFontSize(10)
+    .descTitleColor([UIColor redColor])
+    .addLeftIconRadius(15);
+    
+    BLSettingModel *md13 = [BLSettingModel model]
+    .titleText(@"我是通过链式语法实现")
+    .descTitle(@"我是描述文字")
+    .showArrow(YES)
+    .style(style4)
+    .cellClikedOperation(^(BLSettingModel *model) {
+        model.titleText(@"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.titleText(@"我是通过链式语法实现");
+            [weakSelf.tableView reloadData];
+        });
+    });
+    
+    BLSettingModel *md14 = [BLSettingFactory textFieldWithIcon:@"kehu_icon_kaluli" title:@"文本框" placeHolder:@"感觉胖了 用变啦" textMaxLength:4 didChangeAction:^(BLSettingModel *model, UITextField *textField) {
+        NSLog(@"文本框文字发生改变");
+    } reachesMaxLengthAction:^(BLSettingModel *model, UITextField *textField) {
+        NSLog(@"您输入的文字已经达到最大长度");
+    }];
+    
+    BLSettingModel *md15 = [BLSettingFactory textFieldWithIcon:nil title:@"文本框" placeHolder:@"感觉胖了 用变啦" textMaxLength:12 didChangeAction:^(BLSettingModel *model, UITextField *textField) {
+        NSLog(@"文本框文字发生改变");
+    } reachesMaxLengthAction:^(BLSettingModel *model, UITextField *textField) {
+        NSLog(@"您输入的文字已经达到最大长度");
+    }];
+    
+    //链式语法创建自定义默认样式
+    BLSettingStyle *style5 = [BLSettingStyle style]
+    .textFieldTextColor(BLSETTINGHEXCOLOR(0x666666))
+    .textFieldTextFont([UIFont systemFontOfSize:16])
+    .textFieldPlaceHolderColor([UIColor redColor])
+    .textFieldPlaceHolderFont([UIFont systemFontOfSize:20]);
+    
+    BLSettingModel *md16 =  [BLSettingModel model];
+    md16.type(BLSettingCellTypeRightTextField)
+    .leftIconName(@"kehu_icon_kaluli").titleText(@"文本框自定义样式").textFieldPlaceHolder(nil)
+    .textFieldTextMaxLength(20).textFieldDidChangeAction(^(BLSettingModel *model, UITextField *textField) {
+        NSLog(@"文本框文字发生改变");
+    }).textFieldTextReachesMaxLengthAction(^(BLSettingModel *model, UITextField *textField) {
+        NSLog(@"您输入的文字已经达到最大长度");
+    }).style(style5);
+    
+    BLSettingModel *md17 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"个人头像资料" detailTitle:@"显示箭头" isShowArrow:YES cellClickAction:^(BLSettingModel *model) {
+        NSLog(@"点我干嘛");
+    }];
+    md17.cellH(100);
+    
+    BLSettingModel *md18 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"个人头像资料" detailTitle:@"隐藏箭头" isShowArrow:NO cellClickAction:^(BLSettingModel *model) {
+        NSLog(@"点我干嘛");
+    }];
+    md18.cellH(100);
+    
+    BLSettingStyle *segStyle = [BLSettingStyle style];
+    segStyle.segumentClearRadius(YES).segumentBorderWidth(0.2).segumentClearDivider(YES);
+    BLSettingModel *md19 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"舒少勇666",@"迪丽热巴777"] selectIndex:1 segumentAction:nil];
+    md19.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.descTitle(segumentTitlsArr[selectIndex]);
+        [weakSelf.tableView reloadData];
+    }).style(segStyle);
+    
+    BLSettingStyle *segStyle1 = [BLSettingStyle style];
+    segStyle1.segumentClearRadius(NO).segumentBorderWidth(0);
+    BLSettingModel *md20 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
+    md20.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.descTitle(segumentTitlsArr[selectIndex]);
+        [weakSelf.tableView reloadData];
+    }).style(segStyle1);
+    
+    BLSettingStyle *segStyle2 = [BLSettingStyle style];
+    segStyle2.segumentClearRadius(YES).segumentBorderWidth(5);
+    BLSettingModel *md21 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
+    md21.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.descTitle(segumentTitlsArr[selectIndex]);
+        [weakSelf.tableView reloadData];
+    }).style(segStyle2);
+    
+    BLSettingStyle *segStyle3 = [BLSettingStyle style];
+    segStyle3.segumentClearRadius(YES).segumentBorderWidth(0);
+    BLSettingModel *md22 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
+    md22.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.descTitle(segumentTitlsArr[selectIndex]);
+        [weakSelf.tableView reloadData];
+    }).style(segStyle3);
 
-//    BLSettingGroup *group1 = [[BLSettingGroup alloc] init];
-//    group1.header = @"第一组";
-//    group1.items = @[md27,md26,md25,md24,md23,md22,md21,md20];
-//    
-//    BLSettingGroup *group2 = [[BLSettingGroup alloc] init];
-//    group2.header = @"第二组";
-//    group2.footer = @"第二组尾部";
-//    group2.items = @[md19,md18,md17,md16,md15];
-//    
-//    
-//    BLSettingGroup *group3 = [[BLSettingGroup alloc] init];
-//    group3.header = @"第三组";
-//    group3.footer = @"第三组尾部";
-//    group3.items = @[md14,md13,md12,md11,md10,md9,md8];
-//    
-//    
-//    BLSettingGroup *group4 = [[BLSettingGroup alloc] init];
-//    group4.header = @"第四组";
-//    group4.items = @[md7,md6,md5,md4,md3,md2,md1];
-//    
-//    [self.datas addObject:group1];
-//    [self.datas addObject:group2];
-//    [self.datas addObject:group3];
-//    [self.datas addObject:group4];
+    BLSettingGroup *group1 = [[BLSettingGroup alloc] init];
+    group1.header = @"第一组";
+    group1.items = @[md20,md21,md22];
+    
+    BLSettingGroup *group2 = [[BLSettingGroup alloc] init];
+    group2.header = @"第二组";
+    group2.footer = @"第二组尾部";
+    group2.items = @[md19,md18,md17,md16,md15];
+
+
+    BLSettingGroup *group3 = [[BLSettingGroup alloc] init];
+    group3.header = @"第三组";
+    group3.footer = @"第三组尾部";
+    group3.items = @[md14,md13,md12,md11,md10,md9,md8];
+
+
+    BLSettingGroup *group4 = [[BLSettingGroup alloc] init];
+    group4.header = @"第四组";
+    group4.items = @[md7,md6,md5,md4,md3,md2,md1];
+    
+    [self.datas addObject:group1];
+    [self.datas addObject:group2];
+    [self.datas addObject:group3];
+    [self.datas addObject:group4];
 
 }
 

@@ -40,7 +40,10 @@
 @synthesize textFieldTextFont = _textFieldTextFont;
 @synthesize textFieldTextColor = _textFieldTextColor;
 @synthesize segumentClearRadius = _segumentClearRadius;
+@synthesize segumentBorderWidth = _segumentBorderWidth;
 @synthesize segumentClearDivider = _segumentClearDivider;
+@synthesize segumentItemW = _segumentItemW;
+
 
 @synthesize leftIconSize = _leftIconSize;
 @synthesize leftIconRadius = _leftIconRadius;
@@ -67,7 +70,9 @@
 @synthesize textFieldFont = _textFieldFont;
 @synthesize textFieldColor = _textFieldColor;
 @synthesize isSegumentClearRadius = _isSegumentClearRadius;
+@synthesize segBorderWidth = _segBorderWidth;
 @synthesize isSegumentClearDivider = _isSegumentClearDivider;
+@synthesize segItemW = _segItemW;
 
 + (BLSettingStyle*)style {
     return [[BLSettingStyle alloc] init];
@@ -367,6 +372,28 @@
         };
     }
     return _segumentClearDivider;
+}
+
+- (SegumentItemW)segumentItemW {
+    if (!_segumentItemW) {
+        __weak typeof(self) weakSelf = self;
+        _segumentItemW = ^(NSInteger itemW){
+            _segItemW = itemW;
+            return weakSelf;
+        };
+    }
+    return _segumentItemW;
+}
+
+- (SegumentBorderWidth)segumentBorderWidth {
+    if (!_segumentBorderWidth) {
+        __weak typeof(self) weakSelf = self;
+        _segumentBorderWidth = ^(CGFloat borderWidth){
+            _segBorderWidth = borderWidth;
+            return weakSelf;
+        };
+    }
+    return _segumentBorderWidth;
 }
 
 -  (ViewTextStyleDictionary)segumentNormalTextStyle {

@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    
     _datas = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
@@ -57,16 +59,21 @@
     });
     
     //segument
+    BLSettingStyle *stylemh5 = [BLSettingStyle style];
+    stylemh5.segumentItemW(40);
     BLSettingModel *md5 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"kg",@"斤",@"磅"] selectIndex:1 segumentAction:^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
         model.titleText([NSString stringWithFormat:@"你选择了%@",segumentTitlsArr[selectIndex]]) ;
         [weakSelf.tableView reloadData];
     }];
+    md5.style(stylemh5);
     
+    BLSettingStyle *stylemh6 = [BLSettingStyle style];
+    stylemh6.segumentItemW(35);
     BLSettingModel *md6 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"kg",@"斤",@"磅"] selectIndex:1 segumentAction:nil];
     md6.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
         model.titleText([NSString stringWithFormat:@"你选择了%@",segumentTitlsArr[selectIndex]]) ;
         [weakSelf.tableView reloadData];
-    });
+    }).style(stylemh6);
     
     BLSettingModel *md7 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标展示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
@@ -119,7 +126,7 @@
     }).style(style1);
 
     //自定义segment样式
-    UIFont *font2 = [UIFont boldSystemFontOfSize:20];
+    UIFont *font2 = [UIFont boldSystemFontOfSize:16];
     UIColor *color2 = [UIColor orangeColor];
     BLSettingStyle *style2 = [BLSettingStyle settingStyleWithTitleFont:font2 titleColor:color2 descFont:font2 descColor:color2 switchOnTintColor:color2];
     BLSettingModel *md11 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
@@ -133,17 +140,17 @@
     }).style(style2);
     
     //自定义segment样式
-    UIFont *font3 = [UIFont boldSystemFontOfSize:20];
+    UIFont *font3 = [UIFont boldSystemFontOfSize:12];
     UIColor *color3 = [UIColor purpleColor];
     BLSettingStyle *style3 = [BLSettingStyle settingStyleWithTitleFont:font3 titleColor:color3 descFont:font3 descColor:color3 switchOnTintColor:color3];
     style3.segumentNormalTextStyle(
    @{
     NSForegroundColorAttributeName:[UIColor yellowColor],
-    NSFontAttributeName:[UIFont boldSystemFontOfSize:16]
+    NSFontAttributeName:[UIFont boldSystemFontOfSize:12]
     }).segumentSelectedTextStyle(
   @{
       NSForegroundColorAttributeName:[UIColor greenColor],
-    NSFontAttributeName:[UIFont boldSystemFontOfSize:18]
+    NSFontAttributeName:[UIFont boldSystemFontOfSize:12]
       });
     BLSettingModel *md12 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"啤酒",@"可乐",@"橙汁"] selectIndex:1 segumentAction:nil];
     md12.segumentOperation(^(BLSettingModel *model, NSArray *selectSwitchArr, NSInteger selectIndex) {
@@ -206,15 +213,52 @@
         NSLog(@"您输入的文字已经达到最大长度");
     }).style(style5);
     
-    BLSettingModel *md17 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"文本框自定义样式" detailTitle:@"显示箭头" isShowArrow:YES cellClickAction:^(BLSettingModel *model) {
+    BLSettingModel *md17 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"个人头像资料" detailTitle:@"显示箭头" isShowArrow:YES cellClickAction:^(BLSettingModel *model) {
         NSLog(@"点我干嘛");
     }];
     md17.cellH(100);
     
-    BLSettingModel *md18 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"文本框自定义样式" detailTitle:@"隐藏箭头" isShowArrow:NO cellClickAction:^(BLSettingModel *model) {
+    BLSettingModel *md18 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"个人头像资料" detailTitle:@"隐藏箭头" isShowArrow:NO cellClickAction:^(BLSettingModel *model) {
         NSLog(@"点我干嘛");
     }];
     md18.cellH(100);
+    
+    BLSettingStyle *segStyle = [BLSettingStyle style];
+    segStyle.segumentClearRadius(YES).segumentBorderWidth(0.2).segumentClearDivider(YES);
+    BLSettingModel *md19 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"舒少勇666",@"迪丽热巴777"] selectIndex:1 segumentAction:nil];
+    md19.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.descTitle(segumentTitlsArr[selectIndex]);
+        [weakSelf.tableView reloadData];
+    }).style(segStyle);
+    
+    BLSettingStyle *segStyle1 = [BLSettingStyle style];
+    segStyle1.segumentClearRadius(NO).segumentBorderWidth(0);
+    BLSettingModel *md20 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
+    md20.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.descTitle(segumentTitlsArr[selectIndex]);
+        [weakSelf.tableView reloadData];
+    }).style(segStyle1);
+    
+    BLSettingStyle *segStyle2 = [BLSettingStyle style];
+    segStyle2.segumentClearRadius(YES).segumentBorderWidth(5);
+    BLSettingModel *md21 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
+    md21.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.descTitle(segumentTitlsArr[selectIndex]);
+        [weakSelf.tableView reloadData];
+    }).style(segStyle2);
+    
+    BLSettingStyle *segStyle3 = [BLSettingStyle style];
+    segStyle3.segumentClearRadius(YES).segumentBorderWidth(0);
+    BLSettingModel *md22 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
+    md22.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.descTitle(segumentTitlsArr[selectIndex]);
+        [weakSelf.tableView reloadData];
+    }).style(segStyle3);
+
+    [self.datas addObject:md19];
+    [self.datas addObject:md20];
+    [self.datas addObject:md21];
+    [self.datas addObject:md22];
 
     [self.datas addObject:md1];
     [self.datas addObject:md2];
