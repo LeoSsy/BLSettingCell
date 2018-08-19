@@ -55,11 +55,11 @@
     [_rightIconV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
         make.centerY.equalTo(self.contentView);
-        CGFloat width = self.dataModel.settingStyle.leftIconSize.width;CGFloat height = self.dataModel.settingStyle.leftIconSize.height;
+        CGFloat width = self.dataModel.settingStyle.rightIconSize.width;CGFloat height = self.dataModel.settingStyle.rightIconSize.height;
         make.width.mas_equalTo(width);
         make.height.mas_equalTo(height);
-        if (self.dataModel.settingStyle.leftIconRadius) {
-            self.rightIconV.layer.cornerRadius = self.dataModel.settingStyle.leftIconRadius;
+        if (self.dataModel.settingStyle.rightIconRadius) {
+            self.rightIconV.layer.cornerRadius = self.dataModel.settingStyle.rightIconRadius;
              self.rightIconV.layer.masksToBounds = YES;
         }
     }];

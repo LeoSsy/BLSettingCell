@@ -25,6 +25,8 @@
     __weak typeof(self) weakSelf = self;
     
     //默认样式
+    BLSettingStyle *stylenormal = [BLSettingStyle style];
+    stylenormal.leftImageSize(CGSizeMake(100, 100)).addLeftIconRadius(0);
     BLSettingModel *md1 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
     md1.showRedDot(YES).cellH(120).cellClikedOperation(^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
@@ -216,13 +218,13 @@
     BLSettingModel *md17 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"个人头像资料" detailTitle:@"显示箭头" isShowArrow:YES cellClickAction:^(BLSettingModel *model) {
         NSLog(@"点我干嘛");
     }];
-    md17.cellH(100);
+    md17.cellH(100).rightIconName(@"kehu_icon_kaluli");
     
     BLSettingModel *md18 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"个人头像资料" detailTitle:@"隐藏箭头" isShowArrow:NO cellClickAction:^(BLSettingModel *model) {
         NSLog(@"点我干嘛");
     }];
-    md18.cellH(100);
-    
+    md18.cellH(100).rightIconName(@"kehu_icon_kaluli");
+
     BLSettingStyle *segStyle = [BLSettingStyle style];
     segStyle.segumentClearRadius(YES).segumentBorderWidth(0.2).segumentClearDivider(YES);
     BLSettingModel *md19 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"舒少勇666",@"迪丽热巴777"] selectIndex:1 segumentAction:nil];

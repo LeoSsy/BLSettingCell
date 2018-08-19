@@ -12,6 +12,8 @@
 @interface BLSettingAvaterCell()
 /**右边的标题*/
 @property(nonatomic,strong)UILabel *descL;
+/**右侧图标*/
+@property(nonatomic,strong)UIImageView *rightIconV;
 /**右边的箭头*/
 @property(nonatomic,strong)UIImageView *arrowV;
 /**是否显示箭头 默认显示*/
@@ -34,6 +36,10 @@
     _descL.textAlignment = NSTextAlignmentRight;
     [ self.contentView addSubview:_descL];
     
+    _rightIconV = [[UIImageView alloc] init];
+    _rightIconV.contentMode = UIViewContentModeScaleAspectFill;
+    [ self.contentView addSubview:_rightIconV];
+    
     _arrowV = [[UIImageView alloc] initWithImage:[BLSettingFactory bundleForArrowIcon]];
     [ self.contentView addSubview:_arrowV];
 }
@@ -51,6 +57,18 @@
         make.height.mas_equalTo(height);
     }];
     
+    [_rightIconV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
+        make.centerY.equalTo(self.contentView);
+        CGFloat width = self.dataModel.settingStyle.rightIconSize.width;CGFloat height = self.dataModel.settingStyle.rightIconSize.height;
+        make.width.mas_equalTo(width);
+        make.height.mas_equalTo(height);
+        if (self.dataModel.settingStyle.rightIconRadius) {
+            self.rightIconV.layer.cornerRadius = self.dataModel.settingStyle.rightIconRadius;
+            self.rightIconV.layer.masksToBounds = YES;
+        }
+    }];
+    
     [self.iconV mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(BLSettingBaseMargin);
         make.centerY.equalTo(self.contentView);
@@ -65,11 +83,11 @@
     [self.titleL mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconV.mas_right).offset(BLSettingBaseMargin);
         make.height.mas_equalTo(self.titleL.font.pointSize+2);
-        make.bottom.equalTo(self.contentView.mas_centerY).offset(-6);
+        make.bottom.equalTo(self.contentView.mas_centerY).offset(-4);
     }];
     
     [_descL mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.mas_centerY).offset(6);
+        make.top.equalTo(self.contentView.mas_centerY).offset(4);
         make.left.equalTo(self.titleL);
     }];
 }
@@ -124,6 +142,17 @@
     }else{
         self.showIcon = NO;
     }
+    
+    if (dataModel.rightImageName) {    //设置右侧图标
+        self.rightIconV.hidden = NO;
+        if ([dataModel.rightImageName hasPrefix:@"http://"] || [dataModel.rightImageName hasPrefix:@"https://"] ) {
+            [self.rightIconV sd_setImageWithURL:[NSURL URLWithString:dataModel.rightImageName] placeholderImage:nil options:0];
+        }else{
+            self.rightIconV.image = [UIImage imageNamed:dataModel.rightImageName];
+        }
+    }else{
+        self.rightIconV.hidden = YES;
+    }
 }
 
 /**
@@ -150,8 +179,7 @@
     }else{
         self.iconV.hidden = YES;
         [self.iconV mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(0);
-            make.height.mas_equalTo(0);
+            make.width.height.mas_equalTo(0);
         }];
         [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.iconV.mas_right).offset(0);
@@ -176,10 +204,25 @@
             self.arrowV.image = [BLSettingFactory bundleForArrowIcon];
         }
         _arrowV.hidden = NO;
+        CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
+        [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(height);
+        }];
+        
+        [_rightIconV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
+        }];
     }else{
         _arrowV.hidden = YES;
+        [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(0);
+        }];
+        
+        [_rightIconV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.arrowV.mas_left);
+        }];
     }
 }
-
 
 @end

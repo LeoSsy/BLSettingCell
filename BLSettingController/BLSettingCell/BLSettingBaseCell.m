@@ -163,11 +163,9 @@
     _redPointV.layer.cornerRadius = self.dataModel.settingStyle.redDotSize*0.5;;
     [self.contentView addSubview:_redPointV];
     
-    UIView *underline = [[UIView alloc] init];
-    underline.backgroundColor = [UIColor redColor];
-    [self.contentView addSubview:underline];
-    self.underline = underline;
-  
+    _underline = [[UIView alloc] init];
+    _underline.backgroundColor = [UIColor redColor];
+    [self.contentView addSubview:_underline];  
 }
 
 /**

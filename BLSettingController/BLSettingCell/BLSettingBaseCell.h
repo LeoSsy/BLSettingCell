@@ -15,11 +15,11 @@
 /**设置模型*/
 @property(nonatomic,strong)BLSettingModel *dataModel;
 /**标题*/
-@property(nonatomic,strong)UILabel *titleL;
+@property(nonatomic,readonly,strong)UILabel *titleL;
 /**左侧图标*/
-@property(nonatomic,strong)UIImageView *iconV;
+@property(nonatomic,readonly,strong)UIImageView *iconV;
 /**下划线*/
-@property(nonatomic,strong)UIView *underline;
+@property(nonatomic,readonly,strong)UIView *underline;
 /**
  初始化
  @param tableView tableView
