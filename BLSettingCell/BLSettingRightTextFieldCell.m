@@ -23,10 +23,10 @@
 - (void)buildSubview {
     [super buildSubview];
     _textField = [[UITextField alloc] init];
-    _textField.placeholder = @"请输入内容";
     _textField.borderStyle = UITextBorderStyleNone;
     _textField.textAlignment = NSTextAlignmentRight;
     [ self.contentView addSubview:_textField];
+        
     //监听文字改变
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
 }
@@ -38,7 +38,7 @@
     [super setFrameSubview];
     
     [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-BLSettingBaseMargin);
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
         make.centerY.equalTo(self.contentView);
         make.height.mas_equalTo(self.contentView).multipliedBy(0.8);
         make.left.equalTo(self.titleL.mas_right).offset(BLSettingBaseMargin);
@@ -52,21 +52,28 @@
 - (void)configModel:(BLSettingModel *)dataModel{
     if (!dataModel)  return;
     [super configModel:dataModel];
-    
-    [self.textField setValue:dataModel.settingStyle.textFieldPlaceColor forKeyPath:@"_placeholderLabel.textColor"];
-    [self.textField setValue:dataModel.settingStyle.textFieldPlaceFont forKeyPath:@"_placeholderLabel.font"];
-    
+    NSString *placeholder = @"请输入内容";
     if (dataModel.textFieldString) {
         self.textField.text = dataModel.textFieldString;
     }else{
         if (dataModel.textFieldPlaceHolderText) {
-            self.textField.placeholder = dataModel.textFieldPlaceHolderText;
-        }else{
-            self.textField.placeholder = @"请输入内容";
+            placeholder = dataModel.textFieldPlaceHolderText;
         }
     }
+    self.textField.placeholder = placeholder;
     self.textField.textColor = dataModel.settingStyle.textFieldColor;
-    self.textField.font = dataModel.settingStyle.textFieldFont;
+    if (dataModel.settingStyle.textFieldFont) {
+        self.textField.font = dataModel.settingStyle.textFieldFont;
+    }else if (dataModel.settingStyle.textFieldTextFontSize){
+        self.textField.font = [UIFont systemFontOfSize:dataModel.settingStyle.textFieldFontSize];
+    }
+    
+    //文本框禁用
+    self.textField.enabled = dataModel.textFieldCanEditing;
+    
+    //占位文字设置
+    [self.textField setValue:dataModel.settingStyle.textFieldPlaceColor forKeyPath:@"_placeholderLabel.textColor"];
+    [self.textField setValue:dataModel.settingStyle.textFieldPlaceFont forKeyPath:@"_placeholderLabel.font"];
 }
 
 #pragma mark UITextFieldDelegate
@@ -75,11 +82,11 @@
     if (note.object == self.textField) {
         if (self.textField.text.length > self.dataModel.textFieldStringMaxLength) {
             self.textField.text = [self.textField.text substringToIndex:self.dataModel.textFieldStringMaxLength];
-            if (self.dataModel.textFieldTextReachesMaxLengthAction) {
-                self.dataModel.textFieldTextMaxLengthOperation(self.dataModel,self.textField);
+            if (self.dataModel.textFieldTextMaxLengthOperation) {
+                self.dataModel.textFieldTextMaxLengthOperation(self.dataModel, self.textField);
             }
         }else{
-            if (self.dataModel.textFieldDidChangeAction) {
+            if (self.dataModel.textFieldDidChangeOperation) {
                 self.dataModel.textFieldDidChangeOperation(self.dataModel, self.textField);
             }
         }

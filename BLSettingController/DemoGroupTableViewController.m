@@ -26,7 +26,7 @@
     
     //默认样式
     BLSettingModel *md1 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
-    md1.showRedDot(YES).cellH(120).cellClikedOperation(^(BLSettingModel *model) {
+    md1.cellH(120).cellClikedOperation(^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -36,7 +36,7 @@
     });
     
     BLSettingModel *md2  = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:NO cellClickAction:nil];
-    md1.showRedDot(YES).cellH(45).cellClikedOperation(^(BLSettingModel *model) {
+    md1.cellH(45).cellClikedOperation(^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -254,10 +254,46 @@
         model.descTitle(segumentTitlsArr[selectIndex]);
         [weakSelf.tableView reloadData];
     }).style(segStyle3);
+    
+    
+    //设置性别按钮展示样式
+    BLSettingStyle *style0 = [BLSettingStyle style];
+    style0.sexLeftViewStyle(^void (UIFont *__autoreleasing *sexTitleFont, UIColor *__autoreleasing *sexTitleNormalColor, UIColor *__autoreleasing *sexTitleSelectedColor, CGFloat *sexTitleLeftMargin, CGFloat *sexViewWidth) {
+        *sexTitleFont = [UIFont systemFontOfSize:13];
+        *sexTitleNormalColor = [UIColor blackColor];
+        *sexTitleSelectedColor = [UIColor greenColor];
+        *sexTitleLeftMargin = 15;
+        *sexViewWidth = 45;
+    })
+    .sexRightViewStyle(^(UIFont *__autoreleasing *sexTitleFont, UIColor *__autoreleasing *sexTitleNormalColor, UIColor *__autoreleasing *sexTitleSelectedColor, CGFloat *sexTitleLeftMargin, CGFloat *sexViewWidth) {
+        *sexTitleFont = [UIFont systemFontOfSize:13];
+        *sexTitleNormalColor = [UIColor blackColor];
+        *sexTitleSelectedColor = [UIColor greenColor];
+        *sexTitleLeftMargin = 15;
+        *sexViewWidth = 45;
+    });
+    
+    //创建性别类型cell
+    BLSettingModel *model0 = [BLSettingModel model];
+    model0.type(BLSettingCellTypeSex)
+    .titleText(@"性别")
+    .sexLeftViewData(^(NSString *__autoreleasing *sexTitle, NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexTitle = @"女";
+        *sexNormalImage = @"women_no_select";
+        *sexSelectedImage = @"edit_woman_click";
+    }).sexRightViewData(^(NSString *__autoreleasing *sexTitle, NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexTitle = @"男";
+        *sexNormalImage = @"man_no_select";
+        *sexSelectedImage = @"edit_man_click";
+    })
+    .sexAction(^(BLSettingModel *model, BLSettingSexSelectType sexSelType) {
+        NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
+    })
+    .style(style0);
 
     BLSettingGroup *group1 = [[BLSettingGroup alloc] init];
     group1.header = @"第一组";
-    group1.items = @[md20,md21,md22];
+    group1.items = @[model0,md20,md21,md22];
     
     BLSettingGroup *group2 = [[BLSettingGroup alloc] init];
     group2.header = @"第二组";
@@ -295,8 +331,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BLSettingGroup *group = self.datas[indexPath.section];
     BLSettingModel *settM = group.items[indexPath.row];
-    BLSettingBaseCell *cell = [BLSettingFactory createCellWithTableView:tableView model:settM];
-    [cell configModel:settM];
+    BLSettingBaseCell *cell = [BLSettingFactory createCellWithTableView:tableView model:settM indexPath:indexPath];
     return cell;
 }
 

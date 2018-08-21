@@ -45,7 +45,7 @@
 - (void)setFrameSubview {
     [super setFrameSubview];
     [_arrowV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-BLSettingBaseMargin);
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
         make.centerY.equalTo(self.contentView);
         CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
         make.width.mas_equalTo(width);

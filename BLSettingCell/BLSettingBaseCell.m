@@ -11,8 +11,10 @@
 @interface BLSettingBaseCell()
 /**是否显示左侧图标 默认不显示*/
 @property(nonatomic,assign)BOOL showIcon;
-/**icon上面的小红点*/
+/**新功能提示的小红点*/
 @property(nonatomic,strong)UIView *redPointV;
+/**新功能提示文本视图*/
+@property(nonatomic,strong)UILabel *featureHintL;
 @end
 
 @implementation BLSettingBaseCell
@@ -82,14 +84,12 @@
     self.dataModel = dataModel;
     if (dataModel.iconImageName) {    //设置左侧图标
         self.showIcon = YES;
-        self.redPointV.hidden = !dataModel.isShowRedPoint;
         if ([dataModel.iconImageName hasPrefix:@"http://"] || [dataModel.iconImageName hasPrefix:@"https://"] ) {
             [self.iconV sd_setImageWithURL:[NSURL URLWithString:dataModel.iconImageName] placeholderImage:nil options:0];
         }else{
             self.iconV.image = [UIImage imageNamed:dataModel.iconImageName];
         }
     }else{
-        self.redPointV.hidden = YES;//如果没有左侧图标就不现实红色圆点
         self.showIcon = NO;
     }
     if (dataModel.title) {
@@ -102,13 +102,29 @@
     self.underline.hidden = !dataModel.isShowUnderLine;
     self.underline.backgroundColor = self.dataModel.settingStyle.underlineColor;
 
-    _titleL.textColor = self.dataModel.settingStyle.titleColor;
-    _redPointV.backgroundColor = self.dataModel.settingStyle.redDotColor;
+    self.titleL.textColor = self.dataModel.settingStyle.titleColor;
     
     if (dataModel.settingStyle.titleFont) {
          self.titleL.font = dataModel.settingStyle.titleFont;
     }else if(dataModel.settingStyle.titleFontSize){
          self.titleL.font = [UIFont systemFontOfSize:dataModel.settingStyle.titleFontSize];
+    }
+    
+    if (dataModel.hintType == BLSettingNewFeatureHintTypeText) { //文本类型
+        self.featureHintL.hidden = NO;
+        self.redPointV.hidden = YES;
+        self.featureHintL.backgroundColor = self.dataModel.settingStyle.hintBgColor;
+        self.featureHintL.textColor = self.dataModel.settingStyle.hintColor;
+        self.featureHintL.font = self.dataModel.settingStyle.hintFont;
+        self.featureHintL.text = self.dataModel.hintString;
+        self.featureHintL.layer.cornerRadius = self.dataModel.settingStyle.hintVRadius;
+    }else if (dataModel.hintType == BLSettingNewFeatureHintTypeTextRedDot){//小红点类型
+        self.featureHintL.hidden = YES;
+        self.redPointV.hidden = NO;
+        self.redPointV.backgroundColor = self.dataModel.settingStyle.redDotColor;
+    }else{
+        self.featureHintL.hidden = YES;
+        self.redPointV.hidden = YES;
     }
 }
 
@@ -163,6 +179,11 @@
     _redPointV.layer.cornerRadius = self.dataModel.settingStyle.redDotSize*0.5;;
     [self.contentView addSubview:_redPointV];
     
+    _featureHintL = [[UILabel alloc] init];
+    _featureHintL.textAlignment = NSTextAlignmentCenter;
+    _featureHintL.layer.masksToBounds = YES;
+    [self.contentView addSubview:_featureHintL];
+    
     _underline = [[UIView alloc] init];
     _underline.backgroundColor = [UIColor redColor];
     [self.contentView addSubview:_underline];  
@@ -183,7 +204,7 @@
     [_iconV mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(0);
         make.height.mas_equalTo(0);
-        make.left.equalTo(self.contentView).offset(BLSettingBaseMargin);
+        make.left.equalTo(self.contentView).offset(self.dataModel.settingStyle.cellContentLeftMargin);
         make.centerY.equalTo(self.contentView);
     }];
     
@@ -193,9 +214,16 @@
     }];
     
     [_redPointV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconV.mas_right).offset(-self.dataModel.settingStyle.redDotSize*0.5);
-        make.centerY.equalTo(self.iconV.mas_top).offset(self.dataModel.settingStyle.redDotSize*0.4);
+        make.left.equalTo(self.titleL.mas_right).offset(2);
+        make.centerY.equalTo(self.titleL.mas_top).offset(self.dataModel.settingStyle.redDotSize*0.4);
         make.width.height.mas_equalTo(self.dataModel.settingStyle.redDotSize);
+    }];
+    
+    [_featureHintL mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.titleL.mas_right).offset(5);
+        make.centerY.equalTo(self.titleL);
+        make.width.mas_equalTo(self.dataModel.settingStyle.hintViewWH.width);
+        make.height.mas_equalTo(self.dataModel.settingStyle.hintViewWH.height);
     }];
     
     [self.underline mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -17,9 +17,10 @@
  快速生产出指定类型的cell
  @param tableView UITableView列表视图
  @param model 数据模型
+ @param indexPath cell行号
  @return 指定类型的cell
  */
-+ (BLSettingBaseCell*)createCellWithTableView:(UITableView*)tableView model:(BLSettingModel*)model;
++ (BLSettingBaseCell*)createCellWithTableView:(UITableView*)tableView model:(BLSettingModel*)model indexPath:(NSIndexPath*)indexPath;
 
 /**
  快速构建默认类型的cell展示模型

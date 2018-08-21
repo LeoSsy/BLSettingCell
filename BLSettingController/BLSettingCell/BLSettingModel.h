@@ -19,6 +19,8 @@ typedef void(^cellSwitchAction)(BLSettingModel *model,BOOL switchIsOn);
 typedef void(^cellSegumentAction)(BLSettingModel *model,NSArray * segumentTitlsArr,NSInteger selectIndex);
 typedef void(^textFieldDidChangeAction)(BLSettingModel *model,UITextField *textField);
 typedef void(^textFieldTextReachesMaxLengthAction)(BLSettingModel *model,UITextField *textField);
+typedef void(^sexAction)(BLSettingModel *model,BLSettingSexSelectType sexSelType);
+typedef void (^SexVDataConfig)(NSString **sexTitle,NSString **sexNormalImage,NSString **sexSelectedImage);
 
 typedef BLSettingModel *(^IconNameResource)(NSString *resource);
 typedef BLSettingModel *(^Text)(NSString* text);
@@ -35,61 +37,80 @@ typedef BLSettingModel *(^CellSegumentOperation)(cellSegumentAction cellSegument
 typedef BLSettingModel *(^TextFieldTextMaxLength)(NSInteger maxLength);
 typedef BLSettingModel *(^TextFieldTextReachesMaxLengthAction)(textFieldTextReachesMaxLengthAction action);
 typedef BLSettingModel *(^TextFieldDidChangeAction)(textFieldDidChangeAction action);
+typedef BLSettingModel *(^NewFeatureHintType)(BLSettingNewFeatureHintType type);
+typedef BLSettingModel *(^SexAction)(sexAction action);
+typedef BLSettingModel *(^SexSelType)(BLSettingSexSelectType sexSelType);
+typedef BLSettingModel *(^SexViewDataConfig)(SexVDataConfig config);
+
 
 @interface BLSettingModel : NSObject
 ///====外部设置属性值=====
 
 #pragma mark cell属性设置
-/**cell类型 如果不设置就是基础的样式 显示显示图标 标题 详情 箭头*/
+/**设置cell类型 如果不设置就是基础的样式 显示显示图标 标题 详情 箭头*/
 @property(nonatomic,copy,readonly)DisPlayType type;
-/**cell高度*/
+/**设置cell高度*/
 @property(nonatomic,copy,readonly)CellHeight cellH;
-/**样式对象 用于存储更细分的样式数据*/
+/**设置样式对象 用于存储更细分的样式数据*/
 @property(nonatomic,copy,readonly)SettingStyle style;
 
 #pragma mark 通用属性设置设置
-/**左侧图标名字 可以是本地图片 也可以是远程图片地址*/
+/**设置左侧图标名字 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource leftIconName;
-/**右侧图标 可以是本地图片 也可以是远程图片地址*/
+/**设置右侧图标 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource rightIconName;
-/**箭头图标图标 可以是本地图片 也可以是远程图片地址*/
+/**设置箭头图标图标 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource arrowIconName;
-/**标题*/
+/**设置标题*/
 @property(nonatomic,copy,readonly)Text titleText;
-/**富文本*/
+/**设置富文本*/
 @property(nonatomic,copy,readonly)TextAttributeString titleAttribute;
-/**详情*/
+/**设置详情*/
 @property(nonatomic,copy,readonly)Text descTitle;
-/**详情富文本*/
+/**设置详情富文本*/
 @property(nonatomic,copy,readonly)TextAttributeString descAttribute;
-/**是否显示小红点*/
-@property(nonatomic,copy,readonly)DisPlayStatus showRedDot;
-/**是否显示左侧图标*/
+/**设置是否显示左侧图标*/
 @property(nonatomic,copy,readonly)DisPlayStatus showIcon;
-/**是否显示箭头*/
+/**设置是否显示箭头*/
 @property(nonatomic,copy,readonly)DisPlayStatus showArrow;
-/**是否显示下划线 默认显示*/
+/**设置是否显示下划线 默认显示*/
 @property(nonatomic,copy,readonly)DisPlayStatus showUnderLine;
 
 #pragma mark 开关类型cell相关属性设置
 
-/** 是否开启开关 该属性适用于开关类型*/
+/**设置是否开启开关 该属性适用于开关类型*/
 @property(nonatomic,copy,readonly)DisPlayStatus switchOn;
 
 #pragma mark Segument类型cell相关属性设置
 
-/** 选中第几个 0  1 该属性适用于segument类型*/
+/**设置选中第几个 0  1 该属性适用于segument类型*/
 @property(nonatomic,copy,readonly)SegumentSelectIndex segumentSelIndex;
-/** segument标题数组 该属性适用于segument类型*/
+/**设置segument标题数组 该属性适用于segument类型*/
 @property(nonatomic,copy,readonly)SegumentTitlsArr segumentTitlesArr;
 
 #pragma mark textField类型cell相关属性设置
-/**textField 占位文字*/
+/**设置textField 占位文字*/
 @property(nonatomic,copy, readonly)Text textFieldPlaceHolder;
-/**textField 展示文字*/
+/**设置textField 展示文字*/
 @property(nonatomic,copy, readonly)Text textFieldText;
-/**textField 最大显示文字长度*/
+/**设置textField 最大显示文字长度*/
 @property(nonatomic,copy, readonly)TextFieldTextMaxLength textFieldTextMaxLength;
+/**设置textField 是否可以编辑*/
+@property(nonatomic,copy, readonly)DisPlayStatus textFieldEnabled;
+
+#pragma mark 新版本或新功能提示相关属性设置
+/**设置新功能提醒类型*/
+@property(nonatomic,copy,readonly)NewFeatureHintType hintViewType;
+/**设置新功能提示视图提示文字*/
+@property(nonatomic,copy, readonly)Text hintText;
+
+#pragma mark 性别选择类型cell相关属性
+/**设置性别cell按钮选中的类型*/
+@property(nonatomic,copy, readonly)SexSelType sexSelType;
+/**设置性别cell左侧视图数据*/
+@property(nonatomic,copy, readonly)SexViewDataConfig sexLeftViewData;
+/**设置性别cell右侧视图数据*/
+@property(nonatomic,copy, readonly)SexViewDataConfig sexRightViewData;
 
 #pragma mark 回调事件相关
 
@@ -99,75 +120,102 @@ typedef BLSettingModel *(^TextFieldDidChangeAction)(textFieldDidChangeAction act
 @property(nonatomic,copy,readonly)CellSwitchOperation switchOperation;
 /** 设置Segument点击的回调*/
 @property(nonatomic,copy,readonly)CellSegumentOperation segumentOperation;
-/** 文本框文字发生改变的回调*/
+/** 设置文本框文字发生改变的回调*/
 @property(nonatomic,copy,readonly)TextFieldDidChangeAction textFieldDidChangeAction;
-/** 文本框文本输入字数达到最大值的回调*/
+/** 设置文本框文本输入字数达到最大值的回调*/
 @property(nonatomic,copy,readonly)TextFieldTextReachesMaxLengthAction textFieldTextReachesMaxLengthAction;
+/** 设置性别选择cell的按钮点击的回调*/
+@property(nonatomic,copy,readonly)SexAction sexAction;
 
 ///====外部获取属性值======
 
 #pragma mark 通用属性
 
-/**左侧图标名字*/
+/**获取左侧图标名字*/
 @property(nonatomic,strong,readonly)NSString *iconImageName;
-/**右侧图标*/
+/**获取右侧图标*/
 @property(nonatomic,strong,readonly)NSString *rightImageName;
-/**箭头图标图标*/
+/**获取箭头图标图标*/
 @property(nonatomic,strong,readonly)NSString *arrowImageName;
-/**标题*/
+/**获取标题*/
 @property(nonatomic,strong,readonly)NSString *title;
-/**富文本*/
+/**获取富文本*/
 @property(nonatomic,strong,readonly)NSAttributedString *titleAttributeString;
-/**详情*/
+/**获取详情*/
 @property(nonatomic,strong,readonly)NSString *detailTitle;
-/**详情富文本*/
+/**获取详情富文本*/
 @property(nonatomic,strong,readonly)NSAttributedString *detailAttributeString;
-/**是否显示小红点*/
-@property(nonatomic,assign,readonly)BOOL isShowRedPoint;
-/**是否显示箭头*/
+/**获取是否显示箭头*/
 @property(nonatomic,assign,readonly)BOOL isShowArrow;
-/**是否显示下划线 默认显示*/
+/**获取是否显示下划线 默认显示*/
 @property(nonatomic,assign,readonly)BOOL isShowUnderLine;
 
 #pragma mark 开关类型cell相关属性
 
-/** 是否开启开关 该属性适用于开关类型*/
+/** 获取是否开启开关 该属性适用于开关类型*/
 @property(nonatomic,assign,readonly)BOOL switchIsOn;
 
 #pragma mark Segument类型cell相关属性
-/** 选中第几个 0  1 该属性适用于segument类型*/
+/** 获取选中第几个 0  1 该属性适用于segument类型*/
 @property(nonatomic,assign,readonly)NSInteger selectIndex;
-/** segument标题数组 该属性适用于segument类型*/
+/** 获取segument标题数组 该属性适用于segument类型*/
 @property(nonatomic,strong,readonly)NSArray * segumentTitleArr;
 
 #pragma mark textField类型cell相关属性
-/**textField 占位文字*/
+/**获取textField 占位文字*/
 @property(nonatomic,strong, readonly)NSString *textFieldPlaceHolderText;
-/**textField 展示文字*/
+/**获取textField 展示文字*/
 @property(nonatomic,strong, readonly)NSString *textFieldString;
-/**textField 最大显示文字长度*/
+/**获取textField 最大显示文字长度*/
 @property(nonatomic,assign, readonly)NSInteger textFieldStringMaxLength;
+/**获取textField 是否禁用文本框输入功能*/
+@property(nonatomic,assign, readonly,getter=textFieldIsCanEditing)BOOL textFieldCanEditing;
+
+#pragma mark 新版本或新功能提示相关属性
+/**获取新功能提醒类型*/
+@property(nonatomic,assign,readonly)BLSettingNewFeatureHintType hintType;
+/**获取新功能提示视图提示文字*/
+@property(nonatomic,strong, readonly)NSString *hintString;
+
+#pragma mark 性别选择类型cell相关属性
+/**获取性别选中的类型*/
+@property(nonatomic,assign, readonly)BLSettingSexSelectType sexSelectType;
+/**获取左侧按钮默认图标*/
+@property(nonatomic,strong, readonly)NSString *sexLeftNormalImage;
+/**获取左侧按钮选中图标*/
+@property(nonatomic,strong, readonly)NSString *sexLeftSelectedImage;
+/**获取左侧按钮标题*/
+@property(nonatomic,strong, readonly)NSString *sexLeftTitle;
+/**获取右侧按钮默认图标*/
+@property(nonatomic,strong, readonly)NSString *sexRightNormalImage;
+/**获取右侧按钮选中图标*/
+@property(nonatomic,strong, readonly)NSString *sexRightSelectedImage;
+/**获取右侧按钮标题*/
+@property(nonatomic,strong, readonly)NSString *sexRightTitle;
 
 #pragma mark 回调事件相关
-/** cell点击的回调*/
+/** 获取cell点击的回调*/
 @property(nonatomic,strong,readonly)cellClickAction cellClickOperation;
-/** 开关点击的回调 该属性适用于开关类型*/
+/** 获取开关点击的回调 该属性适用于开关类型*/
 @property(nonatomic,strong,readonly)cellSwitchAction cellSwitchOperation;
-/** Segument点击的回调 该属性适用于segument类型*/
+/** 获取Segument点击的回调 该属性适用于segument类型*/
 @property(nonatomic,strong,readonly)cellSegumentAction cellSegumentOperation;
-/** 文本框文字发生改变的回调*/
+/** 获取文本框文字发生改变的回调*/
 @property(nonatomic,strong,readonly)textFieldDidChangeAction textFieldDidChangeOperation;
-/** 文本框文本输入字数达到最大值的回调*/
+/** 获取文本框文本输入字数达到最大值的回调*/
 @property(nonatomic,strong,readonly)textFieldTextReachesMaxLengthAction textFieldTextMaxLengthOperation;
+/** 获取性别选择cell的按钮点击的回调*/
+@property(nonatomic,copy,readonly)sexAction sexOperation;
+
 #pragma mark cell属性
-
-/**cell类型 如果不设置就是基础的样式 显示显示图标 标题 详情 箭头*/
+/**获取cell类型 如果不设置就是基础的样式 显示显示图标 标题 详情 箭头*/
 @property(nonatomic,assign,readonly)BLSettingCellType cellType;
-/**cell高度*/
-@property(nonatomic,assign,readonly)CGFloat cellHeight;
-/**样式对象 用于存储更细分的样式数据*/
+/**获取样式对象 用于存储更细分的样式数据*/
 @property(nonatomic,strong,readonly)BLSettingStyle *settingStyle;
-
+/**获取cell的行号*/
+@property(nonatomic,strong,readwrite)NSIndexPath *indexPath;
+/**获取cell高度*/
+@property(nonatomic,assign,readonly)CGFloat cellHeight;
 /**
  快速初始化方法
  */
@@ -177,13 +225,6 @@ typedef BLSettingModel *(^TextFieldDidChangeAction)(textFieldDidChangeAction act
 - (instancetype)initWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle cellType:(BLSettingCellType)cellType segumentTitleArr:(NSArray*)selectSwitchArr selectIndex:(NSInteger)selectIndex isShowArrow:(BOOL)isShowArrow switchIsOn:(BOOL)switchIsOn rightIcon:(NSString*)rightIconName settingStyle:(BLSettingStyle*)settingStyle;
 @end
 
-@interface BLSettingGroup : NSObject
-/***  分组头部标题*/
-@property (nonatomic, copy) NSString *header;
-/***  分组尾部标题*/
-@property (nonatomic, copy) NSString *footer;
-/***  存放着这组所有行的模型数据(这个数组中都是BLSettingModel对象)*/
-@property (nonatomic, copy) NSArray *items;
-@end
+
 
 

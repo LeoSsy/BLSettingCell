@@ -24,11 +24,48 @@
     
     __weak typeof(self) weakSelf = self;
     
+    //设置性别按钮展示样式
+    BLSettingStyle *style0 = [BLSettingStyle style];
+    style0.sexLeftViewStyle(^void (UIFont *__autoreleasing *sexTitleFont, UIColor *__autoreleasing *sexTitleNormalColor, UIColor *__autoreleasing *sexTitleSelectedColor, CGFloat *sexTitleLeftMargin, CGFloat *sexViewWidth) {
+        *sexTitleFont = [UIFont systemFontOfSize:13];
+        *sexTitleNormalColor = [UIColor blackColor];
+        *sexTitleSelectedColor = [UIColor greenColor];
+        *sexTitleLeftMargin = 15;
+        *sexViewWidth = 45;
+    })
+    .sexRightViewStyle(^(UIFont *__autoreleasing *sexTitleFont, UIColor *__autoreleasing *sexTitleNormalColor, UIColor *__autoreleasing *sexTitleSelectedColor, CGFloat *sexTitleLeftMargin, CGFloat *sexViewWidth) {
+        *sexTitleFont = [UIFont systemFontOfSize:13];
+        *sexTitleNormalColor = [UIColor blackColor];
+        *sexTitleSelectedColor = [UIColor greenColor];
+        *sexTitleLeftMargin = 15;
+        *sexViewWidth = 45;
+    });
+    
+    //创建性别类型cell
+    BLSettingModel *model0 = [BLSettingModel model];
+    model0.type(BLSettingCellTypeSex)
+    .titleText(@"性别")
+    .sexLeftViewData(^(NSString *__autoreleasing *sexTitle, NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexTitle = @"女";
+        *sexNormalImage = @"women_no_select";
+        *sexSelectedImage = @"edit_woman_click";
+    }).sexRightViewData(^(NSString *__autoreleasing *sexTitle, NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexTitle = @"男";
+        *sexNormalImage = @"man_no_select";
+        *sexSelectedImage = @"edit_man_click";
+    })
+    .sexAction(^(BLSettingModel *model, BLSettingSexSelectType sexSelType) {
+        NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
+    })
+    .style(style0);
+    [self.datas addObject:model0];
+    
     //默认样式
     BLSettingStyle *stylenormal = [BLSettingStyle style];
-    stylenormal.leftImageSize(CGSizeMake(100, 100)).addLeftIconRadius(0);
+    stylenormal.hintViewSize(CGSizeMake(80, 24)).hintViewRadius(12).hintTextBgColor([UIColor purpleColor]);
     BLSettingModel *md1 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
-    md1.showRedDot(YES).cellH(120).cellClikedOperation(^(BLSettingModel *model) {
+    md1.cellH(120).cellClikedOperation(^(BLSettingModel *model) {
+        NSLog(@"%@", model.indexPath);
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -36,9 +73,15 @@
             [weakSelf.tableView reloadData];
         });
     });
+    //设置显示新功能提示视图 并设置 文字和样式
+    md1.hintViewType(BLSettingNewFeatureHintTypeText).hintText(@"发现新功能").style(stylenormal);
     
+    //设置小红点样式
+    BLSettingStyle *stylenormal1 = [BLSettingStyle style];
+    stylenormal1.redPointSize(8).redPointColor([UIColor redColor]);
     BLSettingModel *md2  = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:NO cellClickAction:nil];
-    md1.showRedDot(YES).cellH(45).cellClikedOperation(^(BLSettingModel *model) {
+    md2.cellH(45).cellClikedOperation(^(BLSettingModel *model) {
+        NSLog(@"%@", model.indexPath);
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -46,8 +89,9 @@
             [weakSelf.tableView reloadData];
         });
     });
-    
-   
+    //设置显示小红点 并设置小红点样式
+    md2.hintViewType(BLSettingNewFeatureHintTypeTextRedDot).style(stylenormal1);
+
     //开关样式
     BLSettingModel *md3 = [BLSettingFactory switchWithIcon:@"kehu_icon_jilu2" title:@"我的状态开启" switchIsOn:YES switchAction:^(BLSettingModel *model, BOOL switchIsOn) {
         model.titleText([NSString stringWithFormat:@"我的状态%@",switchIsOn?@"开启":@"关闭"]) ;
@@ -291,8 +335,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BLSettingModel *settM = self.datas[indexPath.row];
-    BLSettingBaseCell *cell = [BLSettingFactory createCellWithTableView:tableView model:settM];
-    [cell configModel:settM];
+    BLSettingBaseCell *cell = [BLSettingFactory createCellWithTableView:tableView model:settM indexPath:indexPath];
     return cell;
 }
 

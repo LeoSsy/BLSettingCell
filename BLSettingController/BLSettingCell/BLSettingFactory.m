@@ -11,7 +11,7 @@
 
 @implementation BLSettingFactory
 
-+ (BLSettingBaseCell*)createCellWithTableView:(UITableView*)tableView model:(BLSettingModel*)model{
++ (BLSettingBaseCell*)createCellWithTableView:(UITableView*)tableView model:(BLSettingModel*)model indexPath:(NSIndexPath*)indexPath{
     BLSettingBaseCell *cell;
     if (model.cellType == BLSettingCellTypeNormal) { //默认类型 显示 图标 标题 详情 箭头
         cell = [BLSettingNormalCell cellWithTableView:tableView withData:model];
@@ -25,9 +25,14 @@
         cell = [BLSettingAvaterCell cellWithTableView:tableView withData:model];
     }else if (model.cellType == BLSettingCellTypeRightTextField){//右边文本框类型
         cell = [BLSettingRightTextFieldCell cellWithTableView:tableView withData:model];
+    }else if(model.cellType == BLSettingCellTypeSex){
+        cell = [BLSettingSexCell cellWithTableView:tableView withData:model];
     }else{ //默认类型 显示 图标 标题 详情 箭头
         cell = [BLSettingNormalCell cellWithTableView:tableView withData:model];
     }
+    //设置数据
+    model.indexPath = indexPath;
+    [cell configModel:model];
     return cell;
 }
 
@@ -41,7 +46,7 @@
  @return BLSettingModel
  */
 + (BLSettingModel*)normalWithIcon:(NSString*)leftIconName title:(NSString*)title detailTitle:(NSString*)detailTitle showArrow:(BOOL)isShowArrow cellClickAction:(cellClickAction)action{
-    BLSettingModel *model =  [[BLSettingModel alloc] initWithIcon:leftIconName title:title detailTitle:detailTitle cellType:BLSettingCellTypeNormal segumentTitleArr:nil selectIndex:0 isShowArrow:YES switchIsOn:NO rightIcon:nil settingStyle:[BLSettingStyle new]];
+    BLSettingModel *model =  [[BLSettingModel alloc] initWithIcon:leftIconName title:title detailTitle:detailTitle cellType:BLSettingCellTypeNormal segumentTitleArr:nil selectIndex:0 isShowArrow:isShowArrow switchIsOn:NO rightIcon:nil settingStyle:[BLSettingStyle new]];
     model.cellClikedOperation(action);
     return model;
 }
@@ -56,7 +61,7 @@
  @return BLSettingModel
  */
 + (BLSettingModel*)normalWithIcon:(NSString*)leftIconName title:(NSString*)title rightIcon:(NSString*)rightIconName showArrow:(BOOL)isShowArrow cellClickAction:(cellClickAction)action{
-    BLSettingModel *model =  [[BLSettingModel alloc] initWithIcon:leftIconName title:title detailTitle:nil cellType:BLSettingCellTypeRightAssistIcon segumentTitleArr:nil selectIndex:0 isShowArrow:YES switchIsOn:NO rightIcon:rightIconName settingStyle:[BLSettingStyle new]];
+    BLSettingModel *model =  [[BLSettingModel alloc] initWithIcon:leftIconName title:title detailTitle:nil cellType:BLSettingCellTypeRightAssistIcon segumentTitleArr:nil selectIndex:0 isShowArrow:isShowArrow switchIsOn:NO rightIcon:rightIconName settingStyle:[BLSettingStyle new]];
     model.cellClikedOperation(action);
     return model;
 }

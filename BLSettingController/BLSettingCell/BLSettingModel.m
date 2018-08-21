@@ -17,7 +17,6 @@
 @synthesize titleAttribute = _titleAttribute;
 @synthesize descTitle = _descTitle;
 @synthesize descAttribute = _descAttribute;
-@synthesize showRedDot = _showRedDot;
 @synthesize showArrow = _showArrow;
 @synthesize showUnderLine = _showUnderLine;
 @synthesize cellH = _cellH;
@@ -28,12 +27,18 @@
 @synthesize textFieldPlaceHolder = _textFieldPlaceHolder;
 @synthesize textFieldText = _textFieldText;
 @synthesize textFieldTextMaxLength = _textFieldTextMaxLength;
+@synthesize textFieldEnabled = _textFieldEnabled;
 @synthesize cellClikedOperation = _cellClikedOperation;
 @synthesize switchOperation = _switchOperation;
 @synthesize segumentOperation = _segumentOperation;
 @synthesize textFieldDidChangeAction = _textFieldDidChangeAction;
 @synthesize textFieldTextReachesMaxLengthAction = _textFieldTextReachesMaxLengthAction;
-
+@synthesize hintViewType = _hintViewType;
+@synthesize hintText = _hintText;
+@synthesize sexLeftViewData = _sexLeftViewData;
+@synthesize sexRightViewData = _sexRightViewData;
+@synthesize sexSelType = _sexSelType;
+@synthesize sexAction = _sexAction;
 
 @synthesize iconImageName = _iconImageName;
 @synthesize rightImageName = _rightImageName;
@@ -42,7 +47,6 @@
 @synthesize titleAttributeString = _titleAttributeString;
 @synthesize detailTitle = _detailTitle;
 @synthesize detailAttributeString = _detailAttributeString;
-@synthesize isShowRedPoint = _isShowRedPoint;
 @synthesize isShowArrow = _isShowArrow;
 @synthesize isShowUnderLine = _isShowUnderLine;
 @synthesize cellType = _cellType;
@@ -54,23 +58,33 @@
 @synthesize textFieldPlaceHolderText = _textFieldPlaceHolderText;
 @synthesize textFieldString = _textFieldString;
 @synthesize textFieldStringMaxLength = _textFieldStringMaxLength;
+@synthesize textFieldCanEditing = _textFieldCanEditing;
 @synthesize cellClickOperation = _cellClickOperation;
 @synthesize cellSwitchOperation = _cellSwitchOperation;
 @synthesize cellSegumentOperation = _cellSegumentOperation;
 @synthesize textFieldDidChangeOperation = _textFieldDidChangeOperation;
 @synthesize textFieldTextMaxLengthOperation = _textFieldTextMaxLengthOperation;
+@synthesize hintType = _hintType;
+@synthesize sexLeftNormalImage = _sexLeftNormalImage;
+@synthesize sexLeftSelectedImage = _sexLeftSelectedImage;
+@synthesize sexLeftTitle = _sexLeftTitle;
+@synthesize sexRightNormalImage = _sexRightNormalImage;
+@synthesize sexRightSelectedImage = _sexRightSelectedImage;
+@synthesize sexRightTitle = _sexRightTitle;
+@synthesize sexSelectType = _sexSelectType;
+@synthesize sexOperation = _sexOperation;
 
 + (instancetype)model {
     BLSettingModel *model = [[self alloc] init];
     model.style([BLSettingStyle style])
-    .showUnderLine(YES);
+    .showUnderLine(YES).cellH(44).textFieldEnabled(YES);
     return model;
 }
 
 - (instancetype)initWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle cellType:(BLSettingCellType)cellType segumentTitleArr:(NSArray*)segumentTitlesArr selectIndex:(NSInteger)selectIndex isShowArrow:(BOOL)isShowArrow switchIsOn:(BOOL)switchIsOn rightIcon:(NSString*)rightIconName settingStyle:(BLSettingStyle*)settingStyle {
     if (self = [super init]) {
         _isShowUnderLine = YES;
-        _iconImageName = iconName;
+        _iconImageName = (iconName ==nil || [iconName isEqualToString:@""]) ? nil : iconName;
         _title =title;
         _cellType = cellType;
         _detailTitle = detailTitle;
@@ -78,8 +92,10 @@
         _switchIsOn = switchIsOn;
         _segumentTitleArr = segumentTitlesArr;
         _selectIndex = selectIndex;
-        _rightImageName = rightIconName;
+        _rightImageName = (rightIconName ==nil || [rightIconName isEqualToString:@""]) ? nil : rightIconName;
         _settingStyle = settingStyle?settingStyle:[BLSettingStyle style];
+        _cellHeight = 44;
+        _textFieldCanEditing = YES;
     }
     return self;
 }
@@ -176,17 +192,6 @@
         };
     }
     return _descAttribute;
-}
-
-- (DisPlayStatus)showRedDot {
-    if (!_showRedDot) {
-        __weak typeof(self) weakSelf = self;
-        _showRedDot = ^(BOOL status){
-            _isShowRedPoint = status;
-            return weakSelf;
-        };
-    }
-    return _showRedDot;
 }
 
 - (DisPlayStatus)showArrow {
@@ -332,6 +337,17 @@
     return _textFieldTextMaxLength;
 }
 
+- (DisPlayStatus)textFieldEnabled {
+    if (!_textFieldEnabled) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldEnabled = ^(BOOL status){
+            _textFieldCanEditing = status;
+            return weakSelf;
+        };
+    }
+    return _textFieldEnabled;
+}
+
 - (TextFieldDidChangeAction)textFieldDidChangeAction {
     if (!_textFieldDidChangeAction) {
         __weak typeof(self) weakSelf = self;
@@ -354,9 +370,89 @@
     return _textFieldTextReachesMaxLengthAction;
 }
 
+- (NewFeatureHintType)hintViewType{
+    if (!_hintViewType) {
+        __weak typeof(self) weakSelf = self;
+        _hintViewType = ^(BLSettingNewFeatureHintType  type){
+            _hintType = type;
+            return weakSelf;
+        };
+    }
+    return _hintViewType;
+}
+
+
+- (Text)hintText {
+    if (!_hintText) {
+        __weak typeof(self) weakSelf = self;
+        _hintText = ^(NSString*  text){
+            _hintString = text;
+            return weakSelf;
+        };
+    }
+    return _hintText;
+}
+
+- (SexViewDataConfig)sexLeftViewData {
+    if (!_sexLeftViewData) {
+        __weak typeof(self) weakSelf = self;
+        _sexLeftViewData = ^(SexVDataConfig config){
+            NSString *sexTitle;
+            NSString *sexNormalImage;
+            NSString *sexSelectedImage;
+            if (config) {
+                config(&sexTitle,&sexNormalImage,&sexSelectedImage);
+                if (sexTitle) _sexLeftTitle = sexTitle;
+                if (sexNormalImage) _sexLeftNormalImage = sexNormalImage;
+                if (sexSelectedImage) _sexLeftSelectedImage = sexSelectedImage;
+            }
+            return weakSelf;
+        };
+    }
+    return _sexLeftViewData;
+}
+
+- (SexViewDataConfig)sexRightViewData {
+    if (!_sexRightViewData) {
+        __weak typeof(self) weakSelf = self;
+        _sexRightViewData = ^(SexVDataConfig config){
+            NSString *sexTitle;
+            NSString *sexNormalImage;
+            NSString *sexSelectedImage;
+            if (config) {
+                config(&sexTitle,&sexNormalImage,&sexSelectedImage);
+                if (sexTitle) _sexRightTitle = sexTitle;
+                if (sexNormalImage) _sexRightNormalImage = sexNormalImage;
+                if (sexSelectedImage) _sexRightSelectedImage = sexSelectedImage;
+            }
+            return weakSelf;
+        };
+    }
+    return _sexRightViewData;
+}
+
+- (SexSelType)sexSelType {
+    if (!_sexSelType) {
+        __weak typeof(self) weakSelf = self;
+        _sexSelType = ^(BLSettingSexSelectType sexSelType){
+            _sexSelectType = sexSelType;
+            return weakSelf;
+        };
+    }
+    return _sexSelType;
+}
+
+- (SexAction)sexAction {
+    if (!_sexAction) {
+        __weak typeof(self) weakSelf = self;
+        _sexAction = ^(sexAction action){
+            _sexOperation = action;
+            return weakSelf;
+        };
+    }
+    return _sexAction;
+}
 
 @end
 
-@implementation BLSettingGroup
-@end
 

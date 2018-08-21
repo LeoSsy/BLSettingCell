@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040E868F212AC24B0030C3D3 /* BLSettingSexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040E868E212AC24B0030C3D3 /* BLSettingSexCell.m */; };
+		0441B081212A6DAD007AA99A /* BLSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441B080212A6DAD007AA99A /* BLSettingGroup.m */; };
 		04669DC62113E4E800BFA20A /* BLSettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB22113E4E800BFA20A /* BLSettingSwitchCell.m */; };
 		04669DC72113E4E800BFA20A /* BLSettingStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB32113E4E800BFA20A /* BLSettingStyle.m */; };
 		04669DC82113E4E800BFA20A /* BLSettingBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB62113E4E800BFA20A /* BLSettingBaseCell.m */; };
@@ -51,6 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040E868D212AC24B0030C3D3 /* BLSettingSexCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLSettingSexCell.h; sourceTree = "<group>"; };
+		040E868E212AC24B0030C3D3 /* BLSettingSexCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLSettingSexCell.m; sourceTree = "<group>"; };
+		0441B07F212A6DAD007AA99A /* BLSettingGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLSettingGroup.h; sourceTree = "<group>"; };
+		0441B080212A6DAD007AA99A /* BLSettingGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLSettingGroup.m; sourceTree = "<group>"; };
 		04669DB02113E4E800BFA20A /* BLSettingConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingConst.h; sourceTree = "<group>"; };
 		04669DB12113E4E800BFA20A /* BLSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSetting.h; sourceTree = "<group>"; };
 		04669DB22113E4E800BFA20A /* BLSettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingSwitchCell.m; sourceTree = "<group>"; };
@@ -141,6 +147,8 @@
 				04669DBB2113E4E800BFA20A /* BLSettingConst.m */,
 				04669DC02113E4E800BFA20A /* BLSettingStyle.h */,
 				04669DB32113E4E800BFA20A /* BLSettingStyle.m */,
+				0441B07F212A6DAD007AA99A /* BLSettingGroup.h */,
+				0441B080212A6DAD007AA99A /* BLSettingGroup.m */,
 				04669DB42113E4E800BFA20A /* BLSettingModel.h */,
 				04669DBF2113E4E800BFA20A /* BLSettingModel.m */,
 				04669DC22113E4E800BFA20A /* BLSettingFactory.h */,
@@ -159,6 +167,8 @@
 				04669DC52113E4E800BFA20A /* BLSettingRightAssistIconCell.m */,
 				047ED33621255F2E005DC8BF /* BLSettingRightTextFieldCell.h */,
 				047ED33721255F2E005DC8BF /* BLSettingRightTextFieldCell.m */,
+				040E868D212AC24B0030C3D3 /* BLSettingSexCell.h */,
+				040E868E212AC24B0030C3D3 /* BLSettingSexCell.m */,
 			);
 			path = BLSettingCell;
 			sourceTree = "<group>";
@@ -443,6 +453,7 @@
 				04669DC82113E4E800BFA20A /* BLSettingBaseCell.m in Sources */,
 				04669DC92113E4E800BFA20A /* BLSettingFactory.m in Sources */,
 				04669DC72113E4E800BFA20A /* BLSettingStyle.m in Sources */,
+				0441B081212A6DAD007AA99A /* BLSettingGroup.m in Sources */,
 				04669DCE2113E4E800BFA20A /* BLSettingModel.m in Sources */,
 				04BE0B7D21129BD80054E43E /* DemoTableViewController.m in Sources */,
 				04BE0B28211149690054E43E /* main.m in Sources */,
@@ -453,6 +464,7 @@
 				04669DC62113E4E800BFA20A /* BLSettingSwitchCell.m in Sources */,
 				04BE0B1A211149690054E43E /* AppDelegate.m in Sources */,
 				04669DCF2113E4E800BFA20A /* BLSettingSegumentCell.m in Sources */,
+				040E868F212AC24B0030C3D3 /* BLSettingSexCell.m in Sources */,
 				04BE0B7C21129BD80054E43E /* DemoGroupTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

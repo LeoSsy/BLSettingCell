@@ -11,6 +11,7 @@
 #import "BLSettingConst.h"
 #import "BLSettingFactory.h"
 #import "BLSettingBaseCell.h"
+#import "BLSettingGroup.h"
 #import "BLSettingModel.h"
 #import "BLSettingNormalCell.h"
 #import "BLSettingSwitchCell.h"
@@ -18,5 +19,6 @@
 #import "BLSettingRightAssistIconCell.h"
 #import "BLSettingAvaterCell.h"
 #import "BLSettingRightTextFieldCell.h"
+#import "BLSettingSexCell.h"
 #import "BLSettingStyle.h"
 #endif /* BLSetting_h */
