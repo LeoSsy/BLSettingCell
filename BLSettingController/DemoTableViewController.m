@@ -24,6 +24,29 @@
     
     __weak typeof(self) weakSelf = self;
     
+    //创建性别大图选择类型样式
+    BLSettingStyle *style00 = [BLSettingStyle style];
+    style00.leftImageSize(CGSizeMake(90, 90))
+    .rightImageSize(CGSizeMake(90, 90))
+    .sexLargeImageBothMargin(25)
+    .bottomLineHeight(10)
+    .bottomLineColor([UIColor redColor]);
+    
+    //创建性别大图选择类型cell
+    BLSettingModel *model00 = [BLSettingModel modelType:BLSettingCellTypeSexLargeImage];
+    model00.sexLeftLargeImageData(^(NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexNormalImage = @"completeinfo_xingbie_nv_normal";
+        *sexSelectedImage = @"completeinfo_xingbie_nv_selected";
+    }).sexRightLargeImageData(^(NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexNormalImage = @"completeinfo_xingbie_nan_normal";
+        *sexSelectedImage = @"completeinfo_xingbie_nan_selected";
+    })
+    .cellH(120)
+    .sexAction(^(BLSettingModel *model, BLSettingSexSelectType sexSelType) {
+        NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
+    }).style(style00);
+    [self.datas addObject:model00];
+
     //设置性别按钮展示样式
     BLSettingStyle *style0 = [BLSettingStyle style];
     style0.sexLeftViewStyle(^void (UIFont *__autoreleasing *sexTitleFont, UIColor *__autoreleasing *sexTitleNormalColor, UIColor *__autoreleasing *sexTitleSelectedColor, CGFloat *sexTitleLeftMargin, CGFloat *sexViewWidth) {

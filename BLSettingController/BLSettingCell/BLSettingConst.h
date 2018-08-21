@@ -21,7 +21,8 @@ typedef NS_ENUM(NSUInteger, BLSettingCellType) { //cell类型
     BLSettingCellTypeRightAssistIcon,//右侧辅助图标类型 显示图标 标题 详情 右侧图标 箭头
     BLSettingCellTypeAvater,//个人资料大头像类型 带左侧大图标 标题 描述 箭头
     BLSettingCellTypeRightTextField, //文本输入框类型 显示左侧图标 标题 文本框
-    BLSettingCellTypeSex //性别选择类型 显示左侧图标 标题 性别选择视图
+    BLSettingCellTypeSex, //性别选择文本选择类型 显示左侧图标 标题 性别选择视图
+    BLSettingCellTypeSexLargeImage //性别选择大图选择类型 显示左右大图按钮
 };
 
 typedef NS_ENUM(NSUInteger, BLSettingNewFeatureHintType) {//cell新功能提示类型

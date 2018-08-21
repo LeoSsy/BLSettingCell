@@ -290,6 +290,28 @@
         NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
     })
     .style(style0);
+    
+    //创建性别大图选择类型样式
+    BLSettingStyle *style00 = [BLSettingStyle style];
+    style00.leftImageSize(CGSizeMake(90, 90))
+    .rightImageSize(CGSizeMake(90, 90))
+    .sexLargeImageBothMargin(25)
+    .bottomLineHeight(10)
+    .bottomLineColor([UIColor redColor]);
+    
+    //创建性别大图选择类型cell
+    BLSettingModel *model00 = [BLSettingModel modelType:BLSettingCellTypeSexLargeImage];
+    model00.sexLeftLargeImageData(^(NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexNormalImage = @"completeinfo_xingbie_nv_normal";
+        *sexSelectedImage = @"completeinfo_xingbie_nv_selected";
+    }).sexRightLargeImageData(^(NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexNormalImage = @"completeinfo_xingbie_nan_normal";
+        *sexSelectedImage = @"completeinfo_xingbie_nan_selected";
+    })
+    .cellH(120)
+    .sexAction(^(BLSettingModel *model, BLSettingSexSelectType sexSelType) {
+        NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
+    }).style(style00);
 
     BLSettingGroup *group1 = [[BLSettingGroup alloc] init];
     group1.header = @"第一组";
@@ -298,7 +320,7 @@
     BLSettingGroup *group2 = [[BLSettingGroup alloc] init];
     group2.header = @"第二组";
     group2.footer = @"第二组尾部";
-    group2.items = @[md19,md18,md17,md16,md15];
+    group2.items = @[model00,md19,md18,md17,md16,md15];
 
 
     BLSettingGroup *group3 = [[BLSettingGroup alloc] init];
@@ -346,6 +368,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    BLSettingGroup *group = self.datas[indexPath.section];
+    BLSettingModel *settM = group.items[indexPath.row];
+    if (settM.cellHeight > 0) {
+        return settM.cellHeight;
+    }
     return 55;
 }
 

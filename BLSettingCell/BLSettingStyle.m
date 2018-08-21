@@ -54,6 +54,7 @@
 @synthesize hintViewSize = _hintViewSize;
 @synthesize sexLeftViewStyle = _sexLeftViewStyle;
 @synthesize sexRightViewStyle = _sexRightViewStyle;
+@synthesize sexLargeImageBothMargin = _sexLargeImageBothMargin;
 
 @synthesize cellContentLeftMargin = _cellContentLeftMargin;
 @synthesize cellContentRightMargin = _cellContentRightMargin;
@@ -101,6 +102,7 @@
 @synthesize sexRightTitleLeftMargin = _sexRightTitleLeftMargin;
 @synthesize sexLeftViewWidth = _sexLeftViewWidth;
 @synthesize sexRightViewWidth = _sexRightViewWidth;
+@synthesize sexLargeImageMargin = _sexLargeImageMargin;
 
 + (BLSettingStyle*)style {
     return [[BLSettingStyle alloc] init];
@@ -661,6 +663,17 @@
         };
     }
     return _sexRightViewStyle;
+}
+
+- (Height)sexLargeImageBothMargin {
+    if (!_sexLargeImageBothMargin) {
+        __weak typeof(self) weakSelf = self;
+        _sexLargeImageBothMargin = ^(CGFloat margin){
+            _sexLargeImageMargin = margin;
+            return weakSelf;
+        };
+    }
+    return _sexLargeImageBothMargin;
 }
 
 @end

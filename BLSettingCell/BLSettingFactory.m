@@ -27,6 +27,8 @@
         cell = [BLSettingRightTextFieldCell cellWithTableView:tableView withData:model];
     }else if(model.cellType == BLSettingCellTypeSex){
         cell = [BLSettingSexCell cellWithTableView:tableView withData:model];
+    }else if (model.cellType == BLSettingCellTypeSexLargeImage){
+        cell = [BLSettingSexLargeImageCell cellWithTableView:tableView withData:model];
     }else{ //默认类型 显示 图标 标题 详情 箭头
         cell = [BLSettingNormalCell cellWithTableView:tableView withData:model];
     }

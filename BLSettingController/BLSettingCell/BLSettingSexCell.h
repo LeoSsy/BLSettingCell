@@ -7,7 +7,9 @@
 //
 
 #import "BLSettingBaseCell.h"
-
+/**
+ 性别选择cell  文本类型选择
+ */
 @interface BLSettingSexCell : BLSettingBaseCell
 
 @end

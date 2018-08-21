@@ -37,6 +37,8 @@
 @synthesize hintText = _hintText;
 @synthesize sexLeftViewData = _sexLeftViewData;
 @synthesize sexRightViewData = _sexRightViewData;
+@synthesize sexLeftLargeImageData = _sexLeftLargeImageData;
+@synthesize sexRightLargeImageData = _sexRightLargeImageData;
 @synthesize sexSelType = _sexSelType;
 @synthesize sexAction = _sexAction;
 
@@ -78,6 +80,12 @@
     BLSettingModel *model = [[self alloc] init];
     model.style([BLSettingStyle style])
     .showUnderLine(YES).cellH(44).textFieldEnabled(YES);
+    return model;
+}
+
++ (instancetype)modelType:(BLSettingCellType)cellType {
+    BLSettingModel *model = [BLSettingModel model];
+    model.type(cellType);
     return model;
 }
 
@@ -430,6 +438,41 @@
     }
     return _sexRightViewData;
 }
+
+- (SexViewLargeImageDataConfig)sexLeftLargeImageData {
+    if (!_sexLeftLargeImageData) {
+        __weak typeof(self) weakSelf = self;
+        _sexLeftLargeImageData = ^(SexLargeImageDataConfig config){
+            NSString *sexNormalImage;
+            NSString *sexSelectedImage;
+            if (config) {
+                config(&sexNormalImage,&sexSelectedImage);
+                if (sexNormalImage) _sexLeftNormalImage = sexNormalImage;
+                if (sexSelectedImage) _sexLeftSelectedImage = sexSelectedImage;
+            }
+            return weakSelf;
+        };
+    }
+    return _sexLeftLargeImageData;
+}
+
+- (SexViewLargeImageDataConfig)sexRightLargeImageData {
+    if (!_sexRightLargeImageData) {
+        __weak typeof(self) weakSelf = self;
+        _sexRightLargeImageData = ^(SexLargeImageDataConfig config){
+            NSString *sexNormalImage;
+            NSString *sexSelectedImage;
+            if (config) {
+                config(&sexNormalImage,&sexSelectedImage);
+                if (sexNormalImage) _sexRightNormalImage = sexNormalImage;
+                if (sexSelectedImage) _sexRightSelectedImage = sexSelectedImage;
+            }
+            return weakSelf;
+        };
+    }
+    return _sexRightLargeImageData;
+}
+
 
 - (SexSelType)sexSelType {
     if (!_sexSelType) {

@@ -21,6 +21,7 @@ typedef void(^textFieldDidChangeAction)(BLSettingModel *model,UITextField *textF
 typedef void(^textFieldTextReachesMaxLengthAction)(BLSettingModel *model,UITextField *textField);
 typedef void(^sexAction)(BLSettingModel *model,BLSettingSexSelectType sexSelType);
 typedef void (^SexVDataConfig)(NSString **sexTitle,NSString **sexNormalImage,NSString **sexSelectedImage);
+typedef void (^SexLargeImageDataConfig)(NSString **sexNormalImage,NSString **sexSelectedImage);
 
 typedef BLSettingModel *(^IconNameResource)(NSString *resource);
 typedef BLSettingModel *(^Text)(NSString* text);
@@ -41,7 +42,7 @@ typedef BLSettingModel *(^NewFeatureHintType)(BLSettingNewFeatureHintType type);
 typedef BLSettingModel *(^SexAction)(sexAction action);
 typedef BLSettingModel *(^SexSelType)(BLSettingSexSelectType sexSelType);
 typedef BLSettingModel *(^SexViewDataConfig)(SexVDataConfig config);
-
+typedef BLSettingModel *(^SexViewLargeImageDataConfig)(SexLargeImageDataConfig config);
 
 @interface BLSettingModel : NSObject
 ///====外部设置属性值=====
@@ -104,13 +105,19 @@ typedef BLSettingModel *(^SexViewDataConfig)(SexVDataConfig config);
 /**设置新功能提示视图提示文字*/
 @property(nonatomic,copy, readonly)Text hintText;
 
-#pragma mark 性别选择类型cell相关属性
+#pragma mark 性别选择文本选择类型cell相关属性
 /**设置性别cell按钮选中的类型*/
 @property(nonatomic,copy, readonly)SexSelType sexSelType;
 /**设置性别cell左侧视图数据*/
 @property(nonatomic,copy, readonly)SexViewDataConfig sexLeftViewData;
 /**设置性别cell右侧视图数据*/
 @property(nonatomic,copy, readonly)SexViewDataConfig sexRightViewData;
+
+#pragma mark 性别选择大图选择类型cell相关属性
+/**设置性别大图cell右侧视图数据*/
+@property(nonatomic,copy, readonly)SexViewLargeImageDataConfig sexLeftLargeImageData;
+/**设置性别大图cell右侧视图数据*/
+@property(nonatomic,copy, readonly)SexViewLargeImageDataConfig sexRightLargeImageData;
 
 #pragma mark 回调事件相关
 
@@ -177,7 +184,7 @@ typedef BLSettingModel *(^SexViewDataConfig)(SexVDataConfig config);
 /**获取新功能提示视图提示文字*/
 @property(nonatomic,strong, readonly)NSString *hintString;
 
-#pragma mark 性别选择类型cell相关属性
+#pragma mark 性别选择文本选择类型cell相关属性
 /**获取性别选中的类型*/
 @property(nonatomic,assign, readonly)BLSettingSexSelectType sexSelectType;
 /**获取左侧按钮默认图标*/
@@ -216,10 +223,16 @@ typedef BLSettingModel *(^SexViewDataConfig)(SexVDataConfig config);
 @property(nonatomic,strong,readwrite)NSIndexPath *indexPath;
 /**获取cell高度*/
 @property(nonatomic,assign,readonly)CGFloat cellHeight;
+
 /**
  快速初始化方法
  */
 + (instancetype)model;
+/**
+ 快速初始化方法
+ @param cellType cell类型
+ */
++ (instancetype)modelType:(BLSettingCellType)cellType;
 
 /** 初始化方法*/
 - (instancetype)initWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle cellType:(BLSettingCellType)cellType segumentTitleArr:(NSArray*)selectSwitchArr selectIndex:(NSInteger)selectIndex isShowArrow:(BOOL)isShowArrow switchIsOn:(BOOL)switchIsOn rightIcon:(NSString*)rightIconName settingStyle:(BLSettingStyle*)settingStyle;

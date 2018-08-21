@@ -27,6 +27,7 @@ typedef BLSettingStyle *(^SegumentClearDivider)(BOOL status);
 typedef BLSettingStyle *(^SegumentItemW)(NSInteger itemW);
 typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 
+
 @interface BLSettingStyle : NSObject
 
 ///====外部设置属性值=====
@@ -114,11 +115,15 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 /**设置提示视图圆角大小*/
 @property(nonatomic,copy, readonly)IconSize hintViewSize;
 
-#pragma mark 性别类型cell相关属性
+#pragma mark 性别类型文本选择cell相关属性
 /**设置左侧按钮样式*/
 @property(nonatomic,copy, readonly)SexViewStyle sexLeftViewStyle;
 /**设置右侧按钮样式*/
 @property(nonatomic,copy, readonly)SexViewStyle sexRightViewStyle;
+
+#pragma mark 性别类型大图选择cell相关属性
+/**设置大图按钮之间的间距*/
+@property(nonatomic,copy, readonly)Height sexLargeImageBothMargin;
 
 ///====外部获取属性值======
 
@@ -226,6 +231,10 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 @property(nonatomic,assign, readonly)CGFloat   sexRightTitleLeftMargin;
 /**获取右侧按钮视图的宽度*/
 @property(nonatomic,assign, readonly)CGFloat sexRightViewWidth;
+
+#pragma mark 性别选择大图选择类型cell相关属性
+/**获取两个大图性别按钮之间的间距*/
+@property(nonatomic,assign, readonly)NSInteger sexLargeImageMargin;
 
 /**
  快速初始化方法
