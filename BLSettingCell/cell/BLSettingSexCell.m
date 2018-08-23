@@ -95,16 +95,16 @@
  
     [_sexBtn2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
-        make.centerY.equalTo(self.contentView);
         make.width.mas_equalTo(self.dataModel.settingStyle.sexLeftViewWidth);
-        make.height.equalTo(self.contentView.mas_height).multipliedBy(0.6);
+        make.top.equalTo(self.contentView);
+        make.bottom.equalTo(self.underline.mas_top);
     }];
     
     [_sexBtn1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_sexBtn2.mas_left).offset(0);
-        make.centerY.equalTo(self.contentView);
         make.width.mas_equalTo(self.dataModel.settingStyle.sexRightViewWidth);
-        make.height.equalTo(self.contentView.mas_height).multipliedBy(0.6);
+        make.top.equalTo(self.contentView);
+        make.bottom.equalTo(self.underline.mas_top);
     }];
     
 }

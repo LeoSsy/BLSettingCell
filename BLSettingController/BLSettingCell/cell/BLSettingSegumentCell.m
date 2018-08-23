@@ -38,7 +38,7 @@
     
     [_segumentV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
         make.height.equalTo(self.contentView.mas_height).multipliedBy(0.5);
     }];
     

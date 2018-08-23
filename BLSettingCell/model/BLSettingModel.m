@@ -215,7 +215,7 @@
         __weak typeof(self) weakSelf = self;
         _descAttribute = ^(NSAttributedString *attributeText){
             _detailAttributeString = attributeText;
-            _title = nil;
+            _detailTitle = nil;
             return weakSelf;
         };
     }

@@ -50,7 +50,7 @@
     [super setFrameSubview];
     [_arrowV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
-            make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
            CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
@@ -58,7 +58,7 @@
         
     [_descL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
     }];
     
     [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {

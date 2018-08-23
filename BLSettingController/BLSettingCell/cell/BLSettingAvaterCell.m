@@ -51,7 +51,7 @@
     [super setFrameSubview];
     [_arrowV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
         CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
         make.width.mas_equalTo(width);
         make.height.mas_equalTo(height);
@@ -59,7 +59,7 @@
     
     [_rightIconV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
         CGFloat width = self.dataModel.settingStyle.rightIconSize.width;CGFloat height = self.dataModel.settingStyle.rightIconSize.height;
         make.width.mas_equalTo(width);
         make.height.mas_equalTo(height);
@@ -71,7 +71,7 @@
     
     [self.iconV mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(self.dataModel.settingStyle.cellContentLeftMargin);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
         CGFloat width = self.dataModel.settingStyle.leftIconSize.width;CGFloat height = self.dataModel.settingStyle.leftIconSize.height;
         if (self.dataModel.settingStyle.rightIconRadius) {
             self.iconV.layer.cornerRadius = self.dataModel.settingStyle.rightIconRadius;

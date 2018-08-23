@@ -76,14 +76,15 @@
     
     [_rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.mas_centerX).offset(self.dataModel.settingStyle.sexLargeImageMargin*0.5);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
         make.width.mas_equalTo(self.dataModel.settingStyle.leftIconSize.width);
         make.height.mas_equalTo(self.dataModel.settingStyle.leftIconSize.height);
+
     }];
     
     [_leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView.mas_centerX).offset(-self.dataModel.settingStyle.sexLargeImageMargin*0.5);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
         make.width.mas_equalTo(self.dataModel.settingStyle.rightIconSize.width);
         make.height.mas_equalTo(self.dataModel.settingStyle.rightIconSize.height);
     }];

@@ -41,8 +41,8 @@
     
     [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
-        make.centerY.equalTo(self.contentView);
-        make.height.mas_equalTo(self.contentView).multipliedBy(0.8);
+        make.top.equalTo(self.contentView);
+        make.bottom.equalTo(self.underline.mas_top);
         make.left.equalTo(self.titleL.mas_right).offset(BLSettingBaseMargin);
     }];
 }

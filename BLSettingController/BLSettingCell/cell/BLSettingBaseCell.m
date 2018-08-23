@@ -205,12 +205,12 @@
         make.width.mas_equalTo(0);
         make.height.mas_equalTo(0);
         make.left.equalTo(self.contentView).offset(self.dataModel.settingStyle.cellContentLeftMargin);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
     }];
     
     [_titleL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconV.mas_right).offset(0);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
     }];
     
     [_redPointV mas_makeConstraints:^(MASConstraintMaker *make) {

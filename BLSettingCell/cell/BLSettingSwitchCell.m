@@ -34,7 +34,7 @@
     [super setFrameSubview];
     [_switchV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin*0.35);
-        make.centerY.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
         make.width.mas_equalTo(BLSettingBaseSwitchW);
     }];
 }
