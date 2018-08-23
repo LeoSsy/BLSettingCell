@@ -6,8 +6,10 @@ s.summary      = "通用设置页面cell,可以灵活扩展,多种样式可配�
 
 s.homepage     = "https://github.com/LeoSsy" # 你的主页
 s.source       = { :git => "https://github.com/LeoSsy/BLSettingCell.git", :tag => "#{s.version}" }#你的仓库地址，不能用SSH地址
-s.source_files = "BLSettingCell/*.{h,m}" # 你代码的位置， BLSettingCell/*.{h,m} 表示 BLSettingCell 文件夹下所有的.h和.m文件
-s.public_header_files = 'BLSettingCell/*.{h}'
+#s.source_files = "BLSettingCell/*.{h,m}" # 你代码的位置， BLSettingCell/*.{h,m} 表示 BLSettingCell 文件夹下所有的.h和.m文件
+#s.public_header_files = 'BLSettingCell/*.{h}'
+s.public_header_files = 'BLSettingCell/BLSetting.h'
+s.source_files = 'BLSettingCell/BLSetting.h'
 s.resource     = 'BLSettingCell/BLSetting.bundle'
 s.requires_arc = true # 是否启用ARC
 s.platform     = :ios, "8.0" #平台及支持的最低版本
