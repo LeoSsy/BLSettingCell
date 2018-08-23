@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040E868F212AC24B0030C3D3 /* BLSettingSexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040E868E212AC24B0030C3D3 /* BLSettingSexCell.m */; };
-		040E8692212BEB4E0030C3D3 /* BLSettingSexLargeImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040E8691212BEB4E0030C3D3 /* BLSettingSexLargeImageCell.m */; };
-		0441B081212A6DAD007AA99A /* BLSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441B080212A6DAD007AA99A /* BLSettingGroup.m */; };
-		04669DC62113E4E800BFA20A /* BLSettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB22113E4E800BFA20A /* BLSettingSwitchCell.m */; };
-		04669DC72113E4E800BFA20A /* BLSettingStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB32113E4E800BFA20A /* BLSettingStyle.m */; };
-		04669DC82113E4E800BFA20A /* BLSettingBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB62113E4E800BFA20A /* BLSettingBaseCell.m */; };
 		04669DC92113E4E800BFA20A /* BLSettingFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB82113E4E800BFA20A /* BLSettingFactory.m */; };
-		04669DCA2113E4E800BFA20A /* BLSettingAvaterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB92113E4E800BFA20A /* BLSettingAvaterCell.m */; };
 		04669DCB2113E4E800BFA20A /* BLSettingConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DBB2113E4E800BFA20A /* BLSettingConst.m */; };
 		04669DCC2113E4E800BFA20A /* BLSetting.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04669DBD2113E4E800BFA20A /* BLSetting.bundle */; };
-		04669DCD2113E4E800BFA20A /* BLSettingNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DBE2113E4E800BFA20A /* BLSettingNormalCell.m */; };
-		04669DCE2113E4E800BFA20A /* BLSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DBF2113E4E800BFA20A /* BLSettingModel.m */; };
-		04669DCF2113E4E800BFA20A /* BLSettingSegumentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DC12113E4E800BFA20A /* BLSettingSegumentCell.m */; };
-		04669DD02113E4E800BFA20A /* BLSettingRightAssistIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DC52113E4E800BFA20A /* BLSettingRightAssistIconCell.m */; };
-		047ED33821255F2E005DC8BF /* BLSettingRightTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047ED33721255F2E005DC8BF /* BLSettingRightTextFieldCell.m */; };
+		048CD6D2212E44B100B3D499 /* BLSettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6BA212E44B100B3D499 /* BLSettingSwitchCell.m */; };
+		048CD6D3212E44B100B3D499 /* BLSettingSexLargeImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6BB212E44B100B3D499 /* BLSettingSexLargeImageCell.m */; };
+		048CD6D4212E44B100B3D499 /* BLSettingBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6BE212E44B100B3D499 /* BLSettingBaseCell.m */; };
+		048CD6D5212E44B100B3D499 /* BLSettingAvaterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6BF212E44B100B3D499 /* BLSettingAvaterCell.m */; };
+		048CD6D6212E44B100B3D499 /* BLSettingSexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6C4212E44B100B3D499 /* BLSettingSexCell.m */; };
+		048CD6D7212E44B100B3D499 /* BLSettingNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6C5212E44B100B3D499 /* BLSettingNormalCell.m */; };
+		048CD6D8212E44B100B3D499 /* BLSettingRightTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6C6212E44B100B3D499 /* BLSettingRightTextFieldCell.m */; };
+		048CD6D9212E44B100B3D499 /* BLSettingRightAssistIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6C7212E44B100B3D499 /* BLSettingRightAssistIconCell.m */; };
+		048CD6DA212E44B100B3D499 /* BLSettingSegumentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6C8212E44B100B3D499 /* BLSettingSegumentCell.m */; };
+		048CD6DB212E44B100B3D499 /* BLSettingStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6CC212E44B100B3D499 /* BLSettingStyle.m */; };
+		048CD6DC212E44B100B3D499 /* BLSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6CF212E44B100B3D499 /* BLSettingModel.m */; };
+		048CD6DD212E44B100B3D499 /* BLSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6D1212E44B100B3D499 /* BLSettingGroup.m */; };
+		048CD6E0212E455400B3D499 /* UITextField+BLSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6DF212E455400B3D499 /* UITextField+BLSettingCell.m */; };
 		04BE0B1A211149690054E43E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE0B19211149690054E43E /* AppDelegate.m */; };
 		04BE0B22211149690054E43E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BE0B21211149690054E43E /* Assets.xcassets */; };
 		04BE0B25211149690054E43E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BE0B23211149690054E43E /* LaunchScreen.storyboard */; };
@@ -54,36 +55,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		040E868D212AC24B0030C3D3 /* BLSettingSexCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLSettingSexCell.h; sourceTree = "<group>"; };
-		040E868E212AC24B0030C3D3 /* BLSettingSexCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLSettingSexCell.m; sourceTree = "<group>"; };
-		040E8690212BEB4E0030C3D3 /* BLSettingSexLargeImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLSettingSexLargeImageCell.h; sourceTree = "<group>"; };
-		040E8691212BEB4E0030C3D3 /* BLSettingSexLargeImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLSettingSexLargeImageCell.m; sourceTree = "<group>"; };
-		0441B07F212A6DAD007AA99A /* BLSettingGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLSettingGroup.h; sourceTree = "<group>"; };
-		0441B080212A6DAD007AA99A /* BLSettingGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLSettingGroup.m; sourceTree = "<group>"; };
 		04669DB02113E4E800BFA20A /* BLSettingConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingConst.h; sourceTree = "<group>"; };
 		04669DB12113E4E800BFA20A /* BLSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSetting.h; sourceTree = "<group>"; };
-		04669DB22113E4E800BFA20A /* BLSettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingSwitchCell.m; sourceTree = "<group>"; };
-		04669DB32113E4E800BFA20A /* BLSettingStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingStyle.m; sourceTree = "<group>"; };
-		04669DB42113E4E800BFA20A /* BLSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingModel.h; sourceTree = "<group>"; };
-		04669DB52113E4E800BFA20A /* BLSettingNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingNormalCell.h; sourceTree = "<group>"; };
-		04669DB62113E4E800BFA20A /* BLSettingBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingBaseCell.m; sourceTree = "<group>"; };
-		04669DB72113E4E800BFA20A /* BLSettingRightAssistIconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingRightAssistIconCell.h; sourceTree = "<group>"; };
 		04669DB82113E4E800BFA20A /* BLSettingFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingFactory.m; sourceTree = "<group>"; };
-		04669DB92113E4E800BFA20A /* BLSettingAvaterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingAvaterCell.m; sourceTree = "<group>"; };
-		04669DBA2113E4E800BFA20A /* BLSettingSegumentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingSegumentCell.h; sourceTree = "<group>"; };
 		04669DBB2113E4E800BFA20A /* BLSettingConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingConst.m; sourceTree = "<group>"; };
-		04669DBC2113E4E800BFA20A /* BLSettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingSwitchCell.h; sourceTree = "<group>"; };
 		04669DBD2113E4E800BFA20A /* BLSetting.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BLSetting.bundle; sourceTree = "<group>"; };
-		04669DBE2113E4E800BFA20A /* BLSettingNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingNormalCell.m; sourceTree = "<group>"; };
-		04669DBF2113E4E800BFA20A /* BLSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingModel.m; sourceTree = "<group>"; };
-		04669DC02113E4E800BFA20A /* BLSettingStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingStyle.h; sourceTree = "<group>"; };
-		04669DC12113E4E800BFA20A /* BLSettingSegumentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingSegumentCell.m; sourceTree = "<group>"; };
 		04669DC22113E4E800BFA20A /* BLSettingFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingFactory.h; sourceTree = "<group>"; };
-		04669DC32113E4E800BFA20A /* BLSettingAvaterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingAvaterCell.h; sourceTree = "<group>"; };
-		04669DC42113E4E800BFA20A /* BLSettingBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingBaseCell.h; sourceTree = "<group>"; };
-		04669DC52113E4E800BFA20A /* BLSettingRightAssistIconCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingRightAssistIconCell.m; sourceTree = "<group>"; };
-		047ED33621255F2E005DC8BF /* BLSettingRightTextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLSettingRightTextFieldCell.h; sourceTree = "<group>"; };
-		047ED33721255F2E005DC8BF /* BLSettingRightTextFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLSettingRightTextFieldCell.m; sourceTree = "<group>"; };
+		048CD6B9212E44B100B3D499 /* BLSettingSexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingSexCell.h; sourceTree = "<group>"; };
+		048CD6BA212E44B100B3D499 /* BLSettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingSwitchCell.m; sourceTree = "<group>"; };
+		048CD6BB212E44B100B3D499 /* BLSettingSexLargeImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingSexLargeImageCell.m; sourceTree = "<group>"; };
+		048CD6BC212E44B100B3D499 /* BLSettingRightTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingRightTextFieldCell.h; sourceTree = "<group>"; };
+		048CD6BD212E44B100B3D499 /* BLSettingNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingNormalCell.h; sourceTree = "<group>"; };
+		048CD6BE212E44B100B3D499 /* BLSettingBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingBaseCell.m; sourceTree = "<group>"; };
+		048CD6BF212E44B100B3D499 /* BLSettingAvaterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingAvaterCell.m; sourceTree = "<group>"; };
+		048CD6C0212E44B100B3D499 /* BLSettingSegumentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingSegumentCell.h; sourceTree = "<group>"; };
+		048CD6C1212E44B100B3D499 /* BLSettingRightAssistIconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingRightAssistIconCell.h; sourceTree = "<group>"; };
+		048CD6C2212E44B100B3D499 /* BLSettingSexLargeImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingSexLargeImageCell.h; sourceTree = "<group>"; };
+		048CD6C3212E44B100B3D499 /* BLSettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingSwitchCell.h; sourceTree = "<group>"; };
+		048CD6C4212E44B100B3D499 /* BLSettingSexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingSexCell.m; sourceTree = "<group>"; };
+		048CD6C5212E44B100B3D499 /* BLSettingNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingNormalCell.m; sourceTree = "<group>"; };
+		048CD6C6212E44B100B3D499 /* BLSettingRightTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingRightTextFieldCell.m; sourceTree = "<group>"; };
+		048CD6C7212E44B100B3D499 /* BLSettingRightAssistIconCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingRightAssistIconCell.m; sourceTree = "<group>"; };
+		048CD6C8212E44B100B3D499 /* BLSettingSegumentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingSegumentCell.m; sourceTree = "<group>"; };
+		048CD6C9212E44B100B3D499 /* BLSettingAvaterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingAvaterCell.h; sourceTree = "<group>"; };
+		048CD6CA212E44B100B3D499 /* BLSettingBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingBaseCell.h; sourceTree = "<group>"; };
+		048CD6CC212E44B100B3D499 /* BLSettingStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingStyle.m; sourceTree = "<group>"; };
+		048CD6CD212E44B100B3D499 /* BLSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingModel.h; sourceTree = "<group>"; };
+		048CD6CE212E44B100B3D499 /* BLSettingGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingGroup.h; sourceTree = "<group>"; };
+		048CD6CF212E44B100B3D499 /* BLSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingModel.m; sourceTree = "<group>"; };
+		048CD6D0212E44B100B3D499 /* BLSettingStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingStyle.h; sourceTree = "<group>"; };
+		048CD6D1212E44B100B3D499 /* BLSettingGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingGroup.m; sourceTree = "<group>"; };
+		048CD6DE212E455400B3D499 /* UITextField+BLSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+BLSettingCell.h"; sourceTree = "<group>"; };
+		048CD6DF212E455400B3D499 /* UITextField+BLSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BLSettingCell.m"; sourceTree = "<group>"; };
 		04BE0B15211149690054E43E /* BLSettingController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLSettingController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BE0B18211149690054E43E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04BE0B19211149690054E43E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -148,34 +151,60 @@
 				04669DB12113E4E800BFA20A /* BLSetting.h */,
 				04669DB02113E4E800BFA20A /* BLSettingConst.h */,
 				04669DBB2113E4E800BFA20A /* BLSettingConst.m */,
-				04669DC02113E4E800BFA20A /* BLSettingStyle.h */,
-				04669DB32113E4E800BFA20A /* BLSettingStyle.m */,
-				0441B07F212A6DAD007AA99A /* BLSettingGroup.h */,
-				0441B080212A6DAD007AA99A /* BLSettingGroup.m */,
-				04669DB42113E4E800BFA20A /* BLSettingModel.h */,
-				04669DBF2113E4E800BFA20A /* BLSettingModel.m */,
 				04669DC22113E4E800BFA20A /* BLSettingFactory.h */,
 				04669DB82113E4E800BFA20A /* BLSettingFactory.m */,
-				04669DC42113E4E800BFA20A /* BLSettingBaseCell.h */,
-				04669DB62113E4E800BFA20A /* BLSettingBaseCell.m */,
-				04669DB52113E4E800BFA20A /* BLSettingNormalCell.h */,
-				04669DBE2113E4E800BFA20A /* BLSettingNormalCell.m */,
-				04669DC32113E4E800BFA20A /* BLSettingAvaterCell.h */,
-				04669DB92113E4E800BFA20A /* BLSettingAvaterCell.m */,
-				04669DBC2113E4E800BFA20A /* BLSettingSwitchCell.h */,
-				04669DB22113E4E800BFA20A /* BLSettingSwitchCell.m */,
-				04669DBA2113E4E800BFA20A /* BLSettingSegumentCell.h */,
-				04669DC12113E4E800BFA20A /* BLSettingSegumentCell.m */,
-				04669DB72113E4E800BFA20A /* BLSettingRightAssistIconCell.h */,
-				04669DC52113E4E800BFA20A /* BLSettingRightAssistIconCell.m */,
-				047ED33621255F2E005DC8BF /* BLSettingRightTextFieldCell.h */,
-				047ED33721255F2E005DC8BF /* BLSettingRightTextFieldCell.m */,
-				040E868D212AC24B0030C3D3 /* BLSettingSexCell.h */,
-				040E868E212AC24B0030C3D3 /* BLSettingSexCell.m */,
-				040E8690212BEB4E0030C3D3 /* BLSettingSexLargeImageCell.h */,
-				040E8691212BEB4E0030C3D3 /* BLSettingSexLargeImageCell.m */,
+				048CD6B7212E44B100B3D499 /* category */,
+				048CD6B8212E44B100B3D499 /* cell */,
+				048CD6CB212E44B100B3D499 /* model */,
 			);
 			path = BLSettingCell;
+			sourceTree = "<group>";
+		};
+		048CD6B7212E44B100B3D499 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				048CD6DE212E455400B3D499 /* UITextField+BLSettingCell.h */,
+				048CD6DF212E455400B3D499 /* UITextField+BLSettingCell.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		048CD6B8212E44B100B3D499 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				048CD6CA212E44B100B3D499 /* BLSettingBaseCell.h */,
+				048CD6BE212E44B100B3D499 /* BLSettingBaseCell.m */,
+				048CD6BD212E44B100B3D499 /* BLSettingNormalCell.h */,
+				048CD6C5212E44B100B3D499 /* BLSettingNormalCell.m */,
+				048CD6C3212E44B100B3D499 /* BLSettingSwitchCell.h */,
+				048CD6BA212E44B100B3D499 /* BLSettingSwitchCell.m */,
+				048CD6C1212E44B100B3D499 /* BLSettingRightAssistIconCell.h */,
+				048CD6C7212E44B100B3D499 /* BLSettingRightAssistIconCell.m */,
+				048CD6C0212E44B100B3D499 /* BLSettingSegumentCell.h */,
+				048CD6C8212E44B100B3D499 /* BLSettingSegumentCell.m */,
+				048CD6C9212E44B100B3D499 /* BLSettingAvaterCell.h */,
+				048CD6BF212E44B100B3D499 /* BLSettingAvaterCell.m */,
+				048CD6BC212E44B100B3D499 /* BLSettingRightTextFieldCell.h */,
+				048CD6C6212E44B100B3D499 /* BLSettingRightTextFieldCell.m */,
+				048CD6B9212E44B100B3D499 /* BLSettingSexCell.h */,
+				048CD6C4212E44B100B3D499 /* BLSettingSexCell.m */,
+				048CD6C2212E44B100B3D499 /* BLSettingSexLargeImageCell.h */,
+				048CD6BB212E44B100B3D499 /* BLSettingSexLargeImageCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		048CD6CB212E44B100B3D499 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				048CD6CE212E44B100B3D499 /* BLSettingGroup.h */,
+				048CD6D1212E44B100B3D499 /* BLSettingGroup.m */,
+				048CD6CD212E44B100B3D499 /* BLSettingModel.h */,
+				048CD6CF212E44B100B3D499 /* BLSettingModel.m */,
+				048CD6D0212E44B100B3D499 /* BLSettingStyle.h */,
+				048CD6CC212E44B100B3D499 /* BLSettingStyle.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		04BE0B0C211149690054E43E = {
@@ -454,24 +483,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048CD6DC212E44B100B3D499 /* BLSettingModel.m in Sources */,
+				048CD6D4212E44B100B3D499 /* BLSettingBaseCell.m in Sources */,
 				04669DCB2113E4E800BFA20A /* BLSettingConst.m in Sources */,
-				040E8692212BEB4E0030C3D3 /* BLSettingSexLargeImageCell.m in Sources */,
-				04669DC82113E4E800BFA20A /* BLSettingBaseCell.m in Sources */,
+				048CD6D3212E44B100B3D499 /* BLSettingSexLargeImageCell.m in Sources */,
 				04669DC92113E4E800BFA20A /* BLSettingFactory.m in Sources */,
-				04669DC72113E4E800BFA20A /* BLSettingStyle.m in Sources */,
-				0441B081212A6DAD007AA99A /* BLSettingGroup.m in Sources */,
-				04669DCE2113E4E800BFA20A /* BLSettingModel.m in Sources */,
 				04BE0B7D21129BD80054E43E /* DemoTableViewController.m in Sources */,
+				048CD6D7212E44B100B3D499 /* BLSettingNormalCell.m in Sources */,
+				048CD6D2212E44B100B3D499 /* BLSettingSwitchCell.m in Sources */,
+				048CD6D8212E44B100B3D499 /* BLSettingRightTextFieldCell.m in Sources */,
+				048CD6E0212E455400B3D499 /* UITextField+BLSettingCell.m in Sources */,
+				048CD6DB212E44B100B3D499 /* BLSettingStyle.m in Sources */,
 				04BE0B28211149690054E43E /* main.m in Sources */,
-				04669DCD2113E4E800BFA20A /* BLSettingNormalCell.m in Sources */,
-				047ED33821255F2E005DC8BF /* BLSettingRightTextFieldCell.m in Sources */,
-				04669DCA2113E4E800BFA20A /* BLSettingAvaterCell.m in Sources */,
-				04669DD02113E4E800BFA20A /* BLSettingRightAssistIconCell.m in Sources */,
-				04669DC62113E4E800BFA20A /* BLSettingSwitchCell.m in Sources */,
 				04BE0B1A211149690054E43E /* AppDelegate.m in Sources */,
-				04669DCF2113E4E800BFA20A /* BLSettingSegumentCell.m in Sources */,
-				040E868F212AC24B0030C3D3 /* BLSettingSexCell.m in Sources */,
+				048CD6D6212E44B100B3D499 /* BLSettingSexCell.m in Sources */,
 				04BE0B7C21129BD80054E43E /* DemoGroupTableViewController.m in Sources */,
+				048CD6D5212E44B100B3D499 /* BLSettingAvaterCell.m in Sources */,
+				048CD6DA212E44B100B3D499 /* BLSettingSegumentCell.m in Sources */,
+				048CD6DD212E44B100B3D499 /* BLSettingGroup.m in Sources */,
+				048CD6D9212E44B100B3D499 /* BLSettingRightAssistIconCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

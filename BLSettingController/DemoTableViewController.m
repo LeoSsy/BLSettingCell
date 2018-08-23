@@ -24,6 +24,14 @@
     
     __weak typeof(self) weakSelf = self;
     
+    //创建右侧图标类型
+    BLSettingModel *model000 = [BLSettingFactory normalWithIcon:nil title:@"右侧辅助视图" rightIcon:@"kehu_icon_jilu2" showArrow:YES cellClickAction:^(BLSettingModel *model) {
+        
+    }];
+    model000.rightIconImage([UIImage imageNamed:@"completeinfo_xingbie_nv_selected"]);
+    [self.datas addObject:model000];
+
+    
     //创建性别大图选择类型样式
     BLSettingStyle *style00 = [BLSettingStyle style];
     style00.leftImageSize(CGSizeMake(90, 90))

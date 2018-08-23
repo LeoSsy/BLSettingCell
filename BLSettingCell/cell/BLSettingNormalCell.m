@@ -60,6 +60,10 @@
         make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
         make.centerY.equalTo(self.contentView);
     }];
+    
+    [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_lessThanOrEqualTo(self.descL.mas_left).offset(-BLSettingBaseMargin);
+    }];
 }
 
 /**

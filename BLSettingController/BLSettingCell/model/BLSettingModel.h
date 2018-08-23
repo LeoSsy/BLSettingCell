@@ -24,6 +24,7 @@ typedef void (^SexVDataConfig)(NSString **sexTitle,NSString **sexNormalImage,NSS
 typedef void (^SexLargeImageDataConfig)(NSString **sexNormalImage,NSString **sexSelectedImage);
 
 typedef BLSettingModel *(^IconNameResource)(NSString *resource);
+typedef BLSettingModel *(^IconImage)(UIImage *image);
 typedef BLSettingModel *(^Text)(NSString* text);
 typedef BLSettingModel *(^TextAttributeString)(NSAttributedString *attributeString);
 typedef BLSettingModel *(^DisPlayStatus)(BOOL status);
@@ -60,6 +61,8 @@ typedef BLSettingModel *(^SexViewLargeImageDataConfig)(SexLargeImageDataConfig c
 @property(nonatomic,copy,readonly)IconNameResource leftIconName;
 /**设置右侧图标 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource rightIconName;
+/**设置右侧图标 传入一个UIImage对象*/
+@property(nonatomic,copy,readonly)IconImage rightIconImage;
 /**设置箭头图标图标 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource arrowIconName;
 /**设置标题*/
@@ -142,6 +145,8 @@ typedef BLSettingModel *(^SexViewLargeImageDataConfig)(SexLargeImageDataConfig c
 @property(nonatomic,strong,readonly)NSString *iconImageName;
 /**获取右侧图标*/
 @property(nonatomic,strong,readonly)NSString *rightImageName;
+/**设置右侧图标 得到的是一个UIImage对象*/
+@property(nonatomic,strong,readonly)UIImage* rightImageObj;
 /**获取箭头图标图标*/
 @property(nonatomic,strong,readonly)NSString *arrowImageName;
 /**获取标题*/

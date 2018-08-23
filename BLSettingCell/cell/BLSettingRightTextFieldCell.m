@@ -9,6 +9,7 @@
 #import "BLSettingRightTextFieldCell.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UITextField+BLSettingCell.h"
 
 @interface BLSettingRightTextFieldCell()
 /**右边的文本框*/
@@ -52,6 +53,10 @@
 - (void)configModel:(BLSettingModel *)dataModel{
     if (!dataModel)  return;
     [super configModel:dataModel];
+    //清空之前的文字
+    self.textField.placeholder = nil;
+    self.textField.text = nil;
+    //重新设置数据
     NSString *placeholder = @"请输入内容";
     if (dataModel.textFieldString) {
         self.textField.text = dataModel.textFieldString;
@@ -70,6 +75,7 @@
     
     //文本框禁用
     self.textField.enabled = dataModel.textFieldCanEditing;
+    self.textField.settingModel = dataModel;
     
     //占位文字设置
     [self.textField setValue:dataModel.settingStyle.textFieldPlaceColor forKeyPath:@"_placeholderLabel.textColor"];
@@ -80,6 +86,7 @@
 
 - (void)textFieldDidChange:(NSNotification*)note{
     if (note.object == self.textField) {
+        NSLog(@"settingModel===%@",self.textField.settingModel.indexPath);
         if (self.textField.text.length > self.dataModel.textFieldStringMaxLength) {
             self.textField.text = [self.textField.text substringToIndex:self.dataModel.textFieldStringMaxLength];
             if (self.dataModel.textFieldTextMaxLengthOperation) {
@@ -90,7 +97,12 @@
                 self.dataModel.textFieldDidChangeOperation(self.dataModel, self.textField);
             }
         }
+        if ((self.dataModel ==  self.textField.settingModel)) {
+            //更新模型对应文本字段属性的文字
+            self.dataModel.textFieldText(self.textField.text);
+        }
     }
+
 }
 
 - (void)dealloc {

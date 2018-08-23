@@ -66,14 +66,24 @@
 }
 
 - (void)configModel:(BLSettingModel *)dataModel{
+    
     if (!dataModel)  return;
+    
     [super configModel:dataModel];
-    //设置左侧图标
-    if (dataModel.rightImageName) {
-        if ([dataModel.rightImageName hasPrefix:@"http://"] || [dataModel.rightImageName hasPrefix:@"https://"] ) {
-            [self.rightIconV sd_setImageWithURL:[NSURL URLWithString:dataModel.rightImageName] placeholderImage:nil options:0];
-        }else{
-            self.rightIconV.image = [UIImage imageNamed:dataModel.rightImageName];
+    
+    //清空数据
+    self.rightIconV.image = nil;
+    
+    //设置数据
+    if (dataModel.rightImageObj) {
+        self.rightIconV.image = dataModel.rightImageObj;
+    }else{
+        if (dataModel.rightImageName) {
+            if ([dataModel.rightImageName hasPrefix:@"http://"] || [dataModel.rightImageName hasPrefix:@"https://"] ) {
+                [self.rightIconV sd_setImageWithURL:[NSURL URLWithString:dataModel.rightImageName] placeholderImage:nil options:0];
+            }else{
+                self.rightIconV.image = [UIImage imageNamed:dataModel.rightImageName];
+            }
         }
     }
     

@@ -12,6 +12,7 @@
 @synthesize type = _type;
 @synthesize leftIconName = _leftIconName;
 @synthesize rightIconName = _rightIconName;
+@synthesize rightIconImage = _rightIconImage;
 @synthesize arrowIconName = _arrowIconName;
 @synthesize titleText = _titleText;
 @synthesize titleAttribute = _titleAttribute;
@@ -44,6 +45,7 @@
 
 @synthesize iconImageName = _iconImageName;
 @synthesize rightImageName = _rightImageName;
+@synthesize rightImageObj = _rightImageObj;
 @synthesize arrowImageName = _arrowImageName;
 @synthesize title = _title;
 @synthesize titleAttributeString = _titleAttributeString;
@@ -135,12 +137,24 @@
         __weak typeof(self) weakSelf = self;
         _rightIconName = ^(NSString *imageName){
             _rightImageName = imageName;
+            _rightImageObj = nil;
             return weakSelf;
         };
     }
     return _rightIconName;
 }
 
+- (IconImage)rightIconImage {
+    if (!_rightIconImage) {
+        __weak typeof(self) weakSelf = self;
+        _rightIconImage = ^(UIImage *image){
+            _rightImageObj = image;
+            _rightImageName = nil;
+            return weakSelf;
+        };
+    }
+    return _rightIconImage;
+}
 
 - (IconNameResource)arrowIconName {
     if (!_arrowIconName) {
