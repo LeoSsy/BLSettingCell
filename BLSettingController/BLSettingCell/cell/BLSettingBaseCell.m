@@ -94,6 +94,12 @@
     }
     if (dataModel.title) {
         self.titleL.text = dataModel.title;
+        self.titleL.textColor = self.dataModel.settingStyle.titleColor;
+        if (dataModel.settingStyle.titleFont) {
+            self.titleL.font = dataModel.settingStyle.titleFont;
+        }else if(dataModel.settingStyle.titleFontSize){
+            self.titleL.font = [UIFont systemFontOfSize:dataModel.settingStyle.titleFontSize];
+        }
     }else if (dataModel.titleAttributeString){
         self.titleL.attributedText = dataModel.titleAttributeString;
     }else{
@@ -102,14 +108,6 @@
     self.underline.hidden = !dataModel.isShowUnderLine;
     self.underline.backgroundColor = self.dataModel.settingStyle.underlineColor;
 
-    self.titleL.textColor = self.dataModel.settingStyle.titleColor;
-    
-    if (dataModel.settingStyle.titleFont) {
-         self.titleL.font = dataModel.settingStyle.titleFont;
-    }else if(dataModel.settingStyle.titleFontSize){
-         self.titleL.font = [UIFont systemFontOfSize:dataModel.settingStyle.titleFontSize];
-    }
-    
     if (dataModel.hintType == BLSettingNewFeatureHintTypeText) { //文本类型
         self.featureHintL.hidden = NO;
         self.redPointV.hidden = YES;
@@ -205,12 +203,12 @@
         make.width.mas_equalTo(0);
         make.height.mas_equalTo(0);
         make.left.equalTo(self.contentView).offset(self.dataModel.settingStyle.cellContentLeftMargin);
-        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight*0.5);
     }];
     
     [_titleL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconV.mas_right).offset(0);
-        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
+        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight*0.5);
     }];
     
     [_redPointV mas_makeConstraints:^(MASConstraintMaker *make) {

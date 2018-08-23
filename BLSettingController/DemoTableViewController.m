@@ -24,6 +24,25 @@
     
     __weak typeof(self) weakSelf = self;
     
+    //默认样式
+    BLSettingModel *md001 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
+    md001.cellH(120).cellClikedOperation(^(BLSettingModel *model) {
+        NSLog(@"%@", model.indexPath);
+        model.descTitle(@"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.descTitle(@"我是默认样式");
+            [weakSelf.tableView reloadData];
+        });
+    });
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:@"13544" attributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];
+    
+    md001.descAttribute(attr);
+    [self.datas addObject:md001];
+
+    
+    
+    
     //创建右侧图标类型
     BLSettingModel *model000 = [BLSettingFactory normalWithIcon:nil title:@"右侧辅助视图" rightIcon:@"kehu_icon_jilu2" showArrow:YES cellClickAction:^(BLSettingModel *model) {
         

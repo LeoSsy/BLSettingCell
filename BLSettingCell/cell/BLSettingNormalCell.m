@@ -50,7 +50,7 @@
     [super setFrameSubview];
     [_arrowV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
-        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
+        make.centerY.equalTo(self.titleL);
            CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
@@ -58,7 +58,7 @@
         
     [_descL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
-        make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight);
+        make.centerY.equalTo(self.titleL);
     }];
     
     [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -78,17 +78,18 @@
     //设置文字
     if (dataModel.detailTitle) {
         self.descL.text = dataModel.detailTitle;
+        if (dataModel.settingStyle.descFont) {
+            _descL.font = dataModel.settingStyle.descFont;
+        }else if(dataModel.settingStyle.descTitleFontSize){
+            _descL.font = [UIFont systemFontOfSize:dataModel.settingStyle.descFontSize];
+        }
+        _descL.textColor = dataModel.settingStyle.descColor;
     }else if (dataModel.detailAttributeString){
         self.descL.attributedText = dataModel.detailAttributeString;
     }else{
         self.descL.text = nil;
     }
-    if (dataModel.settingStyle.descFont) {
-        _descL.font = dataModel.settingStyle.descFont;
-    }else if(dataModel.settingStyle.descTitleFontSize){
-        _descL.font = [UIFont systemFontOfSize:dataModel.settingStyle.descFontSize];
-    }
-    _descL.textColor = dataModel.settingStyle.descColor;
+ 
 }
 
 /**
