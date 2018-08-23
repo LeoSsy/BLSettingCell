@@ -91,7 +91,6 @@
 
 - (void)textFieldDidChange:(NSNotification*)note{
     if (note.object == self.textField) {
-        NSLog(@"settingModel===%@",self.textField.settingModel.indexPath);
         if (self.textField.text.length > self.dataModel.textFieldStringMaxLength) {
             self.textField.text = [self.textField.text substringToIndex:self.dataModel.textFieldStringMaxLength];
             if (self.dataModel.textFieldTextMaxLengthOperation) {
