@@ -39,11 +39,13 @@ typedef BLSettingModel *(^CellSegumentOperation)(cellSegumentAction cellSegument
 typedef BLSettingModel *(^TextFieldTextMaxLength)(NSInteger maxLength);
 typedef BLSettingModel *(^TextFieldTextReachesMaxLengthAction)(textFieldTextReachesMaxLengthAction action);
 typedef BLSettingModel *(^TextFieldDidChangeAction)(textFieldDidChangeAction action);
+typedef BLSettingModel *(^TextFieldKeyboardType)(UIKeyboardType type);
 typedef BLSettingModel *(^NewFeatureHintType)(BLSettingNewFeatureHintType type);
 typedef BLSettingModel *(^SexAction)(sexAction action);
 typedef BLSettingModel *(^SexSelType)(BLSettingSexSelectType sexSelType);
 typedef BLSettingModel *(^SexViewDataConfig)(SexVDataConfig config);
 typedef BLSettingModel *(^SexViewLargeImageDataConfig)(SexLargeImageDataConfig config);
+typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 
 @interface BLSettingModel : NSObject
 ///====外部设置属性值=====
@@ -97,10 +99,14 @@ typedef BLSettingModel *(^SexViewLargeImageDataConfig)(SexLargeImageDataConfig c
 @property(nonatomic,copy, readonly)Text textFieldPlaceHolder;
 /**设置textField 展示文字*/
 @property(nonatomic,copy, readonly)Text textFieldText;
-/**设置textField 最大显示文字长度*/
+/**设置textField 最大显示文字长度 默认20个字符*/
 @property(nonatomic,copy, readonly)TextFieldTextMaxLength textFieldTextMaxLength;
 /**设置textField 是否可以编辑*/
 @property(nonatomic,copy, readonly)DisPlayStatus textFieldEnabled;
+/**设置textField 的键盘类型*/
+@property(nonatomic,copy, readonly)TextFieldKeyboardType textFieldKeyboardType;
+/**设置textField 的文字对齐方式 默认右对齐*/
+@property(nonatomic,copy, readonly)TextAlignmentMode textFieldTextAlignmentMode;
 
 #pragma mark 新版本或新功能提示相关属性设置
 /**设置新功能提醒类型*/
@@ -178,10 +184,14 @@ typedef BLSettingModel *(^SexViewLargeImageDataConfig)(SexLargeImageDataConfig c
 @property(nonatomic,strong, readonly)NSString *textFieldPlaceHolderText;
 /**获取textField 展示文字*/
 @property(nonatomic,strong, readonly)NSString *textFieldString;
-/**获取textField 最大显示文字长度*/
+/**获取textField 最大显示文字长度 默认20个字符*/
 @property(nonatomic,assign, readonly)NSInteger textFieldStringMaxLength;
 /**获取textField 是否禁用文本框输入功能*/
 @property(nonatomic,assign, readonly,getter=textFieldIsCanEditing)BOOL textFieldCanEditing;
+/**获取textField 的键盘类型*/
+@property(nonatomic,assign, readonly)UIKeyboardType textFieldKeyboardtype;
+/**获取textField 的文字对齐方式 默认右对齐*/
+@property(nonatomic,assign, readonly)NSTextAlignment textFieldTextAlignment;
 
 #pragma mark 新版本或新功能提示相关属性
 /**获取新功能提醒类型*/

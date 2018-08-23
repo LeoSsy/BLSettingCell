@@ -34,6 +34,8 @@
 @synthesize segumentOperation = _segumentOperation;
 @synthesize textFieldDidChangeAction = _textFieldDidChangeAction;
 @synthesize textFieldTextReachesMaxLengthAction = _textFieldTextReachesMaxLengthAction;
+@synthesize textFieldKeyboardType = _textFieldKeyboardType;
+@synthesize textFieldTextAlignmentMode = _textFieldTextAlignmentMode;
 @synthesize hintViewType = _hintViewType;
 @synthesize hintText = _hintText;
 @synthesize sexLeftViewData = _sexLeftViewData;
@@ -68,6 +70,8 @@
 @synthesize cellSegumentOperation = _cellSegumentOperation;
 @synthesize textFieldDidChangeOperation = _textFieldDidChangeOperation;
 @synthesize textFieldTextMaxLengthOperation = _textFieldTextMaxLengthOperation;
+@synthesize textFieldKeyboardtype = _textFieldKeyboardtype;
+@synthesize textFieldTextAlignment = _textFieldTextAlignment;
 @synthesize hintType = _hintType;
 @synthesize sexLeftNormalImage = _sexLeftNormalImage;
 @synthesize sexLeftSelectedImage = _sexLeftSelectedImage;
@@ -81,7 +85,7 @@
 + (instancetype)model {
     BLSettingModel *model = [[self alloc] init];
     model.style([BLSettingStyle style])
-    .showUnderLine(YES).cellH(44).textFieldEnabled(YES);
+    .showUnderLine(YES).cellH(44).textFieldEnabled(YES).textFieldTextMaxLength(20).textFieldTextAlignmentMode(NSTextAlignmentRight);
     return model;
 }
 
@@ -106,6 +110,8 @@
         _settingStyle = settingStyle?settingStyle:[BLSettingStyle style];
         _cellHeight = 44;
         _textFieldCanEditing = YES;
+        _textFieldStringMaxLength = 20;
+        _textFieldTextAlignment = NSTextAlignmentRight;
     }
     return self;
 }
@@ -392,6 +398,28 @@
     return _textFieldTextReachesMaxLengthAction;
 }
 
+- (TextFieldKeyboardType)textFieldKeyboardType {
+    if (!_textFieldKeyboardType) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldKeyboardType = ^(UIKeyboardType type){
+            _textFieldKeyboardtype = type;
+            return weakSelf;
+        };
+    }
+    return _textFieldKeyboardType;
+}
+
+- (TextAlignmentMode)textFieldTextAlignmentMode {
+    if (!_textFieldTextAlignmentMode) {
+        __weak typeof(self) weakSelf = self;
+        _textFieldTextAlignmentMode = ^(NSTextAlignment mode){
+            _textFieldTextAlignment = mode;
+            return weakSelf;
+        };
+    }
+    return _textFieldTextAlignmentMode;
+}
+
 - (NewFeatureHintType)hintViewType{
     if (!_hintViewType) {
         __weak typeof(self) weakSelf = self;
@@ -486,7 +514,6 @@
     }
     return _sexRightLargeImageData;
 }
-
 
 - (SexSelType)sexSelType {
     if (!_sexSelType) {

@@ -25,9 +25,10 @@
     [super buildSubview];
     _textField = [[UITextField alloc] init];
     _textField.borderStyle = UITextBorderStyleNone;
-    _textField.textAlignment = NSTextAlignmentRight;
+    _textField.textAlignment = self.dataModel.textFieldTextAlignment;
+    _textField.keyboardType = self.dataModel.textFieldKeyboardtype;
     [ self.contentView addSubview:_textField];
-        
+    
     //监听文字改变
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
 }
@@ -72,6 +73,10 @@
     }else if (dataModel.settingStyle.textFieldTextFontSize){
         self.textField.font = [UIFont systemFontOfSize:dataModel.settingStyle.textFieldFontSize];
     }
+    
+    //文字对齐方式和键盘类型
+    self.textField.textAlignment = self.dataModel.textFieldTextAlignment;
+    self.textField.keyboardType = self.dataModel.textFieldKeyboardtype;
     
     //文本框禁用
     self.textField.enabled = dataModel.textFieldCanEditing;
