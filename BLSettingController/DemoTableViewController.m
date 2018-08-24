@@ -109,7 +109,7 @@
     .cellH(120)
     .sexAction(^(BLSettingModel *model, BLSettingSexSelectType sexSelType) {
         NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
-    }).style(style00);
+    }).style(style00).sexSelType(BLSettingSexSelectTypeLeft);
     [self.datas addObject:model00];
     
     //创建性别大图选择类型cell

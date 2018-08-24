@@ -13,7 +13,6 @@
 @interface BLSettingSexLargeImageCell()
 @property(nonatomic,strong)UIButton *leftBtn;
 @property(nonatomic,strong)UIButton *rightBtn;
-@property(nonatomic,strong)UIButton *lastBtn;
 @end
 
 @implementation BLSettingSexLargeImageCell
@@ -33,9 +32,13 @@
 }
 
 - (void)sexBtnClick:(UIButton*)btn{
-    self.lastBtn.selected = NO;
-    btn.selected = YES;
-    self.lastBtn = btn;
+    if (btn == self.leftBtn) {
+        self.leftBtn.selected = YES;
+        self.rightBtn.selected = NO;
+    }else{
+        self.leftBtn.selected = NO;
+        self.rightBtn.selected = YES;
+    }
     if (self.dataModel.sexOperation) {
         self.dataModel.sexSelType((btn==self.leftBtn)?BLSettingSexSelectTypeLeft:BLSettingSexSelectTypeRight);
         self.dataModel.sexOperation(self.dataModel,self.dataModel.sexSelectType);

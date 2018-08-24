@@ -13,7 +13,6 @@
 @interface BLSettingSexCell()
 @property(nonatomic,strong)UIButton *sexBtn1;
 @property(nonatomic,strong)UIButton *sexBtn2;
-@property(nonatomic,strong)UIButton *lastBtn;
 @end
 
 @implementation BLSettingSexCell
@@ -37,9 +36,13 @@
 }
 
 - (void)sexBtnClick:(UIButton*)btn{
-    self.lastBtn.selected = NO;
-    btn.selected = YES;
-    self.lastBtn = btn;
+    if (btn == self.sexBtn1) {
+        self.sexBtn1.selected = YES;
+        self.sexBtn2.selected = NO;
+    }else{
+        self.sexBtn1.selected = NO;
+        self.sexBtn2.selected = YES;
+    }
     if (self.dataModel.sexOperation) {
         self.dataModel.sexSelType((btn==self.sexBtn1)?BLSettingSexSelectTypeLeft:BLSettingSexSelectTypeRight);
         self.dataModel.sexOperation(self.dataModel,self.dataModel.sexSelectType);
