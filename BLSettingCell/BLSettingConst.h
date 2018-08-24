@@ -32,6 +32,7 @@ typedef NS_ENUM(NSUInteger, BLSettingNewFeatureHintType) {//cell新功能提示�
 };
 
 typedef NS_ENUM(NSUInteger, BLSettingSexSelectType) {//性别选中类型
+    BLSettingSexSelectTypeNone, //默认不选中任何按钮
     BLSettingSexSelectTypeLeft, //选择了左边的按钮
     BLSettingSexSelectTypeRight,//选择了右边的按钮
 };

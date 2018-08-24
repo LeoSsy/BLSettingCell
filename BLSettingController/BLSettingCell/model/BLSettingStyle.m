@@ -55,6 +55,10 @@
 @synthesize sexLeftViewStyle = _sexLeftViewStyle;
 @synthesize sexRightViewStyle = _sexRightViewStyle;
 @synthesize sexLargeImageBothMargin = _sexLargeImageBothMargin;
+@synthesize leftTitleSpaceToLeftIconMargin = _leftTitleSpaceToLeftIconMargin;
+@synthesize rightDescSpaceToRightArrowMargin = _rightDescSpaceToRightArrowMargin;
+@synthesize rightIconSpaceToRightArrowMargin = _rightIconSpaceToRightArrowMargin;
+@synthesize avaterTitleSpaceToDescTitleMargin = _avaterTitleSpaceToDescTitleMargin;
 
 @synthesize cellContentLeftMargin = _cellContentLeftMargin;
 @synthesize cellContentRightMargin = _cellContentRightMargin;
@@ -103,6 +107,11 @@
 @synthesize sexLeftViewWidth = _sexLeftViewWidth;
 @synthesize sexRightViewWidth = _sexRightViewWidth;
 @synthesize sexLargeImageMargin = _sexLargeImageMargin;
+@synthesize leftTitleToLeftIconMargin = _leftTitleToLeftIconMargin;
+@synthesize rightDescToRightArrowMargin = _rightDescToRightArrowMargin;
+@synthesize rightIconToRightArrowMargin = _rightIconToRightArrowMargin;
+@synthesize avaterTitleToDescTitleMargin = _avaterTitleToDescTitleMargin;
+
 
 + (BLSettingStyle*)style {
     return [[BLSettingStyle alloc] init];
@@ -202,7 +211,7 @@
     
 }
 
-- (Height)contentLeftMargin {
+- (SettingSize)contentLeftMargin {
     if (!_contentLeftMargin) {
         __weak typeof(self) weakSelf = self;
         _contentLeftMargin = ^(CGFloat size){
@@ -213,7 +222,7 @@
     return _contentLeftMargin;
 }
 
-- (Height)contentRightMargin {
+- (SettingSize)contentRightMargin {
     if (!_contentRightMargin) {
         __weak typeof(self) weakSelf = self;
         _contentRightMargin = ^(CGFloat size){
@@ -350,7 +359,7 @@
     return _bottomLineColor;
 }
 
-- (Height)bottomLineHeight {
+- (SettingSize)bottomLineHeight {
     if (!_bottomLineHeight) {
         __weak typeof(self) weakSelf = self;
         _bottomLineHeight = ^(CGFloat height){
@@ -372,7 +381,7 @@
     return _redPointColor;
 }
 
-- (Height)redPointSize {
+- (SettingSize)redPointSize {
     if (!_redPointSize) {
         __weak typeof(self) weakSelf = self;
         _redPointSize = ^(CGFloat height){
@@ -665,7 +674,7 @@
     return _sexRightViewStyle;
 }
 
-- (Height)sexLargeImageBothMargin {
+- (SettingSize)sexLargeImageBothMargin {
     if (!_sexLargeImageBothMargin) {
         __weak typeof(self) weakSelf = self;
         _sexLargeImageBothMargin = ^(CGFloat margin){
@@ -674,6 +683,50 @@
         };
     }
     return _sexLargeImageBothMargin;
+}
+
+- (SettingSize)leftTitleSpaceToLeftIconMargin {
+    if (!_leftTitleSpaceToLeftIconMargin) {
+        __weak typeof(self) weakSelf = self;
+        _leftTitleSpaceToLeftIconMargin = ^(CGFloat margin){
+            _leftTitleToLeftIconMargin = margin;
+            return weakSelf;
+        };
+    }
+    return _leftTitleSpaceToLeftIconMargin;
+}
+
+- (SettingSize)rightDescSpaceToRightArrowMargin {
+    if (!_rightDescSpaceToRightArrowMargin) {
+        __weak typeof(self) weakSelf = self;
+        _rightDescSpaceToRightArrowMargin = ^(CGFloat margin){
+            _rightDescToRightArrowMargin = margin;
+            return weakSelf;
+        };
+    }
+    return _rightDescSpaceToRightArrowMargin;
+}
+
+- (SettingSize)rightIconSpaceToRightArrowMargin {
+    if (!_rightIconSpaceToRightArrowMargin) {
+        __weak typeof(self) weakSelf = self;
+        _rightIconSpaceToRightArrowMargin = ^(CGFloat margin){
+            _rightIconToRightArrowMargin = margin;
+            return weakSelf;
+        };
+    }
+    return _rightIconSpaceToRightArrowMargin;
+}
+
+- (SettingSize)avaterTitleSpaceToDescTitleMargin {
+    if (!_avaterTitleSpaceToDescTitleMargin) {
+        __weak typeof(self) weakSelf = self;
+        _avaterTitleSpaceToDescTitleMargin = ^(CGFloat margin){
+            _avaterTitleToDescTitleMargin = margin;
+            return weakSelf;
+        };
+    }
+    return _avaterTitleSpaceToDescTitleMargin;
 }
 
 @end

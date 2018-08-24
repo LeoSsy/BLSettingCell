@@ -49,7 +49,7 @@
 - (void)setFrameSubview {
     [super setFrameSubview];
     [_arrowV mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
+            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
         make.centerY.equalTo(self.titleL);
            CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
             make.width.mas_equalTo(width);
@@ -113,16 +113,19 @@
             height = self.arrowName.size.height;
         }
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
         }];
         
+        CGFloat margin = self.dataModel.settingStyle.rightDescToRightArrowMargin > 0 ? self.dataModel.settingStyle.rightDescToRightArrowMargin : BLSettingBaseMargin;
         [_descL mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
+            make.right.equalTo(self.arrowV.mas_left).offset(-margin);
         }];
     }else{
         _arrowV.hidden = YES;
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
             make.width.height.mas_equalTo(0);
         }];
         

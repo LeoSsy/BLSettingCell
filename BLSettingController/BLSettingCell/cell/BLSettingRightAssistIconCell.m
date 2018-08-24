@@ -32,11 +32,6 @@
     
     _arrowV = [[UIImageView alloc] initWithImage:[BLSettingFactory bundleForArrowIcon]];
     [ self.contentView addSubview:_arrowV];
-    
-    //判断是否有点击事件
-    if (self.dataModel.cellClickOperation) {
-        [self.contentView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellClicked)]];
-    }
 }
 
 /**
@@ -45,7 +40,7 @@
 - (void)setFrameSubview {
     [super setFrameSubview];
     [_arrowV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
         make.centerY.equalTo(self.titleL);
         CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
         make.width.mas_equalTo(width);
@@ -70,23 +65,24 @@
     if (!dataModel)  return;
     
     [super configModel:dataModel];
-    
-    //清空数据
-    self.rightIconV.image = nil;
-    
-    //设置数据
+    //设置右侧图标
     if (dataModel.rightImageObj) {
         self.rightIconV.image = dataModel.rightImageObj;
-    }else{
-        if (dataModel.rightImageName) {
-            if ([dataModel.rightImageName hasPrefix:@"http://"] || [dataModel.rightImageName hasPrefix:@"https://"] ) {
-                [self.rightIconV sd_setImageWithURL:[NSURL URLWithString:dataModel.rightImageName] placeholderImage:nil options:0];
-            }else{
-                self.rightIconV.image = [UIImage imageNamed:dataModel.rightImageName];
-            }
+    }else if (dataModel.rightImageName){
+        if ([dataModel.rightImageName hasPrefix:@"http://"] || [dataModel.rightImageName hasPrefix:@"https://"] ) {
+            [self.rightIconV sd_setImageWithURL:[NSURL URLWithString:dataModel.rightImageName] placeholderImage:nil options:0];
+        }else{
+            self.rightIconV.image = [UIImage imageNamed:dataModel.rightImageName];
         }
+    }else if (dataModel.rightNormalImageName || dataModel.rightSelectedImageName){
+        if (dataModel.cellSelected) {
+            self.rightIconV.image = [UIImage imageNamed:dataModel.rightSelectedImageName];
+        }else{
+            self.rightIconV.image = [UIImage imageNamed:dataModel.rightNormalImageName];
+        }
+    }else{
+        self.rightIconV.image = nil;
     }
-    
     //箭头设置
     self.showArrow = dataModel.isShowArrow;
 }
@@ -109,16 +105,19 @@
         _arrowV.hidden = NO;
         CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
         }];
         
+        CGFloat margin = self.dataModel.settingStyle.rightIconToRightArrowMargin > 0 ? self.dataModel.settingStyle.rightIconToRightArrowMargin : BLSettingBaseMargin;
         [_rightIconV mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
+            make.right.equalTo(self.arrowV.mas_left).offset(-margin);
         }];
     }else{
         _arrowV.hidden = YES;
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
             make.width.height.mas_equalTo(0);
         }];
         
@@ -133,9 +132,14 @@
  cell被点击了
  */
 - (void)cellClicked {
-    if (!self.dataModel) return;
-    if (self.dataModel.cellClickOperation) {
-        self.dataModel.cellClickOperation(self.dataModel);
+    [super cellClicked];
+    //设置图标状态
+    if (self.dataModel.rightNormalImageName || self.dataModel.rightSelectedImageName){
+        if (self.dataModel.cellSelected) {
+            self.rightIconV.image = [UIImage imageNamed:self.dataModel.rightSelectedImageName];
+        }else{
+            self.rightIconV.image = [UIImage imageNamed:self.dataModel.rightNormalImageName];
+        }
     }
 }
 @end

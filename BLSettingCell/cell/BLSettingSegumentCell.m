@@ -37,7 +37,7 @@
     [super setFrameSubview];
     
     [_segumentV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
         make.centerY.equalTo(self.titleL);
         make.height.equalTo(self.contentView.mas_height).multipliedBy(0.5);
     }];
@@ -81,18 +81,22 @@
     
     if (dataModel.settingStyle.segItemW) {
         [_segumentV mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
+            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
             make.centerY.equalTo(self.contentView);
             make.width.mas_equalTo(dataModel.settingStyle.segItemW*dataModel.segumentTitleArr.count);
             make.height.equalTo(self.contentView.mas_height).multipliedBy(0.5);
         }];
     }else{
         [_segumentV mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
+            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
             make.centerY.equalTo(self.contentView);
             make.height.equalTo(self.contentView.mas_height).multipliedBy(0.5);
         }];
     }
+    
+    [_segumentV mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
+    }];
 }
 
 - (void)clearSegumentRadius {

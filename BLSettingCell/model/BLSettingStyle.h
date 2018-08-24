@@ -17,7 +17,7 @@ typedef BLSettingStyle *(^AddRadius)(CGFloat radius);
 typedef BLSettingStyle *(^TextFont)(UIFont * font);
 typedef BLSettingStyle *(^TextFontSize)(CGFloat size);
 typedef BLSettingStyle *(^PresentColor)(UIColor* color);
-typedef BLSettingStyle *(^Height)(CGFloat size);
+typedef BLSettingStyle *(^SettingSize)(CGFloat size);
 typedef BLSettingStyle *(^SpaceToSuperViewLRMargin)(UIEdgeInsets insets);
 typedef BLSettingStyle *(^ViewTextStyleDictionary)(NSDictionary * attributedDict);
 typedef BLSettingStyle *(^TextFieldText)(NSString* text);
@@ -34,16 +34,16 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 
 #pragma mark 通用属性设置
 /**设置内容距离cell左边的间距*/
-@property (nonatomic,copy, readonly) Height contentLeftMargin;
+@property (nonatomic,copy, readonly) SettingSize contentLeftMargin;
 /**设置内容距离cell右边的间距*/
-@property (nonatomic,copy, readonly) Height contentRightMargin;
+@property (nonatomic,copy, readonly) SettingSize contentRightMargin;
 /**设置左侧图标尺寸*/
 @property (nonatomic,copy, readonly) IconSize leftImageSize;
 /**设置右侧图标尺寸*/
 @property (nonatomic,copy, readonly) IconSize rightImageSize;
-/**设置左侧图标是否需要圆角效果*/
+/**设置左侧图标圆角大小*/
 @property (nonatomic,copy, readonly) AddRadius addLeftIconRadius;
-/**设置右侧图标是否需要圆角效果*/
+/**设置右侧图标圆角大小*/
 @property (nonatomic,copy, readonly) AddRadius addRightIconRadius;
 /**设置标题文字大小*/
 @property (nonatomic,copy, readonly) TextFont leftTitleFont;
@@ -58,11 +58,19 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 /**设置下划线颜色*/
 @property (nonatomic,copy, readonly) PresentColor bottomLineColor;
 /**设置下划线高度*/
-@property (nonatomic,copy, readonly) Height bottomLineHeight ;
+@property (nonatomic,copy, readonly) SettingSize bottomLineHeight ;
 /**设置箭头图标尺寸*/
 @property (nonatomic,copy, readonly) IconSize arrowIconSize;
 /**设置下划线左右间距 上下值设置无效*/
 @property (nonatomic,copy, readonly) SpaceToSuperViewLRMargin bottomLineEdgeInsets;
+/**设置左侧标题距离左侧图标的间距*/
+@property (nonatomic,copy, readonly) SettingSize leftTitleSpaceToLeftIconMargin;
+/**设置右侧详情标题距离右侧箭头的间距*/
+@property (nonatomic,copy, readonly) SettingSize rightDescSpaceToRightArrowMargin;
+/**设置右侧图标距离右侧箭头的间距*/
+@property (nonatomic,copy, readonly) SettingSize rightIconSpaceToRightArrowMargin;
+/**设置个人资料类型cell的上边标题距离下边描述标题的间距*/
+@property (nonatomic,copy, readonly) SettingSize avaterTitleSpaceToDescTitleMargin;
 
 #pragma mark 开关类型cell相关属性设置
 /**设置开关开启的颜色*/
@@ -100,7 +108,7 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 /**设置小红点颜色*/
 @property (nonatomic,copy, readonly) PresentColor redPointColor;
 /**设置小红点大小*/
-@property (nonatomic,copy, readonly) Height redPointSize;
+@property (nonatomic,copy, readonly) SettingSize redPointSize;
 /**设置提示文字字体*/
 @property(nonatomic,copy, readonly)TextFont hintTextFont;
 /**设置提示文字字体大小*/
@@ -123,7 +131,7 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 
 #pragma mark 性别类型大图选择cell相关属性
 /**设置大图按钮之间的间距*/
-@property(nonatomic,copy, readonly)Height sexLargeImageBothMargin;
+@property(nonatomic,copy, readonly)SettingSize sexLargeImageBothMargin;
 
 ///====外部获取属性值======
 
@@ -158,6 +166,14 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 @property(nonatomic,assign, readonly)CGSize arrowSize;
 /**获取下划线左右间距 上下值设置无效*/
 @property(nonatomic,assign, readonly)UIEdgeInsets cellLineEdgeInsets;
+/**获取左侧标题距离左侧图标的间距*/
+@property (nonatomic,assign, readonly) CGFloat leftTitleToLeftIconMargin;
+/**获取右侧详情标题距离右侧箭头的间距*/
+@property (nonatomic,assign, readonly) CGFloat rightDescToRightArrowMargin;
+/**获取右侧图标距离右侧箭头的间距*/
+@property (nonatomic,assign, readonly) CGFloat rightIconToRightArrowMargin;
+/**设置个人资料类型cell的上边标题距离下边描述标题的间距*/
+@property (nonatomic,assign, readonly) CGFloat avaterTitleToDescTitleMargin;
 
 #pragma mark 开关类型cell相关属性
 /**获取开关开启的颜色*/

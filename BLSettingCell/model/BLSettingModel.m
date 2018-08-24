@@ -11,8 +11,11 @@
 @implementation BLSettingModel
 @synthesize type = _type;
 @synthesize leftIconName = _leftIconName;
+@synthesize leftIconImage = _leftIconImage;
+@synthesize leftIconNormalSelImageName = _leftIconNormalSelImageName;
 @synthesize rightIconName = _rightIconName;
 @synthesize rightIconImage = _rightIconImage;
+@synthesize rightIconNormalSelImageName = _rightIconNormalSelImageName;
 @synthesize arrowIconName = _arrowIconName;
 @synthesize titleText = _titleText;
 @synthesize titleAttribute = _titleAttribute;
@@ -45,9 +48,14 @@
 @synthesize sexSelType = _sexSelType;
 @synthesize sexAction = _sexAction;
 
-@synthesize iconImageName = _iconImageName;
+@synthesize leftImageName = _leftImageName;
+@synthesize leftImageObj = _leftImageObj;
+@synthesize leftNormalImageName = _leftNormalImageName;
+@synthesize leftSelectedImageName = _leftSelectedImageName;
 @synthesize rightImageName = _rightImageName;
 @synthesize rightImageObj = _rightImageObj;
+@synthesize rightNormalImageName = _rightNormalImageName;
+@synthesize rightSelectedImageName = _rightSelectedImageName;
 @synthesize arrowImageName = _arrowImageName;
 @synthesize title = _title;
 @synthesize titleAttributeString = _titleAttributeString;
@@ -98,7 +106,7 @@
 - (instancetype)initWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle cellType:(BLSettingCellType)cellType segumentTitleArr:(NSArray*)segumentTitlesArr selectIndex:(NSInteger)selectIndex isShowArrow:(BOOL)isShowArrow switchIsOn:(BOOL)switchIsOn rightIcon:(NSString*)rightIconName settingStyle:(BLSettingStyle*)settingStyle {
     if (self = [super init]) {
         _isShowUnderLine = YES;
-        _iconImageName = (iconName ==nil || [iconName isEqualToString:@""]) ? nil : iconName;
+        _leftImageName = (iconName ==nil || [iconName isEqualToString:@""]) ? nil : iconName;
         _title =title;
         _cellType = cellType;
         _detailTitle = detailTitle;
@@ -131,11 +139,50 @@
     if (!_leftIconName) {
         __weak typeof(self) weakSelf = self;
         _leftIconName = ^(NSString *imageName){
-            _iconImageName = imageName;
+            _leftImageName = imageName;
+            _leftImageObj = nil;
+            _leftNormalImageName = nil;
+            _leftSelectedImageName = nil;
             return weakSelf;
         };
     }
     return _leftIconName;
+}
+
+- (IconImage)leftIconImage {
+    if (!_leftIconImage) {
+        __weak typeof(self) weakSelf = self;
+        _leftIconImage = ^(UIImage *image){
+            _leftImageObj = image;
+            _leftImageName = nil;
+            _leftNormalImageName = nil;
+            _leftSelectedImageName = nil;
+            return weakSelf;
+        };
+    }
+    return _leftIconImage;
+}
+
+- (SexViewLargeImageDataConfig)leftIconNormalSelImageName {
+    if (!_leftIconNormalSelImageName) {
+        __weak typeof(self) weakSelf = self;
+        _leftIconNormalSelImageName = ^(SexLargeImageDataConfig config){
+            NSString *sexNormalImage;
+            NSString *sexSelectedImage;
+            if (config) {
+                config(&sexNormalImage,&sexSelectedImage);
+                if (sexNormalImage) {
+                    _leftNormalImageName = sexNormalImage;
+                    //清空之前设置的左边的图片
+                    _leftImageName = nil;
+                    _leftImageObj = nil;
+                };
+                if (sexSelectedImage) _leftSelectedImageName = sexSelectedImage;
+            }
+            return weakSelf;
+        };
+    }
+    return _leftIconNormalSelImageName;
 }
 
 - (IconNameResource)rightIconName {
@@ -144,6 +191,8 @@
         _rightIconName = ^(NSString *imageName){
             _rightImageName = imageName;
             _rightImageObj = nil;
+            _rightNormalImageName = nil;
+            _leftSelectedImageName = nil;
             return weakSelf;
         };
     }
@@ -156,10 +205,34 @@
         _rightIconImage = ^(UIImage *image){
             _rightImageObj = image;
             _rightImageName = nil;
+            _rightNormalImageName = nil;
+            _leftSelectedImageName = nil;
             return weakSelf;
         };
     }
     return _rightIconImage;
+}
+
+- (SexViewLargeImageDataConfig)rightIconNormalSelImageName {
+    if (!_rightIconNormalSelImageName) {
+        __weak typeof(self) weakSelf = self;
+        _rightIconNormalSelImageName = ^(SexLargeImageDataConfig config){
+            NSString *normalImage;
+            NSString *selectedImage;
+            if (config) {
+                config(&normalImage,&selectedImage);
+                if (normalImage) {
+                    _rightNormalImageName = normalImage;
+                    //清空之前设置的左边的图片
+                    _rightImageName = nil;
+                    _rightImageObj = nil;
+                };
+                if (selectedImage) _rightSelectedImageName = selectedImage;
+            }
+            return weakSelf;
+        };
+    }
+    return _rightIconNormalSelImageName;
 }
 
 - (IconNameResource)arrowIconName {

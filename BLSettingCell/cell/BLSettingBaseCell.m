@@ -82,16 +82,29 @@
 - (void)configModel:(BLSettingModel *)dataModel{
     if (!dataModel)  return;
     self.dataModel = dataModel;
-    if (dataModel.iconImageName) {    //设置左侧图标
+     //设置左侧图标
+    if (dataModel.leftImageObj) {
+        self.iconV.image = dataModel.leftImageObj;
         self.showIcon = YES;
-        if ([dataModel.iconImageName hasPrefix:@"http://"] || [dataModel.iconImageName hasPrefix:@"https://"] ) {
-            [self.iconV sd_setImageWithURL:[NSURL URLWithString:dataModel.iconImageName] placeholderImage:nil options:0];
+    }else if (dataModel.leftImageName){
+        self.showIcon = YES;
+        if ([dataModel.leftImageName hasPrefix:@"http://"] || [dataModel.leftImageName hasPrefix:@"https://"] ) {
+            [self.iconV sd_setImageWithURL:[NSURL URLWithString:dataModel.leftImageName] placeholderImage:nil options:0];
         }else{
-            self.iconV.image = [UIImage imageNamed:dataModel.iconImageName];
+            self.iconV.image = [UIImage imageNamed:dataModel.leftImageName];
+        }
+    }else if (dataModel.leftNormalImageName || dataModel.leftSelectedImageName){
+        self.showIcon = YES;
+        if (dataModel.cellSelected) {
+            self.iconV.image = [UIImage imageNamed:dataModel.leftSelectedImageName];
+        }else{
+            self.iconV.image = [UIImage imageNamed:dataModel.leftNormalImageName];
         }
     }else{
+        self.iconV.image = nil;
         self.showIcon = NO;
     }
+
     if (dataModel.title) {
         self.titleL.text = dataModel.title;
         self.titleL.textColor = self.dataModel.settingStyle.titleColor;
@@ -116,6 +129,11 @@
         self.featureHintL.font = self.dataModel.settingStyle.hintFont;
         self.featureHintL.text = self.dataModel.hintString;
         self.featureHintL.layer.cornerRadius = self.dataModel.settingStyle.hintVRadius;
+        self.featureHintL.layer.masksToBounds = YES;
+        [_featureHintL mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(self.dataModel.settingStyle.hintViewWH.width);
+            make.height.mas_equalTo(self.dataModel.settingStyle.hintViewWH.height);
+        }];
     }else if (dataModel.hintType == BLSettingNewFeatureHintTypeTextRedDot){//小红点类型
         self.featureHintL.hidden = YES;
         self.redPointV.hidden = NO;
@@ -138,15 +156,18 @@
             self.iconV.layer.cornerRadius = self.dataModel.settingStyle.leftIconRadius;
         }
         [self.iconV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).offset(self.dataModel.settingStyle.cellContentLeftMargin);
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
         }];
+        CGFloat margin = self.dataModel.settingStyle.leftTitleToLeftIconMargin > 0 ? self.dataModel.settingStyle.leftTitleToLeftIconMargin : BLSettingBaseMargin;
         [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.iconV.mas_right).offset(BLSettingBaseMargin);
+            make.left.equalTo(self.iconV.mas_right).offset(margin);
         }];
     }else{
         self.iconV.hidden = YES;
         [self.iconV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).offset(self.dataModel.settingStyle.cellContentLeftMargin);
             make.width.mas_equalTo(0);
             make.height.mas_equalTo(0);
         }];
@@ -244,6 +265,16 @@
     if (!self.dataModel) return;
     if (self.dataModel.cellClickOperation) {
         self.dataModel.cellClickOperation(self.dataModel);
+    }
+    self.dataModel.cellSelected = !self.dataModel.cellSelected;
+    //设置图标状态
+    if (self.dataModel.leftNormalImageName || self.dataModel.leftSelectedImageName){
+        self.showIcon = YES;
+        if (self.dataModel.cellSelected) {
+            self.iconV.image = [UIImage imageNamed:self.dataModel.leftSelectedImageName];
+        }else{
+            self.iconV.image = [UIImage imageNamed:self.dataModel.leftNormalImageName];
+        }
     }
 }
 

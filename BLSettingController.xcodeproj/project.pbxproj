@@ -23,6 +23,7 @@
 		048CD6DC212E44B100B3D499 /* BLSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6CF212E44B100B3D499 /* BLSettingModel.m */; };
 		048CD6DD212E44B100B3D499 /* BLSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6D1212E44B100B3D499 /* BLSettingGroup.m */; };
 		048CD6E0212E455400B3D499 /* UITextField+BLSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CD6DF212E455400B3D499 /* UITextField+BLSettingCell.m */; };
+		049B26B3212FA25000385A6F /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 049B26B2212FA25000385A6F /* YYFPSLabel.m */; };
 		04BE0B1A211149690054E43E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE0B19211149690054E43E /* AppDelegate.m */; };
 		04BE0B22211149690054E43E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BE0B21211149690054E43E /* Assets.xcassets */; };
 		04BE0B25211149690054E43E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BE0B23211149690054E43E /* LaunchScreen.storyboard */; };
@@ -87,6 +88,8 @@
 		048CD6D1212E44B100B3D499 /* BLSettingGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingGroup.m; sourceTree = "<group>"; };
 		048CD6DE212E455400B3D499 /* UITextField+BLSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+BLSettingCell.h"; sourceTree = "<group>"; };
 		048CD6DF212E455400B3D499 /* UITextField+BLSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BLSettingCell.m"; sourceTree = "<group>"; };
+		049B26B1212FA25000385A6F /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		049B26B2212FA25000385A6F /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		04BE0B15211149690054E43E /* BLSettingController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLSettingController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BE0B18211149690054E43E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04BE0B19211149690054E43E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 				04BE0B7921129BD80054E43E /* DemoGroupTableViewController.m */,
 				04BE0B7821129BD80054E43E /* DemoTableViewController.h */,
 				04BE0B7B21129BD80054E43E /* DemoTableViewController.m */,
+				049B26B1212FA25000385A6F /* YYFPSLabel.h */,
+				049B26B2212FA25000385A6F /* YYFPSLabel.m */,
 				04BE0B7E21129BE50054E43E /* Main.storyboard */,
 				04BE0B21211149690054E43E /* Assets.xcassets */,
 				04BE0B23211149690054E43E /* LaunchScreen.storyboard */,
@@ -489,6 +494,7 @@
 				048CD6D3212E44B100B3D499 /* BLSettingSexLargeImageCell.m in Sources */,
 				04669DC92113E4E800BFA20A /* BLSettingFactory.m in Sources */,
 				04BE0B7D21129BD80054E43E /* DemoTableViewController.m in Sources */,
+				049B26B3212FA25000385A6F /* YYFPSLabel.m in Sources */,
 				048CD6D7212E44B100B3D499 /* BLSettingNormalCell.m in Sources */,
 				048CD6D2212E44B100B3D499 /* BLSettingSwitchCell.m in Sources */,
 				048CD6D8212E44B100B3D499 /* BLSettingRightTextFieldCell.m in Sources */,

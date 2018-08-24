@@ -66,11 +66,13 @@
     
     if (dataModel.sexSelectType == BLSettingSexSelectTypeLeft) {
         [self sexBtnClick:self.leftBtn];
-    }else{
+    }else if (dataModel.sexSelectType == BLSettingSexSelectTypeRight) {
         [self sexBtnClick:self.rightBtn];
+    }else{
+        self.leftBtn.selected = NO;
+        self.rightBtn.selected = NO;
     }
 }
-
 - (void)setFrameSubview {
     [super setFrameSubview];
     

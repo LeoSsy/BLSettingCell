@@ -33,7 +33,7 @@
 - (void)setFrameSubview {
     [super setFrameSubview];
     [_switchV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin*0.35);
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin*0.35);
         make.centerY.equalTo(self.titleL);
         make.width.mas_equalTo(BLSettingBaseSwitchW);
     }];
@@ -48,6 +48,9 @@
     [super configModel:dataModel];
     [self.switchV setOn:dataModel.switchIsOn];
     _switchV.onTintColor = self.dataModel.settingStyle.switchOnTintColor;
+    [_switchV mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin*0.35);
+    }];
 }
 
 #pragma mark event

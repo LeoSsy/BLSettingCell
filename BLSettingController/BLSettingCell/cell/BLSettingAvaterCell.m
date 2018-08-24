@@ -50,7 +50,7 @@
 - (void)setFrameSubview {
     [super setFrameSubview];
     [_arrowV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
         make.centerY.equalTo(self.contentView).offset(-self.dataModel.settingStyle.underlineHeight*0.5);
         CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
         make.width.mas_equalTo(width);
@@ -80,14 +80,16 @@
         make.height.mas_equalTo(height);
     }];
     
+    CGFloat margin = self.dataModel.settingStyle.avaterTitleToDescTitleMargin > 0 ? self.dataModel.settingStyle.avaterTitleToDescTitleMargin : 8;
+    
     [self.titleL mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconV.mas_right).offset(BLSettingBaseMargin);
         make.height.mas_equalTo(self.titleL.font.pointSize+2);
-        make.bottom.equalTo(self.contentView.mas_centerY).offset(-4);
+        make.bottom.equalTo(self.contentView.mas_centerY).offset(-margin*0.5);
     }];
     
     [_descL mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.mas_centerY).offset(4);
+        make.top.equalTo(self.contentView.mas_centerY).offset(margin*0.5);
         make.left.equalTo(self.titleL);
     }];
 }
@@ -100,12 +102,17 @@
     if (!dataModel)  return;
     
     self.showArrow = dataModel.isShowArrow;
-    
     self.underline.hidden = !dataModel.isShowUnderLine;
     self.underline.backgroundColor = self.dataModel.settingStyle.underlineColor;
 
     if (dataModel.title) {
         self.titleL.text = dataModel.title;
+        if (dataModel.settingStyle.titleFont) {
+            self.titleL.font = dataModel.settingStyle.titleFont;
+        }else if(dataModel.settingStyle.titleFontSize){
+            self.titleL.font = [UIFont systemFontOfSize:dataModel.settingStyle.titleFontSize];
+        }
+        self.titleL.textColor = dataModel.settingStyle.titleColor;
     }else if (dataModel.titleAttributeString){
         self.titleL.attributedText = dataModel.titleAttributeString;
     }else{
@@ -114,30 +121,24 @@
     
     if (dataModel.detailTitle) {
         self.descL.text = dataModel.detailTitle;
+        if (dataModel.settingStyle.descFont) {
+            _descL.font = dataModel.settingStyle.descFont;
+        }else if(dataModel.settingStyle.descTitleFontSize){
+            _descL.font = [UIFont systemFontOfSize:dataModel.settingStyle.descFontSize];
+        }
+        _descL.textColor = dataModel.settingStyle.descColor;
     }else if (dataModel.detailAttributeString){
         self.descL.attributedText = dataModel.detailAttributeString;
     }else{
         self.descL.text = nil;
     }
     
-    if (dataModel.settingStyle.titleFont) {
-        _descL.font = dataModel.settingStyle.titleFont;
-    }else if(dataModel.settingStyle.titleFontSize){
-        _descL.font = [UIFont systemFontOfSize:dataModel.settingStyle.titleFontSize];
-    }
-    
-    if (dataModel.settingStyle.descFont) {
-        _descL.font = dataModel.settingStyle.descFont;
-    }else if(dataModel.settingStyle.descTitleFontSize){
-        _descL.font = [UIFont systemFontOfSize:dataModel.settingStyle.descFontSize];
-    }
-    
-    if (self.dataModel.iconImageName) {    //设置左侧图标
+    if (self.dataModel.leftImageName) {    //设置左侧图标
         self.showIcon = YES;
-        if ([self.dataModel.iconImageName hasPrefix:@"http://"] || [self.dataModel.iconImageName hasPrefix:@"https://"] ) {
-            [self.iconV sd_setImageWithURL:[NSURL URLWithString:self.dataModel.iconImageName] placeholderImage:nil options:0];
+        if ([self.dataModel.leftImageName hasPrefix:@"http://"] || [self.dataModel.leftImageName hasPrefix:@"https://"] ) {
+            [self.iconV sd_setImageWithURL:[NSURL URLWithString:self.dataModel.leftImageName] placeholderImage:nil options:0];
         }else{
-            self.iconV.image = [UIImage imageNamed:self.dataModel.iconImageName];
+            self.iconV.image = [UIImage imageNamed:self.dataModel.leftImageName];
         }
     }else{
         self.showIcon = NO;
@@ -170,15 +171,19 @@
             self.iconV.layer.cornerRadius = self.dataModel.settingStyle.rightIconRadius;
         }
         [self.iconV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).offset(self.dataModel.settingStyle.cellContentLeftMargin);
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
         }];
+        
+        CGFloat margin = self.dataModel.settingStyle.leftTitleToLeftIconMargin > 0 ? self.dataModel.settingStyle.leftTitleToLeftIconMargin : BLSettingBaseMargin;
         [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.iconV.mas_right).offset(BLSettingBaseMargin);
+            make.left.equalTo(self.iconV.mas_right).offset(margin);
         }];
     }else{
         self.iconV.hidden = YES;
         [self.iconV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).offset(self.dataModel.settingStyle.cellContentLeftMargin);
             make.width.height.mas_equalTo(0);
         }];
         [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -206,16 +211,19 @@
         _arrowV.hidden = NO;
         CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
         }];
         
+        CGFloat margin = self.dataModel.settingStyle.rightIconToRightArrowMargin > 0 ? self.dataModel.settingStyle.rightIconToRightArrowMargin : BLSettingBaseMargin;
         [_rightIconV mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.arrowV.mas_left).offset(-BLSettingBaseMargin);
+            make.right.equalTo(self.arrowV.mas_left).offset(-margin);
         }];
     }else{
         _arrowV.hidden = YES;
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
             make.width.height.mas_equalTo(0);
         }];
         

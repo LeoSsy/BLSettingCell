@@ -40,7 +40,7 @@
     [super setFrameSubview];
     
     [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentLeftMargin);
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
         make.top.equalTo(self.contentView);
         make.bottom.equalTo(self.underline.mas_top);
         make.left.equalTo(self.titleL.mas_right).offset(BLSettingBaseMargin);
@@ -68,6 +68,7 @@
     }
     self.textField.placeholder = placeholder;
     self.textField.textColor = dataModel.settingStyle.textFieldColor;
+    
     if (dataModel.settingStyle.textFieldFont) {
         self.textField.font = dataModel.settingStyle.textFieldFont;
     }else if (dataModel.settingStyle.textFieldTextFontSize){
@@ -85,6 +86,10 @@
     //占位文字设置
     [self.textField setValue:dataModel.settingStyle.textFieldPlaceColor forKeyPath:@"_placeholderLabel.textColor"];
     [self.textField setValue:dataModel.settingStyle.textFieldPlaceFont forKeyPath:@"_placeholderLabel.font"];
+    
+    [_textField mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
+    }];
 }
 
 #pragma mark UITextFieldDelegate

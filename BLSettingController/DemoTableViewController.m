@@ -8,9 +8,11 @@
 
 #import "DemoTableViewController.h"
 #import "BLSetting.h"
+#import "YYFPSLabel.h"
 
 @interface DemoTableViewController ()
 @property(nonatomic,strong)NSMutableArray *datas;
+@property (nonatomic, strong) YYFPSLabel *fpsLabel;
 @end
 
 @implementation DemoTableViewController
@@ -18,11 +20,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    _fpsLabel = [YYFPSLabel new];
+    [_fpsLabel sizeToFit];
+    _fpsLabel.frame = CGRectMake(15, self.view.bounds.size.height - 44, self.view.bounds.size.width-30, 22);
+    _fpsLabel.alpha = 0;
+    [[UIApplication sharedApplication].keyWindow addSubview:_fpsLabel];
+    
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
     _datas = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
+    
+    BLSettingModel *md0002 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标展示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:^(BLSettingModel *model) {
+        model.descTitle(@"我被点击了");
+    }];
+//    md0002.rightIconImage([UIImage imageNamed:@"man_no_select"]).rightIconName(@"kehu_icon_niaotong");
+    md0002.rightIconNormalSelImageName(^(NSString *__autoreleasing *normalImage, NSString *__autoreleasing *selectedImage) {
+        *normalImage = @"man_no_select";
+        *selectedImage = @"edit_man_click";
+    });
+    [self.datas addObject:md0002];
+    
+    //默认样式
+    //创建性别大图选择类型样式
+//    BLSettingStyle *style0001 = [BLSettingStyle style];
+    BLSettingModel *md0001 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
+    md0001.cellH(120).cellClikedOperation(^(BLSettingModel *model) {
+        NSLog(@"%@", model.indexPath);
+        model.descTitle(@"我被点击了");
+        [weakSelf.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            model.descTitle(@"我是默认样式");
+            [weakSelf.tableView reloadData];
+        });
+    });
+    md0001.leftIconNormalSelImageName(^(NSString *__autoreleasing *normalImage, NSString *__autoreleasing *selectedImage) {
+        *normalImage = @"man_no_select";
+        *selectedImage = @"edit_man_click";
+    });
+    [self.datas addObject:md0001];
+    
     
     //默认样式
     BLSettingModel *md001 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
@@ -73,6 +112,36 @@
         NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
     }).style(style00);
     [self.datas addObject:model00];
+    
+    //创建性别大图选择类型cell
+    BLSettingModel *model01 = [BLSettingModel modelType:BLSettingCellTypeSexLargeImage];
+    model01.sexLeftLargeImageData(^(NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexNormalImage = @"completeinfo_xingbie_nv_normal";
+        *sexSelectedImage = @"completeinfo_xingbie_nv_selected";
+    }).sexRightLargeImageData(^(NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexNormalImage = @"completeinfo_xingbie_nan_normal";
+        *sexSelectedImage = @"completeinfo_xingbie_nan_selected";
+    })
+    .cellH(120)
+    .sexAction(^(BLSettingModel *model, BLSettingSexSelectType sexSelType) {
+        NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
+    }).style(style00);
+    [self.datas addObject:model01];
+    
+    //创建性别大图选择类型cell
+    BLSettingModel *model02 = [BLSettingModel modelType:BLSettingCellTypeSexLargeImage];
+    model02.sexLeftLargeImageData(^(NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexNormalImage = @"completeinfo_xingbie_nv_normal";
+        *sexSelectedImage = @"completeinfo_xingbie_nv_selected";
+    }).sexRightLargeImageData(^(NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexNormalImage = @"completeinfo_xingbie_nan_normal";
+        *sexSelectedImage = @"completeinfo_xingbie_nan_selected";
+    })
+    .cellH(120)
+    .sexAction(^(BLSettingModel *model, BLSettingSexSelectType sexSelType) {
+        NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
+    }).style(style00);
+    [self.datas addObject:model02];
 
     //设置性别按钮展示样式
     BLSettingStyle *style0 = [BLSettingStyle style];
@@ -110,10 +179,52 @@
     .style(style0);
     [self.datas addObject:model0];
     
+    //创建性别类型cell
+    BLSettingModel *modelsex0 = [BLSettingModel model];
+    modelsex0.type(BLSettingCellTypeSex)
+    .titleText(@"性别")
+    .sexLeftViewData(^(NSString *__autoreleasing *sexTitle, NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexTitle = @"女";
+        *sexNormalImage = @"women_no_select";
+        *sexSelectedImage = @"edit_woman_click";
+    }).sexRightViewData(^(NSString *__autoreleasing *sexTitle, NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexTitle = @"男";
+        *sexNormalImage = @"man_no_select";
+        *sexSelectedImage = @"edit_man_click";
+    })
+    .sexAction(^(BLSettingModel *model, BLSettingSexSelectType sexSelType) {
+        NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
+    })
+    .style(style0);
+    [self.datas addObject:modelsex0];
+    
+    //创建性别类型cell
+    BLSettingModel *modelsex1 = [BLSettingModel model];
+    modelsex1.type(BLSettingCellTypeSex)
+    .titleText(@"性别")
+    .sexLeftViewData(^(NSString *__autoreleasing *sexTitle, NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexTitle = @"女";
+        *sexNormalImage = @"women_no_select";
+        *sexSelectedImage = @"edit_woman_click";
+    }).sexRightViewData(^(NSString *__autoreleasing *sexTitle, NSString *__autoreleasing *sexNormalImage, NSString *__autoreleasing *sexSelectedImage) {
+        *sexTitle = @"男";
+        *sexNormalImage = @"man_no_select";
+        *sexSelectedImage = @"edit_man_click";
+    })
+    .sexAction(^(BLSettingModel *model, BLSettingSexSelectType sexSelType) {
+        NSLog(@"%@",sexSelType==BLSettingSexSelectTypeLeft?@"女":@"男");
+    })
+    .style(style0);
+    [self.datas addObject:modelsex1];
+    
+    
     //默认样式
     BLSettingStyle *stylenormal = [BLSettingStyle style];
-    stylenormal.hintViewSize(CGSizeMake(80, 24)).hintViewRadius(12).hintTextBgColor([UIColor purpleColor]);
-    BLSettingModel *md1 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
+    stylenormal.hintViewSize(CGSizeMake(60, 30)).hintViewRadius(15).hintTextBgColor([UIColor purpleColor])
+    .hintTextFont([UIFont systemFontOfSize:7])
+    .leftTitleSpaceToLeftIconMargin(5)
+    .rightDescSpaceToRightArrowMargin(5);
+    BLSettingModel *md1 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式888" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
     md1.cellH(120).cellClikedOperation(^(BLSettingModel *model) {
         NSLog(@"%@", model.indexPath);
         model.descTitle(@"我被点击了");
@@ -171,6 +282,11 @@
         [weakSelf.tableView reloadData];
     }).style(stylemh6);
     
+    BLSettingStyle *stylemh7 = [BLSettingStyle style];
+    stylemh7.contentLeftMargin(35)
+    .contentRightMargin(35)
+    .leftTitleSpaceToLeftIconMargin(5)
+    .rightIconSpaceToRightArrowMargin(5);
     BLSettingModel *md7 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标展示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];
@@ -179,6 +295,7 @@
             [weakSelf.tableView reloadData];
         });
     }];
+    md7.style(stylemh7);
     
     BLSettingModel *md8 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标不显示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:nil];
     md8.cellClikedOperation(^(BLSettingModel *model) {
@@ -309,10 +426,13 @@
         NSLog(@"您输入的文字已经达到最大长度");
     }).style(style5);
     
+    
+    BLSettingStyle *md17Sytle = [BLSettingStyle style];
+    md17Sytle.avaterTitleSpaceToDescTitleMargin(40);
     BLSettingModel *md17 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"个人头像资料" detailTitle:@"显示箭头" isShowArrow:YES cellClickAction:^(BLSettingModel *model) {
         NSLog(@"点我干嘛");
     }];
-    md17.cellH(100).rightIconName(@"kehu_icon_kaluli");
+    md17.cellH(100).rightIconName(@"kehu_icon_kaluli").style(md17Sytle);
     
     BLSettingModel *md18 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"个人头像资料" detailTitle:@"隐藏箭头" isShowArrow:NO cellClickAction:^(BLSettingModel *model) {
         NSLog(@"点我干嘛");
@@ -395,6 +515,42 @@
         return settM.cellHeight;
     }
     return 55;
+}
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (_fpsLabel.alpha == 0) {
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            _fpsLabel.alpha = 1;
+        } completion:NULL];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        if (_fpsLabel.alpha != 0) {
+            [UIView animateWithDuration:1 delay:2 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+                _fpsLabel.alpha = 0;
+            } completion:NULL];
+        }
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (_fpsLabel.alpha != 0) {
+        [UIView animateWithDuration:1 delay:2 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            _fpsLabel.alpha = 0;
+        } completion:NULL];
+    }
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    if (_fpsLabel.alpha == 0) {
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            _fpsLabel.alpha = 1;
+        } completion:^(BOOL finished) {
+        }];
+    }
 }
 
 @end

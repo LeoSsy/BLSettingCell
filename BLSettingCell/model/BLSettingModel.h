@@ -21,7 +21,7 @@ typedef void(^textFieldDidChangeAction)(BLSettingModel *model,UITextField *textF
 typedef void(^textFieldTextReachesMaxLengthAction)(BLSettingModel *model,UITextField *textField);
 typedef void(^sexAction)(BLSettingModel *model,BLSettingSexSelectType sexSelType);
 typedef void (^SexVDataConfig)(NSString **sexTitle,NSString **sexNormalImage,NSString **sexSelectedImage);
-typedef void (^SexLargeImageDataConfig)(NSString **sexNormalImage,NSString **sexSelectedImage);
+typedef void (^SexLargeImageDataConfig)(NSString **normalImage,NSString **selectedImage);
 
 typedef BLSettingModel *(^IconNameResource)(NSString *resource);
 typedef BLSettingModel *(^IconImage)(UIImage *image);
@@ -61,10 +61,16 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 #pragma mark 通用属性设置设置
 /**设置左侧图标名字 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource leftIconName;
+/**设置左侧图标 传入一个UIImage对象*/
+@property(nonatomic,copy,readonly)IconImage leftIconImage;
+/**设置左侧图标多状态图片 默认状态和选中状态图片*/
+@property(nonatomic,copy,readonly)SexViewLargeImageDataConfig leftIconNormalSelImageName;
 /**设置右侧图标 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource rightIconName;
 /**设置右侧图标 传入一个UIImage对象*/
 @property(nonatomic,copy,readonly)IconImage rightIconImage;
+/**设置右侧图标多状态图片 默认状态和选中状态图片*/
+@property(nonatomic,copy,readonly)SexViewLargeImageDataConfig rightIconNormalSelImageName;
 /**设置箭头图标图标 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource arrowIconName;
 /**设置标题*/
@@ -145,14 +151,39 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 
 ///====外部获取属性值======
 
+#pragma mark cell属性
+/**获取cell类型 如果不设置就是基础的样式 显示显示图标 标题 详情 箭头*/
+@property(nonatomic,assign,readonly)BLSettingCellType cellType;
+/**获取样式对象 用于存储更细分的样式数据*/
+@property(nonatomic,strong,readonly)BLSettingStyle *settingStyle;
+/**获取或设置cell的行号*/
+@property(nonatomic,strong,readwrite)NSIndexPath *indexPath;
+/**获取cell高度*/
+@property(nonatomic,assign,readonly)CGFloat cellHeight;
+/**获取或设置cell当前的选中状态 YES 选中了 NO 取消选中*/
+@property(nonatomic,assign,readwrite,getter=isCellSelected)BOOL cellSelected;
+
 #pragma mark 通用属性
 
 /**获取左侧图标名字*/
-@property(nonatomic,strong,readonly)NSString *iconImageName;
+@property(nonatomic,strong,readonly)NSString *leftImageName;
+/**获取左侧图标 得到的是一个UIImage对象*/
+@property(nonatomic,strong,readonly)UIImage* leftImageObj;
+//====左侧图标多状态属性====
+/**获取左侧图标默认展示图片*/
+@property(nonatomic,strong,readonly)NSString *leftNormalImageName;
+/**获取左侧图标cell选中的时候展示的图片*/
+@property(nonatomic,strong,readonly)NSString *leftSelectedImageName;
 /**获取右侧图标*/
 @property(nonatomic,strong,readonly)NSString *rightImageName;
-/**设置右侧图标 得到的是一个UIImage对象*/
+/**获取右侧图标 得到的是一个UIImage对象*/
 @property(nonatomic,strong,readonly)UIImage* rightImageObj;
+//====右侧图标多状态属性====
+/**获取右侧图标默认展示图片*/
+@property(nonatomic,strong,readonly)NSString *rightNormalImageName;
+/**获取右侧图标cell选中的时候展示的图片*/
+@property(nonatomic,strong,readonly)NSString *rightSelectedImageName;
+
 /**获取箭头图标图标*/
 @property(nonatomic,strong,readonly)NSString *arrowImageName;
 /**获取标题*/
@@ -228,16 +259,6 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 @property(nonatomic,strong,readonly)textFieldTextReachesMaxLengthAction textFieldTextMaxLengthOperation;
 /** 获取性别选择cell的按钮点击的回调*/
 @property(nonatomic,copy,readonly)sexAction sexOperation;
-
-#pragma mark cell属性
-/**获取cell类型 如果不设置就是基础的样式 显示显示图标 标题 详情 箭头*/
-@property(nonatomic,assign,readonly)BLSettingCellType cellType;
-/**获取样式对象 用于存储更细分的样式数据*/
-@property(nonatomic,strong,readonly)BLSettingStyle *settingStyle;
-/**获取cell的行号*/
-@property(nonatomic,strong,readwrite)NSIndexPath *indexPath;
-/**获取cell高度*/
-@property(nonatomic,assign,readonly)CGFloat cellHeight;
 
 /**
  快速初始化方法

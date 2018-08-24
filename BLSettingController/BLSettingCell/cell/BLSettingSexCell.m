@@ -85,9 +85,16 @@
     
     if (dataModel.sexSelectType == BLSettingSexSelectTypeLeft) {
         [self sexBtnClick:self.sexBtn1];
-    }else{
+    }else if (dataModel.sexSelectType == BLSettingSexSelectTypeRight) {
         [self sexBtnClick:self.sexBtn2];
+    }else{
+        self.sexBtn1.selected = NO;
+        self.sexBtn2.selected = NO;
     }
+    
+    [_sexBtn2 mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
+    }];
 }
 
 - (void)setFrameSubview {
