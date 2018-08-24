@@ -36,7 +36,6 @@
     BLSettingModel *md0002 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标展示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
     }];
-//    md0002.rightIconImage([UIImage imageNamed:@"man_no_select"]).rightIconName(@"kehu_icon_niaotong");
     md0002.rightIconNormalSelImageName(^(NSString *__autoreleasing *normalImage, NSString *__autoreleasing *selectedImage) {
         *normalImage = @"man_no_select";
         *selectedImage = @"edit_man_click";

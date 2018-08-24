@@ -84,9 +84,11 @@
     }
     
     if (dataModel.sexSelectType == BLSettingSexSelectTypeLeft) {
-        [self sexBtnClick:self.sexBtn1];
+        self.sexBtn1.selected = YES;
+        self.sexBtn2.selected = NO;
     }else if (dataModel.sexSelectType == BLSettingSexSelectTypeRight) {
-        [self sexBtnClick:self.sexBtn2];
+        self.sexBtn1.selected = NO;
+        self.sexBtn2.selected = YES;
     }else{
         self.sexBtn1.selected = NO;
         self.sexBtn2.selected = NO;

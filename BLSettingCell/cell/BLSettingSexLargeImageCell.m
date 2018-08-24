@@ -65,9 +65,11 @@
     }];
     
     if (dataModel.sexSelectType == BLSettingSexSelectTypeLeft) {
-        [self sexBtnClick:self.leftBtn];
+        self.leftBtn.selected = YES;
+        self.rightBtn.selected = NO;
     }else if (dataModel.sexSelectType == BLSettingSexSelectTypeRight) {
-        [self sexBtnClick:self.rightBtn];
+        self.leftBtn.selected = NO;
+        self.rightBtn.selected = YES;
     }else{
         self.leftBtn.selected = NO;
         self.rightBtn.selected = NO;
