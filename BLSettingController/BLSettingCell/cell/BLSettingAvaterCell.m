@@ -80,16 +80,16 @@
         make.height.mas_equalTo(height);
     }];
     
-    CGFloat margin = self.dataModel.settingStyle.avaterTitleToDescTitleMargin > 0 ? self.dataModel.settingStyle.avaterTitleToDescTitleMargin : 8;
-    
+    CGFloat titleMargin = self.dataModel.settingStyle.avaterTitleToCellCenterYMargin > 0 ? self.dataModel.settingStyle.avaterTitleToCellCenterYMargin : 0;
+    CGFloat descMargin = self.dataModel.settingStyle.avaterDescToCellCenterYMargin> 0 ? self.dataModel.settingStyle.avaterDescToCellCenterYMargin : 0;
+
     [self.titleL mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconV.mas_right).offset(BLSettingBaseMargin);
-        make.height.mas_equalTo(self.titleL.font.pointSize+2);
-        make.bottom.equalTo(self.contentView.mas_centerY).offset(-margin*0.5);
+        make.bottom.equalTo(self.contentView.mas_centerY).offset(titleMargin);
     }];
     
     [_descL mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.mas_centerY).offset(margin*0.5);
+        make.top.equalTo(self.titleL.mas_bottom).offset(descMargin);
         make.left.equalTo(self.titleL);
     }];
 }

@@ -20,8 +20,8 @@ typedef void(^cellSegumentAction)(BLSettingModel *model,NSArray * segumentTitlsA
 typedef void(^textFieldDidChangeAction)(BLSettingModel *model,UITextField *textField);
 typedef void(^textFieldTextReachesMaxLengthAction)(BLSettingModel *model,UITextField *textField);
 typedef void(^sexAction)(BLSettingModel *model,BLSettingSexSelectType sexSelType);
-typedef void (^SexVDataConfig)(NSString **sexTitle,NSString **sexNormalImage,NSString **sexSelectedImage);
-typedef void (^SexLargeImageDataConfig)(NSString **normalImage,NSString **selectedImage);
+typedef void (^sexVDataConfig)(NSString **sexTitle,NSString **sexNormalImage,NSString **sexSelectedImage);
+typedef void (^sexLargeImageDataConfig)(NSString **normalImage,NSString **selectedImage);
 
 typedef BLSettingModel *(^IconNameResource)(NSString *resource);
 typedef BLSettingModel *(^IconImage)(UIImage *image);
@@ -43,8 +43,8 @@ typedef BLSettingModel *(^TextFieldKeyboardType)(UIKeyboardType type);
 typedef BLSettingModel *(^NewFeatureHintType)(BLSettingNewFeatureHintType type);
 typedef BLSettingModel *(^SexAction)(sexAction action);
 typedef BLSettingModel *(^SexSelType)(BLSettingSexSelectType sexSelType);
-typedef BLSettingModel *(^SexViewDataConfig)(SexVDataConfig config);
-typedef BLSettingModel *(^SexViewLargeImageDataConfig)(SexLargeImageDataConfig config);
+typedef BLSettingModel *(^SexViewDataConfig)(sexVDataConfig config);
+typedef BLSettingModel *(^SexViewLargeImageDataConfig)(sexLargeImageDataConfig config);
 typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 
 @interface BLSettingModel : NSObject
@@ -134,14 +134,20 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 /**设置性别大图cell右侧视图数据*/
 @property(nonatomic,copy, readonly)SexViewLargeImageDataConfig sexRightLargeImageData;
 
+#pragma mark 右侧按钮类型cell相关属性
+/**设置左侧按钮标题*/
+@property(nonatomic,copy, readonly)Text rightButtonTitle;
+/**设置左侧按钮不同状态背景图片*/
+@property(nonatomic,copy, readonly)SexViewLargeImageDataConfig rightButtonBgImageData;
+
 #pragma mark 回调事件相关
 
 /** 设置cell点击的回调*/
-@property(nonatomic,copy,readonly)CellClikedOperation cellClikedOperation;
+@property(nonatomic,copy,readonly)CellClikedOperation cellClikedAction;
 /** 设置开关点击的回调*/
-@property(nonatomic,copy,readonly)CellSwitchOperation switchOperation;
+@property(nonatomic,copy,readonly)CellSwitchOperation switchAction;
 /** 设置Segument点击的回调*/
-@property(nonatomic,copy,readonly)CellSegumentOperation segumentOperation;
+@property(nonatomic,copy,readonly)CellSegumentOperation segumentAction;
 /** 设置文本框文字发生改变的回调*/
 @property(nonatomic,copy,readonly)TextFieldDidChangeAction textFieldDidChangeAction;
 /** 设置文本框文本输入字数达到最大值的回调*/
@@ -248,15 +254,15 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 
 #pragma mark 回调事件相关
 /** 获取cell点击的回调*/
-@property(nonatomic,strong,readonly)cellClickAction cellClickOperation;
+@property(nonatomic,copy,readonly)cellClickAction cellClickOperation;
 /** 获取开关点击的回调 该属性适用于开关类型*/
-@property(nonatomic,strong,readonly)cellSwitchAction cellSwitchOperation;
+@property(nonatomic,copy,readonly)cellSwitchAction cellSwitchOperation;
 /** 获取Segument点击的回调 该属性适用于segument类型*/
-@property(nonatomic,strong,readonly)cellSegumentAction cellSegumentOperation;
+@property(nonatomic,copy,readonly)cellSegumentAction cellSegumentOperation;
 /** 获取文本框文字发生改变的回调*/
-@property(nonatomic,strong,readonly)textFieldDidChangeAction textFieldDidChangeOperation;
+@property(nonatomic,copy,readonly)textFieldDidChangeAction textFieldDidChangeOperation;
 /** 获取文本框文本输入字数达到最大值的回调*/
-@property(nonatomic,strong,readonly)textFieldTextReachesMaxLengthAction textFieldTextMaxLengthOperation;
+@property(nonatomic,copy,readonly)textFieldTextReachesMaxLengthAction textFieldTextMaxLengthOperation;
 /** 获取性别选择cell的按钮点击的回调*/
 @property(nonatomic,copy,readonly)sexAction sexOperation;
 

@@ -58,7 +58,8 @@
 @synthesize leftTitleSpaceToLeftIconMargin = _leftTitleSpaceToLeftIconMargin;
 @synthesize rightDescSpaceToRightArrowMargin = _rightDescSpaceToRightArrowMargin;
 @synthesize rightIconSpaceToRightArrowMargin = _rightIconSpaceToRightArrowMargin;
-@synthesize avaterTitleSpaceToDescTitleMargin = _avaterTitleSpaceToDescTitleMargin;
+@synthesize avaterTitleSpaceToCellCenterYMargin = _avaterTitleSpaceToCellCenterYMargin;
+@synthesize avaterDescSpaceToCellCenterYMargin = _avaterDescSpaceToCellCenterYMargin;
 
 @synthesize cellContentLeftMargin = _cellContentLeftMargin;
 @synthesize cellContentRightMargin = _cellContentRightMargin;
@@ -110,8 +111,8 @@
 @synthesize leftTitleToLeftIconMargin = _leftTitleToLeftIconMargin;
 @synthesize rightDescToRightArrowMargin = _rightDescToRightArrowMargin;
 @synthesize rightIconToRightArrowMargin = _rightIconToRightArrowMargin;
-@synthesize avaterTitleToDescTitleMargin = _avaterTitleToDescTitleMargin;
-
+@synthesize avaterTitleToCellCenterYMargin = _avaterTitleToCellCenterYMargin;
+@synthesize avaterDescToCellCenterYMargin = _avaterDescToCellCenterYMargin;
 
 + (BLSettingStyle*)style {
     return [[BLSettingStyle alloc] init];
@@ -718,15 +719,27 @@
     return _rightIconSpaceToRightArrowMargin;
 }
 
-- (SettingSize)avaterTitleSpaceToDescTitleMargin {
-    if (!_avaterTitleSpaceToDescTitleMargin) {
+- (SettingSize)avaterTitleSpaceToCellCenterYMargin {
+    if (!_avaterTitleSpaceToCellCenterYMargin) {
         __weak typeof(self) weakSelf = self;
-        _avaterTitleSpaceToDescTitleMargin = ^(CGFloat margin){
-            _avaterTitleToDescTitleMargin = margin;
+        _avaterTitleSpaceToCellCenterYMargin = ^(CGFloat margin){
+            _avaterTitleToCellCenterYMargin = margin;
             return weakSelf;
         };
     }
-    return _avaterTitleSpaceToDescTitleMargin;
+    return _avaterTitleSpaceToCellCenterYMargin;
 }
+
+- (SettingSize)avaterDescSpaceToCellCenterYMargin {
+    if (!_avaterDescSpaceToCellCenterYMargin) {
+        __weak typeof(self) weakSelf = self;
+        _avaterDescSpaceToCellCenterYMargin = ^(CGFloat margin){
+            _avaterDescToCellCenterYMargin = margin;
+            return weakSelf;
+        };
+    }
+    return _avaterDescSpaceToCellCenterYMargin;
+}
+
 
 @end

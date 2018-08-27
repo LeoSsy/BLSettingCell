@@ -25,9 +25,9 @@
         cell = [BLSettingAvaterCell cellWithTableView:tableView withData:model];
     }else if (model.cellType == BLSettingCellTypeRightTextField){//右边文本框类型
         cell = [BLSettingRightTextFieldCell cellWithTableView:tableView withData:model];
-    }else if(model.cellType == BLSettingCellTypeSex){
+    }else if(model.cellType == BLSettingCellTypeSex){//性别文本选择类型
         cell = [BLSettingSexCell cellWithTableView:tableView withData:model];
-    }else if (model.cellType == BLSettingCellTypeSexLargeImage){
+    }else if (model.cellType == BLSettingCellTypeSexLargeImage){//性别大图选择类型
         cell = [BLSettingSexLargeImageCell cellWithTableView:tableView withData:model];
     }else{ //默认类型 显示 图标 标题 详情 箭头
         cell = [BLSettingNormalCell cellWithTableView:tableView withData:model];
@@ -49,7 +49,7 @@
  */
 + (BLSettingModel*)normalWithIcon:(NSString*)leftIconName title:(NSString*)title detailTitle:(NSString*)detailTitle showArrow:(BOOL)isShowArrow cellClickAction:(cellClickAction)action{
     BLSettingModel *model =  [[BLSettingModel alloc] initWithIcon:leftIconName title:title detailTitle:detailTitle cellType:BLSettingCellTypeNormal segumentTitleArr:nil selectIndex:0 isShowArrow:isShowArrow switchIsOn:NO rightIcon:nil settingStyle:[BLSettingStyle new]];
-    model.cellClikedOperation(action);
+    model.cellClikedAction(action);
     return model;
 }
 
@@ -64,7 +64,7 @@
  */
 + (BLSettingModel*)normalWithIcon:(NSString*)leftIconName title:(NSString*)title rightIcon:(NSString*)rightIconName showArrow:(BOOL)isShowArrow cellClickAction:(cellClickAction)action{
     BLSettingModel *model =  [[BLSettingModel alloc] initWithIcon:leftIconName title:title detailTitle:nil cellType:BLSettingCellTypeRightAssistIcon segumentTitleArr:nil selectIndex:0 isShowArrow:isShowArrow switchIsOn:NO rightIcon:rightIconName settingStyle:[BLSettingStyle new]];
-    model.cellClikedOperation(action);
+    model.cellClikedAction(action);
     return model;
 }
 
@@ -78,7 +78,7 @@
  */
 + (BLSettingModel*)switchWithIcon:(NSString*)iconName title:(NSString*)title switchIsOn:(BOOL)switchIsOn switchAction:(cellSwitchAction)action{
     BLSettingModel *model =   [[BLSettingModel alloc] initWithIcon:iconName title:title detailTitle:nil cellType:BLSettingCellTypeSwitch segumentTitleArr:nil selectIndex:0  isShowArrow:NO switchIsOn:switchIsOn rightIcon:nil settingStyle:[BLSettingStyle new]];
-    model.switchOperation(action);
+    model.switchAction(action);
     return model;
 }
 
@@ -93,7 +93,7 @@
  */
 + (BLSettingModel*)segumentWithIcon:(NSString*)iconName title:(NSString*)title segumentTitleArr:(NSArray*)segumentTitlsArr selectIndex:(NSInteger)selectIndex  segumentAction:(cellSegumentAction)action{
     BLSettingModel *model =  [[BLSettingModel alloc] initWithIcon:iconName title:title detailTitle:nil cellType:BLSettingCellTypeSegument segumentTitleArr:segumentTitlsArr selectIndex:selectIndex  isShowArrow:NO switchIsOn:NO rightIcon:nil settingStyle:[BLSettingStyle new]];
-    model.segumentOperation(action);
+    model.segumentAction(action);
     return model;
 }
 
@@ -108,7 +108,7 @@
  */
 + (BLSettingModel*)avaterWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle isShowArrow:(BOOL)isShowArrow cellClickAction:(cellClickAction)action{
     BLSettingModel *model =  [[BLSettingModel alloc] initWithIcon:iconName title:title detailTitle:detailTitle cellType:BLSettingCellTypeAvater segumentTitleArr:nil selectIndex:0  isShowArrow:isShowArrow switchIsOn:NO rightIcon:nil settingStyle:[BLSettingStyle new]];
-    model.cellClikedOperation(action);
+    model.cellClikedAction(action);
     return model;
 }
 

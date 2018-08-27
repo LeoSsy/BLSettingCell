@@ -38,7 +38,7 @@
     
     //默认样式
     BLSettingModel *md001 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
-    md001.cellH(120).cellClikedOperation(^(BLSettingModel *model) {
+    md001.cellH(120).cellClikedAction(^(BLSettingModel *model) {
         NSLog(@"%@", model.indexPath);
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];
@@ -186,7 +186,7 @@
     .leftTitleSpaceToLeftIconMargin(5)
     .rightDescSpaceToRightArrowMargin(5);
     BLSettingModel *md1 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式888" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
-    md1.cellH(120).cellClikedOperation(^(BLSettingModel *model) {
+    md1.cellH(120).cellClikedAction(^(BLSettingModel *model) {
         NSLog(@"%@", model.indexPath);
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];
@@ -202,7 +202,7 @@
     BLSettingStyle *stylenormal1 = [BLSettingStyle style];
     stylenormal1.redPointSize(8).redPointColor([UIColor redColor]);
     BLSettingModel *md2  = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:NO cellClickAction:nil];
-    md2.cellH(45).cellClikedOperation(^(BLSettingModel *model) {
+    md2.cellH(45).cellClikedAction(^(BLSettingModel *model) {
         NSLog(@"%@", model.indexPath);
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];
@@ -221,7 +221,7 @@
     }];
     
     BLSettingModel *md4 = [BLSettingFactory switchWithIcon:@"kehu_icon_jilu2" title:@"我的状态关闭" switchIsOn:NO switchAction:nil];
-    md4.switchOperation(^(BLSettingModel *model, BOOL switchIsOn) {
+    md4.switchAction(^(BLSettingModel *model, BOOL switchIsOn) {
         model.titleText([NSString stringWithFormat:@"我的状态%@",switchIsOn?@"开启":@"关闭"]) ;
         [weakSelf.tableView reloadData];
     });
@@ -238,7 +238,7 @@
     BLSettingStyle *stylemh6 = [BLSettingStyle style];
     stylemh6.segumentItemW(35);
     BLSettingModel *md6 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"kg",@"斤",@"磅"] selectIndex:1 segumentAction:nil];
-    md6.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+    md6.segumentAction(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
         model.titleText([NSString stringWithFormat:@"你选择了%@",segumentTitlsArr[selectIndex]]) ;
         [weakSelf.tableView reloadData];
     }).style(stylemh6);
@@ -259,7 +259,7 @@
     md7.style(stylemh7);
     
     BLSettingModel *md8 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标不显示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:nil];
-    md8.cellClikedOperation(^(BLSettingModel *model) {
+    md8.cellClikedAction(^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -275,7 +275,7 @@
     BLSettingStyle *style = [BLSettingStyle settingStyleWithTitleFont:font titleColor:color descFont:font descColor:color];
     BLSettingModel *md9 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认类型自定样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
     md9.style(style);
-    md9.cellClikedOperation(^(BLSettingModel *model) {
+    md9.cellClikedAction(^(BLSettingModel *model) {
         model.descTitle( @"我被点击了");
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -290,7 +290,7 @@
     UIColor *color1 = [UIColor blueColor];
     BLSettingStyle *style1 = [BLSettingStyle settingStyleWithTitleFont:font1 titleColor:color1 descFont:font1 descColor:color1 switchOnTintColor:color1];
     BLSettingModel *md10 = [BLSettingFactory switchWithIcon:@"kehu_icon_jilu2" title:@"开关自定义样式" switchIsOn:NO switchAction:nil];
-    md10.cellClikedOperation(^(BLSettingModel *model) {
+    md10.cellClikedAction(^(BLSettingModel *model) {
         model.titleText( @"我被点击了");
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -304,7 +304,7 @@
     UIColor *color2 = [UIColor orangeColor];
     BLSettingStyle *style2 = [BLSettingStyle settingStyleWithTitleFont:font2 titleColor:color2 descFont:font2 descColor:color2 switchOnTintColor:color2];
     BLSettingModel *md11 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
-    md11.cellClikedOperation(^(BLSettingModel *model) {
+    md11.cellClikedAction(^(BLSettingModel *model) {
         model.descTitle( @"我被点击了");
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -327,7 +327,7 @@
                                                                     NSFontAttributeName:[UIFont boldSystemFontOfSize:12]
                                                                     });
     BLSettingModel *md12 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"啤酒",@"可乐",@"橙汁"] selectIndex:1 segumentAction:nil];
-    md12.segumentOperation(^(BLSettingModel *model, NSArray *selectSwitchArr, NSInteger selectIndex) {
+    md12.segumentAction(^(BLSettingModel *model, NSArray *selectSwitchArr, NSInteger selectIndex) {
         model.titleText([NSString stringWithFormat:@"选择了%@",selectSwitchArr[selectIndex]]) ;
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -350,7 +350,7 @@
     .descTitle(@"我是描述文字")
     .showArrow(YES)
     .style(style4)
-    .cellClikedOperation(^(BLSettingModel *model) {
+    .cellClikedAction(^(BLSettingModel *model) {
         model.titleText(@"我被点击了");
         [weakSelf.tableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -389,7 +389,7 @@
     
     
     BLSettingStyle *md17Sytle = [BLSettingStyle style];
-    md17Sytle.avaterTitleSpaceToDescTitleMargin(40);
+    md17Sytle.avaterDescSpaceToCellCenterYMargin(40);
     BLSettingModel *md17 = [BLSettingFactory avaterWithIcon:@"kehu_icon_kaluli" title:@"个人头像资料" detailTitle:@"显示箭头" isShowArrow:YES cellClickAction:^(BLSettingModel *model) {
         NSLog(@"点我干嘛");
     }];
@@ -403,7 +403,7 @@
     BLSettingStyle *segStyle = [BLSettingStyle style];
     segStyle.segumentClearRadius(YES).segumentBorderWidth(0.2).segumentClearDivider(YES);
     BLSettingModel *md19 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"舒少勇666",@"迪丽热巴777"] selectIndex:1 segumentAction:nil];
-    md19.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+    md19.segumentAction(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
         model.descTitle(segumentTitlsArr[selectIndex]);
         [weakSelf.tableView reloadData];
     }).style(segStyle);
@@ -411,7 +411,7 @@
     BLSettingStyle *segStyle1 = [BLSettingStyle style];
     segStyle1.segumentClearRadius(NO).segumentBorderWidth(0);
     BLSettingModel *md20 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
-    md20.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+    md20.segumentAction(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
         model.descTitle(segumentTitlsArr[selectIndex]);
         [weakSelf.tableView reloadData];
     }).style(segStyle1);
@@ -419,7 +419,7 @@
     BLSettingStyle *segStyle2 = [BLSettingStyle style];
     segStyle2.segumentClearRadius(YES).segumentBorderWidth(5);
     BLSettingModel *md21 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
-    md21.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+    md21.segumentAction(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
         model.descTitle(segumentTitlsArr[selectIndex]);
         [weakSelf.tableView reloadData];
     }).style(segStyle2);
@@ -427,7 +427,7 @@
     BLSettingStyle *segStyle3 = [BLSettingStyle style];
     segStyle3.segumentClearRadius(YES).segumentBorderWidth(0);
     BLSettingModel *md22 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"Man",@"Weman",@"dog"] selectIndex:1 segumentAction:nil];
-    md22.segumentOperation(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+    md22.segumentAction(^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
         model.descTitle(segumentTitlsArr[selectIndex]);
         [weakSelf.tableView reloadData];
     }).style(segStyle3);
@@ -447,7 +447,7 @@
     //创建性别大图选择类型样式
     //    BLSettingStyle *style0001 = [BLSettingStyle style];
     BLSettingModel *md0001 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
-    md0001.cellH(120).cellClikedOperation(^(BLSettingModel *model) {
+    md0001.cellH(120).cellClikedAction(^(BLSettingModel *model) {
         NSLog(@"%@", model.indexPath);
         model.descTitle(@"我被点击了");
         [weakSelf.tableView reloadData];

@@ -32,9 +32,9 @@
 @synthesize textFieldText = _textFieldText;
 @synthesize textFieldTextMaxLength = _textFieldTextMaxLength;
 @synthesize textFieldEnabled = _textFieldEnabled;
-@synthesize cellClikedOperation = _cellClikedOperation;
-@synthesize switchOperation = _switchOperation;
-@synthesize segumentOperation = _segumentOperation;
+@synthesize cellClikedAction = _cellClikedAction;
+@synthesize switchAction = _switchAction;
+@synthesize segumentAction = _segumentAction;
 @synthesize textFieldDidChangeAction = _textFieldDidChangeAction;
 @synthesize textFieldTextReachesMaxLengthAction = _textFieldTextReachesMaxLengthAction;
 @synthesize textFieldKeyboardType = _textFieldKeyboardType;
@@ -166,7 +166,7 @@
 - (SexViewLargeImageDataConfig)leftIconNormalSelImageName {
     if (!_leftIconNormalSelImageName) {
         __weak typeof(self) weakSelf = self;
-        _leftIconNormalSelImageName = ^(SexLargeImageDataConfig config){
+        _leftIconNormalSelImageName = ^(sexLargeImageDataConfig config){
             NSString *sexNormalImage;
             NSString *sexSelectedImage;
             if (config) {
@@ -216,7 +216,7 @@
 - (SexViewLargeImageDataConfig)rightIconNormalSelImageName {
     if (!_rightIconNormalSelImageName) {
         __weak typeof(self) weakSelf = self;
-        _rightIconNormalSelImageName = ^(SexLargeImageDataConfig config){
+        _rightIconNormalSelImageName = ^(sexLargeImageDataConfig config){
             NSString *normalImage;
             NSString *selectedImage;
             if (config) {
@@ -372,37 +372,37 @@
     return _segumentTitlesArr;
 }
 
-- (CellClikedOperation)cellClikedOperation {
-    if (!_cellClikedOperation) {
+- (CellClikedOperation)cellClikedAction {
+    if (!_cellClikedAction) {
         __weak typeof(self) weakSelf = self;
-        _cellClikedOperation = ^(cellClickAction cellOperationBlock){
+        _cellClikedAction = ^(cellClickAction cellOperationBlock){
             _cellClickOperation = cellOperationBlock;
             return weakSelf;
         };
     }
-    return _cellClikedOperation;
+    return _cellClikedAction;
 }
 
-- (CellSwitchOperation)switchOperation {
-    if (!_switchOperation) {
+- (CellSwitchOperation)switchAction {
+    if (!_switchAction) {
         __weak typeof(self) weakSelf = self;
-        _switchOperation = ^(cellSwitchAction cellSwitchBlock){
+        _switchAction = ^(cellSwitchAction cellSwitchBlock){
             _cellSwitchOperation = cellSwitchBlock;
             return weakSelf;
         };
     }
-    return _switchOperation;
+    return _switchAction;
 }
 
-- (CellSegumentOperation)segumentOperation {
-    if (!_segumentOperation) {
+- (CellSegumentOperation)segumentAction {
+    if (!_segumentAction) {
         __weak typeof(self) weakSelf = self;
-        _segumentOperation = ^(cellSegumentAction cellSegumentBlock){
+        _segumentAction = ^(cellSegumentAction cellSegumentBlock){
             _cellSegumentOperation = cellSegumentBlock;
             return weakSelf;
         };
     }
-    return _segumentOperation;
+    return _segumentAction;
 }
 
 - (Text)textFieldPlaceHolder {
@@ -519,7 +519,7 @@
 - (SexViewDataConfig)sexLeftViewData {
     if (!_sexLeftViewData) {
         __weak typeof(self) weakSelf = self;
-        _sexLeftViewData = ^(SexVDataConfig config){
+        _sexLeftViewData = ^(sexVDataConfig config){
             NSString *sexTitle;
             NSString *sexNormalImage;
             NSString *sexSelectedImage;
@@ -538,7 +538,7 @@
 - (SexViewDataConfig)sexRightViewData {
     if (!_sexRightViewData) {
         __weak typeof(self) weakSelf = self;
-        _sexRightViewData = ^(SexVDataConfig config){
+        _sexRightViewData = ^(sexVDataConfig config){
             NSString *sexTitle;
             NSString *sexNormalImage;
             NSString *sexSelectedImage;
@@ -557,7 +557,7 @@
 - (SexViewLargeImageDataConfig)sexLeftLargeImageData {
     if (!_sexLeftLargeImageData) {
         __weak typeof(self) weakSelf = self;
-        _sexLeftLargeImageData = ^(SexLargeImageDataConfig config){
+        _sexLeftLargeImageData = ^(sexLargeImageDataConfig config){
             NSString *sexNormalImage;
             NSString *sexSelectedImage;
             if (config) {
@@ -574,7 +574,7 @@
 - (SexViewLargeImageDataConfig)sexRightLargeImageData {
     if (!_sexRightLargeImageData) {
         __weak typeof(self) weakSelf = self;
-        _sexRightLargeImageData = ^(SexLargeImageDataConfig config){
+        _sexRightLargeImageData = ^(sexLargeImageDataConfig config){
             NSString *sexNormalImage;
             NSString *sexSelectedImage;
             if (config) {
@@ -609,6 +609,7 @@
     }
     return _sexAction;
 }
+
 
 @end
 
