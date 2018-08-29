@@ -173,9 +173,9 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 @property (nonatomic,assign, readonly) CGFloat rightDescToRightArrowMargin;
 /**获取右侧图标距离右侧箭头的间距*/
 @property (nonatomic,assign, readonly) CGFloat rightIconToRightArrowMargin;
-/**设置个人资料类型cell的上边标题距离cell中心点Y的间距*/
+/**获取个人资料类型cell的上边标题距离cell中心点Y的间距*/
 @property (nonatomic,assign, readonly) CGFloat avaterTitleToCellCenterYMargin;
-/**设置个人资料类型cell的下边描述标题距离cell中心点Y的间距*/
+/**获取个人资料类型cell的下边描述标题距离cell中心点Y的间距*/
 @property (nonatomic,assign, readonly) CGFloat avaterDescToCellCenterYMargin;
 #pragma mark 开关类型cell相关属性
 /**获取开关开启的颜色*/

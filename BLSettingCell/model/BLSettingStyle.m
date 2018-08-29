@@ -161,7 +161,7 @@
     
     _cellLineEdgeInsets = UIEdgeInsetsZero;
     
-    _underlineColor = BLSETTINGHEXCOLOR(0xe6e7ed);
+    _underlineColor = BLSETTINGHEXCOLOR(0xEDEDED);
     _underlineHeight = 0.5;
     
     _redDotColor = [UIColor redColor];
@@ -169,24 +169,24 @@
     
     _arrowSize = CGSizeMake(12, 12);
     
-    _titleFont = [UIFont systemFontOfSize:kBLSettingRatioWithWidth(15)];
+    _titleFont = [UIFont systemFontOfSize:15];
     
-    _titleColor = BLSETTINGHEXCOLOR(0x4e4e4e);
+    _titleColor = BLSETTINGHEXCOLOR(0x333333);
     
-    _descFont = [UIFont systemFontOfSize:kBLSettingRatioWithWidth(14)];
-    _descColor = BLSETTINGHEXCOLOR(0x4e4e4e);
+    _descFont = [UIFont systemFontOfSize:14];
+    _descColor = BLSETTINGHEXCOLOR(0xA4A4A4);
     
     _switchOnTintColor = BLSETTINGHEXCOLOR(0x38c83d);
     
     _segumentTintColor = BLSETTINGHEXCOLOR(0x38c83d);
     
-    _textFieldPlaceColor = BLSETTINGHEXCOLOR(0x6f6f6f);
+    _textFieldPlaceColor = BLSETTINGHEXCOLOR(0xA4A4A4);
     
     _textFieldPlaceFont = [UIFont systemFontOfSize:15];
     
     _textFieldFont = [UIFont systemFontOfSize:15];
     
-    _textFieldColor = BLSETTINGHEXCOLOR(0x38c83d);
+    _textFieldColor = BLSETTINGHEXCOLOR(0x333333);
     
     _hintFont = [UIFont systemFontOfSize:10];
     
@@ -640,11 +640,11 @@
             CGFloat sexViewWidth;
             if (action) {
                 action(&sexTitleFont,&sexTitleNormalColor,&sexTitleSelectedColor,&sexTitleLeftMargin,&sexViewWidth);
-                if (sexTitleFont) _sexLeftTitleFont = sexTitleFont;
-                if (sexTitleNormalColor) _sexLeftTitleNormalColor = sexTitleNormalColor;
-                if (sexTitleSelectedColor) _sexLeftTitleSelectedColor = sexTitleSelectedColor;
-                if (sexTitleLeftMargin) _sexLeftTitleLeftMargin = sexTitleLeftMargin;
-                if (sexViewWidth) _sexLeftViewWidth= sexViewWidth;
+                _sexLeftTitleFont = sexTitleFont? sexTitleFont :  [UIFont systemFontOfSize:10];
+                _sexLeftTitleNormalColor = sexTitleNormalColor ? sexTitleNormalColor: BLSETTINGHEXCOLOR(0x393939);
+                _sexLeftTitleSelectedColor = sexTitleSelectedColor? sexTitleSelectedColor: BLSETTINGHEXCOLOR(0xFF58D1);
+                _sexLeftTitleLeftMargin = sexTitleLeftMargin? sexTitleLeftMargin : 10;
+                _sexLeftViewWidth = sexViewWidth ? sexViewWidth : 56;
             }
             return weakSelf;
         };
@@ -663,11 +663,11 @@
             CGFloat sexViewWidth;
             if (action) {
                 action(&sexTitleFont,&sexTitleNormalColor,&sexTitleSelectedColor,&sexTitleLeftMargin,&sexViewWidth);
-                if (sexTitleFont) _sexRightTitleFont = sexTitleFont;
-                if (sexTitleNormalColor) _sexRightTitleNormalColor = sexTitleNormalColor;
-                if (sexTitleSelectedColor) _sexRightTitleSelectedColor = sexTitleSelectedColor;
-                if (sexTitleLeftMargin) _sexRightTitleLeftMargin = sexTitleLeftMargin;
-                if (sexViewWidth) _sexRightViewWidth= sexViewWidth;
+                _sexRightTitleFont = sexTitleFont? sexTitleFont :  [UIFont systemFontOfSize:10];
+                _sexRightTitleNormalColor = sexTitleNormalColor ? sexTitleNormalColor: BLSETTINGHEXCOLOR(0x393939);
+                _sexRightTitleSelectedColor = sexTitleSelectedColor? sexTitleSelectedColor: BLSETTINGHEXCOLOR(0xFF58D1);
+                _sexRightTitleLeftMargin = sexTitleLeftMargin? sexTitleLeftMargin : 10;
+                _sexRightViewWidth = sexViewWidth ? sexViewWidth : 56;
             }
             return weakSelf;
         };

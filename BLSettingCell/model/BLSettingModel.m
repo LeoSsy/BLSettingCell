@@ -93,6 +93,7 @@
 + (instancetype)model {
     BLSettingModel *model = [[self alloc] init];
     model.style([BLSettingStyle style])
+    .type(BLSettingCellTypeNormal)
     .showUnderLine(YES).cellH(44).textFieldEnabled(YES).textFieldTextMaxLength(20).textFieldTextAlignmentMode(NSTextAlignmentRight);
     return model;
 }
