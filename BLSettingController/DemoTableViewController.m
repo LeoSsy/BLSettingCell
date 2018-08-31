@@ -33,8 +33,27 @@
     
     __weak typeof(self) weakSelf = self;
     
-    
-    
+    //segument
+    BLSettingStyle *stylemh005 = [BLSettingStyle style];
+    stylemh005.segumentItemW(30).leftImageSize(CGSizeMake(30, 30)).descTitleFont([UIFont systemFontOfSize:14]).bottomLineColor(BLSETTINGHEXCOLOR(0xededed)).arrowIconSize(CGSizeMake(15, 17)).bottomLineHeight(0.6);
+
+    BLSettingModel *md005 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"开",@"关"] selectIndex:1 segumentAction:^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.titleText([NSString stringWithFormat:@"你选择了%@",segumentTitlsArr[selectIndex]]) ;
+        [weakSelf.tableView reloadData];
+    }];
+    md005.style(stylemh005);
+    [self.datas addObject:md005];
+
+    BLSettingStyle *stylemh006 = [BLSettingStyle style];
+    stylemh006.segumentItemW(45).leftImageSize(CGSizeMake(30, 30)).descTitleFont([UIFont systemFontOfSize:14]).bottomLineColor(BLSETTINGHEXCOLOR(0xededed)).arrowIconSize(CGSizeMake(15, 17)).bottomLineHeight(0.6);
+    BLSettingModel *md006 = [BLSettingFactory segumentWithIcon:@"kehu_icon_kaluli" title:@"我是segument" segumentTitleArr:@[@"kg",@"斤"] selectIndex:1 segumentAction:^(BLSettingModel *model, NSArray *segumentTitlsArr, NSInteger selectIndex) {
+        model.titleText([NSString stringWithFormat:@"你选择了%@",segumentTitlsArr[selectIndex]]) ;
+        [weakSelf.tableView reloadData];
+    }];
+    md006.style(stylemh006);
+    [self.datas addObject:md006];
+
+
     BLSettingModel *md0002 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标展示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
     }];
