@@ -107,15 +107,11 @@
         }else{
             self.arrowV.image = [BLSettingFactory bundleForArrowIcon];
         }
-        _arrowV.hidden = NO;CGFloat width = 12;CGFloat height = 12;
-        if (self.arrowName) {
-            width = self.arrowName.size.width;
-            height = self.arrowName.size.height;
-        }
+        _arrowV.hidden = NO;
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
-            make.width.mas_equalTo(width);
-            make.height.mas_equalTo(height);
+            make.width.mas_equalTo(self.dataModel.settingStyle.arrowSize.width);
+            make.height.mas_equalTo(self.dataModel.settingStyle.arrowSize.height);
         }];
         
         CGFloat margin = self.dataModel.settingStyle.rightDescToRightArrowMargin > 0 ? self.dataModel.settingStyle.rightDescToRightArrowMargin : BLSettingBaseMargin;
