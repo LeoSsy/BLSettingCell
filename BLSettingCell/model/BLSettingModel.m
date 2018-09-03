@@ -125,6 +125,7 @@
     return self;
 }
 
+
 - (DisPlayType)type {
     if (!_type) {
         __weak typeof(self) weakSelf = self;

@@ -39,7 +39,6 @@
  */
 - (void)setFrameSubview {
     [super setFrameSubview];
-    
     [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
         make.top.equalTo(self.contentView);
@@ -88,8 +87,15 @@
     [self.textField setValue:dataModel.settingStyle.textFieldPlaceColor forKeyPath:@"_placeholderLabel.textColor"];
     [self.textField setValue:dataModel.settingStyle.textFieldPlaceFont forKeyPath:@"_placeholderLabel.font"];
     
-    [_textField mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
+    CGFloat width = 0;
+    if (dataModel.title) {
+        width = [dataModel.title boundingRectWithSize:CGSizeMake(MAXFLOAT, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.dataModel.settingStyle.titleFont} context:nil].size.width;
+    }else if (dataModel.titleAttributeString){
+        width = [dataModel.titleAttributeString boundingRectWithSize:CGSizeMake(MAXFLOAT, 0) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.width;
+    }
+    //计算标题的宽度
+    [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(width);
     }];
 }
 
