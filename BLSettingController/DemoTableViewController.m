@@ -19,8 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+
     _fpsLabel = [YYFPSLabel new];
     [_fpsLabel sizeToFit];
     _fpsLabel.frame = CGRectMake(15, self.view.bounds.size.height - 44, self.view.bounds.size.width-30, 22);

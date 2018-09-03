@@ -11,7 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UITextField+BLSettingCell.h"
 
-@interface BLSettingRightTextFieldCell()
+@interface BLSettingRightTextFieldCell()<UITextFieldDelegate>
 /**右边的文本框*/
 @property(nonatomic,strong)UITextField *textField;
 @end
@@ -24,6 +24,7 @@
 - (void)buildSubview {
     [super buildSubview];
     _textField = [[UITextField alloc] init];
+    _textField.delegate = self;
     _textField.borderStyle = UITextBorderStyleNone;
     _textField.textAlignment = self.dataModel.textFieldTextAlignment;
     _textField.keyboardType = self.dataModel.textFieldKeyboardtype;
@@ -94,24 +95,45 @@
 
 #pragma mark UITextFieldDelegate
 
-- (void)textFieldDidChange:(NSNotification*)note{
-    if (note.object == self.textField) {
-        if (self.textField.text.length > self.dataModel.textFieldStringMaxLength) {
-            self.textField.text = [self.textField.text substringToIndex:self.dataModel.textFieldStringMaxLength];
+#pragma mark - Notification Method
+-(void)textFieldDidChange:(NSNotification *)obj
+{
+    UITextField *textField = (UITextField *)obj.object;
+    NSString *toBeString = textField.text;
+    if (obj.object != self.textField)  return;
+    //获取高亮部分
+    UITextRange *selectedRange = [textField markedTextRange];
+    UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+    // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+    if (!position){
+        if (toBeString.length > self.dataModel.textFieldStringMaxLength){
+            NSRange rangeIndex = [toBeString rangeOfComposedCharacterSequenceAtIndex:self.dataModel.textFieldStringMaxLength];
+            if (rangeIndex.length == 1){
+                textField.text = [toBeString substringToIndex:self.dataModel.textFieldStringMaxLength];
+            } else{
+                NSRange rangeRange = [toBeString rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, self.dataModel.textFieldStringMaxLength)];
+                textField.text = [toBeString substringWithRange:rangeRange];
+            }
+            
             if (self.dataModel.textFieldTextMaxLengthOperation) {
                 self.dataModel.textFieldTextMaxLengthOperation(self.dataModel, self.textField);
             }
+            if ((self.dataModel ==  self.textField.settingModel)) {
+                //更新模型对应文本字段属性的文字
+                self.dataModel.textFieldText(self.textField.text);
+            }
+            
         }else{
             if (self.dataModel.textFieldDidChangeOperation) {
                 self.dataModel.textFieldDidChangeOperation(self.dataModel, self.textField);
             }
-        }
-        if ((self.dataModel ==  self.textField.settingModel)) {
-            //更新模型对应文本字段属性的文字
-            self.dataModel.textFieldText(self.textField.text);
+            
+            if ((self.dataModel ==  self.textField.settingModel)) {
+                //更新模型对应文本字段属性的文字
+                self.dataModel.textFieldText(self.textField.text);
+            }
         }
     }
-
 }
 
 - (void)dealloc {
@@ -119,3 +141,4 @@
 }
 
 @end
+
