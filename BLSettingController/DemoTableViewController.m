@@ -31,7 +31,23 @@
     _datas = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
+        
+    BLSettingModel *model800 = [BLSettingFactory textFieldWithIcon:nil title:@"教练手机号" placeHolder:@"请输入教练手机号" textMaxLength:11 didChangeAction:^(BLSettingModel *model, UITextField *textField) {
+        
+    } reachesMaxLengthAction:^(BLSettingModel *model, UITextField *textField) {
+        
+    }];
+    [self.datas addObject:model800];
     
+    
+    BLSettingModel *model801 = [BLSettingFactory textFieldWithIcon:nil title:@"教练手机号真是好呀好得不得了呀啦啦啦啦啦" placeHolder:@"请输入教练手机号" textMaxLength:11 didChangeAction:^(BLSettingModel *model, UITextField *textField) {
+        
+    } reachesMaxLengthAction:^(BLSettingModel *model, UITextField *textField) {
+        
+    }];
+    [self.datas addObject:model801];
+
+
     //segument
     BLSettingStyle *stylemh005 = [BLSettingStyle style];
     stylemh005.segumentItemW(30).leftImageSize(CGSizeMake(30, 30)).descTitleFont([UIFont systemFontOfSize:14]).bottomLineColor(BLSETTINGHEXCOLOR(0xededed)).arrowIconSize(CGSizeMake(15, 17)).bottomLineHeight(0.6);

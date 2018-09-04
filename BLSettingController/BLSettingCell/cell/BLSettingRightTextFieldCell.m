@@ -93,7 +93,11 @@
     }else if (dataModel.titleAttributeString){
         width = [dataModel.titleAttributeString boundingRectWithSize:CGSizeMake(MAXFLOAT, 0) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.width;
     }
+    width = ceil(width);
     //计算标题的宽度
+    if (width > [UIScreen mainScreen].bounds.size.width *0.5) {
+        width = [UIScreen mainScreen].bounds.size.width *0.5;
+    }
     [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(width);
     }];
