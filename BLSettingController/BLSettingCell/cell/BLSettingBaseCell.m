@@ -142,6 +142,9 @@
         self.featureHintL.hidden = YES;
         self.redPointV.hidden = YES;
     }
+    
+    //设置cell点击样式
+    self.selectionStyle = dataModel.settingStyle.selectionStyle;
 }
 
 /**

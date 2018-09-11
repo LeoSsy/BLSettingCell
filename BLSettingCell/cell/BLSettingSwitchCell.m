@@ -8,7 +8,6 @@
 
 #import "BLSettingSwitchCell.h"
 #import <Masonry/Masonry.h>
-#import <SDWebImage/UIImageView+WebCache.h>
 @interface BLSettingSwitchCell()
 /**右边的开关*/
 @property(nonatomic,strong)UISwitch *switchV;
@@ -35,7 +34,6 @@
     [_switchV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin*0.35);
         make.centerY.equalTo(self.titleL);
-        make.width.mas_equalTo(BLSettingBaseSwitchW);
     }];
 }
 

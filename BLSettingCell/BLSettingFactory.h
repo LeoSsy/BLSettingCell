@@ -89,6 +89,17 @@
 + (BLSettingModel*)textFieldWithIcon:(NSString*)iconName title:(NSString*)title placeHolder:(NSString*)placeHolder textMaxLength:(NSInteger)maxLength didChangeAction:(textFieldDidChangeAction)didChangeAction reachesMaxLengthAction:(textFieldTextReachesMaxLengthAction)reachesAction;
 
 /**
+ 快速子标题类型模型
+ @param iconName 可以是本地图也可以是网络图地址
+ @param title 标题
+ @param subTitle 副标题
+ @param switchIsOn 开关状态
+ @param action cell点击事件
+ @return BLSettingModel
+ */
++ (BLSettingModel*)subTitleWithIcon:(NSString*)iconName title:(NSString*)title subTitle:(NSString*)subTitle switchIsOn:(BOOL)switchIsOn switchAction:(cellSwitchAction)action;
+
+/**
  获取bundle中的资源图片
  @return image
  */

@@ -104,6 +104,18 @@
     return model;
 }
 
++ (instancetype)modelStyle:(BLSettingStyle*)settingStyle {
+    BLSettingModel *model = [BLSettingModel model];
+    model.style(settingStyle);
+    return model;
+}
+
++ (instancetype)modelType:(BLSettingCellType)cellType style:(BLSettingStyle*)settingStyle {
+    BLSettingModel *model = [BLSettingModel model];
+    model.type(cellType).style(settingStyle);
+    return model;
+}
+
 - (instancetype)initWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle cellType:(BLSettingCellType)cellType segumentTitleArr:(NSArray*)segumentTitlesArr selectIndex:(NSInteger)selectIndex isShowArrow:(BOOL)isShowArrow switchIsOn:(BOOL)switchIsOn rightIcon:(NSString*)rightIconName settingStyle:(BLSettingStyle*)settingStyle {
     if (self = [super init]) {
         _isShowUnderLine = YES;

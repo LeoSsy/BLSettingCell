@@ -134,12 +134,6 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 /**设置性别大图cell右侧视图数据*/
 @property(nonatomic,copy, readonly)SexViewLargeImageDataConfig sexRightLargeImageData;
 
-#pragma mark 右侧按钮类型cell相关属性
-/**设置左侧按钮标题*/
-@property(nonatomic,copy, readonly)Text rightButtonTitle;
-/**设置左侧按钮不同状态背景图片*/
-@property(nonatomic,copy, readonly)SexViewLargeImageDataConfig rightButtonBgImageData;
-
 #pragma mark 回调事件相关
 
 /** 设置cell点击的回调*/
@@ -275,7 +269,17 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
  @param cellType cell类型
  */
 + (instancetype)modelType:(BLSettingCellType)cellType;
-
+/**
+ 快速初始化方法
+ @param settingStyle cell样式对象
+ */
++ (instancetype)modelStyle:(BLSettingStyle*)settingStyle;
+/**
+ 快速初始化方法
+ @param cellType cell类型
+ @param settingStyle cell样式对象
+ */
++ (instancetype)modelType:(BLSettingCellType)cellType style:(BLSettingStyle*)settingStyle;
 /** 初始化方法*/
 - (instancetype)initWithIcon:(NSString*)iconName title:(NSString*)title detailTitle:(NSString*)detailTitle cellType:(BLSettingCellType)cellType segumentTitleArr:(NSArray*)selectSwitchArr selectIndex:(NSInteger)selectIndex isShowArrow:(BOOL)isShowArrow switchIsOn:(BOOL)switchIsOn rightIcon:(NSString*)rightIconName settingStyle:(BLSettingStyle*)settingStyle;
 @end

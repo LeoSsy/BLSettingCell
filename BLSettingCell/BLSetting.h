@@ -21,5 +21,6 @@
 #import "BLSettingRightTextFieldCell.h"
 #import "BLSettingSexCell.h"
 #import "BLSettingSexLargeImageCell.h"
+#import "BLSettingSubTitleCell.h"
 #import "BLSettingStyle.h"
 #endif /* BLSetting_h */

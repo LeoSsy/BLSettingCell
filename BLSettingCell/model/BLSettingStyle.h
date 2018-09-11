@@ -26,12 +26,15 @@ typedef BLSettingStyle *(^SegumentBorderWidth)(CGFloat BorderWidth);
 typedef BLSettingStyle *(^SegumentClearDivider)(BOOL status);
 typedef BLSettingStyle *(^SegumentItemW)(NSInteger itemW);
 typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
+typedef BLSettingStyle *(^CellSeporatorStyle)(UITableViewCellSelectionStyle selectionStyle);
 
 @interface BLSettingStyle : NSObject
 
 ///====外部设置属性值=====
 
 #pragma mark 通用属性设置
+/**设置cell的点击样式*/
+@property (nonatomic,copy, readonly) CellSeporatorStyle cellSelectionStyle;
 /**设置内容距离cell左边的间距*/
 @property (nonatomic,copy, readonly) SettingSize contentLeftMargin;
 /**设置内容距离cell右边的间距*/
@@ -72,10 +75,14 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 @property (nonatomic,copy, readonly) SettingSize avaterTitleSpaceToCellCenterYMargin;
 /**设置个人资料类型cell的下边描述标题距离cell中心点Y的间距*/
 @property (nonatomic,copy, readonly) SettingSize avaterDescSpaceToCellCenterYMargin;
-
+/**设置subtitle类型cell标题距离cell中心点Y的间距*/
+@property (nonatomic,copy, readonly) SettingSize subCellTitleSpaceToCellCenterYMargin;
+/**设置subtitle类型cell副标题距离cell中心点Y的间距*/
+@property (nonatomic,copy, readonly) SettingSize subCellSubTitleSpaceToCellCenterYMargin;
 #pragma mark 开关类型cell相关属性设置
 /**设置开关开启的颜色*/
 @property (nonatomic,copy, readonly) PresentColor switchOnColor;
+
 
 #pragma mark segument类型cell相关属性设置
 /**设置segument的渲染颜色*/
@@ -137,6 +144,8 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 ///====外部获取属性值======
 
 #pragma mark 通用属性
+/**获取cell的点击样式*/
+@property (nonatomic,assign, readonly) UITableViewCellSelectionStyle selectionStyle;
 /**获取内容距离cell左边的间距*/
 @property (nonatomic,assign, readonly) CGFloat cellContentLeftMargin;
 /**获取内容距离cell右边的间距*/
@@ -177,9 +186,14 @@ typedef BLSettingStyle *(^SexViewStyle)(BLSettingSexStyleAction action);
 @property (nonatomic,assign, readonly) CGFloat avaterTitleToCellCenterYMargin;
 /**获取个人资料类型cell的下边描述标题距离cell中心点Y的间距*/
 @property (nonatomic,assign, readonly) CGFloat avaterDescToCellCenterYMargin;
+/**设置subtitle类型cell标题距离cell中心点Y的间距*/
+@property (nonatomic,assign, readonly) CGFloat subCellTitleToCellCenterYMargin;
+/**设置subtitle类型cell副标题距离cell中心点Y的间距*/
+@property (nonatomic,assign, readonly) CGFloat subCellSubTitleToCellCenterYMargin;
 #pragma mark 开关类型cell相关属性
 /**获取开关开启的颜色*/
 @property(nonatomic,strong, readonly)UIColor *switchOnTintColor;
+
 
 #pragma mark segument类型cell相关属性
 /**获取segument的渲染颜色*/

@@ -15,6 +15,7 @@
 
 @implementation BLSettingStyle
 
+@synthesize cellSelectionStyle = _cellSelectionStyle;
 @synthesize contentLeftMargin = _contentLeftMargin;
 @synthesize contentRightMargin = _contentRightMargin;
 @synthesize leftImageSize = _leftImageSize;
@@ -60,7 +61,10 @@
 @synthesize rightIconSpaceToRightArrowMargin = _rightIconSpaceToRightArrowMargin;
 @synthesize avaterTitleSpaceToCellCenterYMargin = _avaterTitleSpaceToCellCenterYMargin;
 @synthesize avaterDescSpaceToCellCenterYMargin = _avaterDescSpaceToCellCenterYMargin;
+@synthesize subCellTitleSpaceToCellCenterYMargin = _subCellTitleSpaceToCellCenterYMargin;
+@synthesize subCellSubTitleSpaceToCellCenterYMargin = _subCellSubTitleSpaceToCellCenterYMargin;
 
+@synthesize selectionStyle = _selectionStyle;
 @synthesize cellContentLeftMargin = _cellContentLeftMargin;
 @synthesize cellContentRightMargin = _cellContentRightMargin;
 @synthesize leftIconSize = _leftIconSize;
@@ -113,6 +117,8 @@
 @synthesize rightIconToRightArrowMargin = _rightIconToRightArrowMargin;
 @synthesize avaterTitleToCellCenterYMargin = _avaterTitleToCellCenterYMargin;
 @synthesize avaterDescToCellCenterYMargin = _avaterDescToCellCenterYMargin;
+@synthesize subCellTitleToCellCenterYMargin = _subCellTitleToCellCenterYMargin;
+@synthesize subCellSubTitleToCellCenterYMargin = _subCellSubTitleToCellCenterYMargin;
 
 + (BLSettingStyle*)style {
     return [[BLSettingStyle alloc] init];
@@ -212,6 +218,20 @@
     _sexRightTitleLeftMargin = 18;
     _sexRightViewWidth = 55;
     
+    _subCellTitleToCellCenterYMargin = 8;
+    _subCellSubTitleToCellCenterYMargin = 3;
+    
+}
+
+- (CellSeporatorStyle)cellSelectionStyle {
+    if (!_cellSelectionStyle) {
+        __weak typeof(self) weakSelf = self;
+        _cellSelectionStyle = ^(UITableViewCellSelectionStyle selectionStyle){
+            _selectionStyle = selectionStyle;
+            return weakSelf;
+        };
+    }
+    return _cellSelectionStyle;
 }
 
 - (SettingSize)contentLeftMargin {
@@ -741,6 +761,28 @@
         };
     }
     return _avaterDescSpaceToCellCenterYMargin;
+}
+
+- (SettingSize)subCellTitleSpaceToCellCenterYMargin{
+    if (!_subCellTitleSpaceToCellCenterYMargin) {
+        __weak typeof(self) weakSelf = self;
+        _subCellTitleSpaceToCellCenterYMargin = ^(CGFloat margin){
+            _subCellTitleToCellCenterYMargin = margin;
+            return weakSelf;
+        };
+    }
+    return _subCellTitleSpaceToCellCenterYMargin;
+}
+
+- (SettingSize)subCellSubTitleSpaceToCellCenterYMargin {
+    if (!_subCellSubTitleSpaceToCellCenterYMargin) {
+        __weak typeof(self) weakSelf = self;
+        _subCellSubTitleSpaceToCellCenterYMargin = ^(CGFloat margin){
+            _subCellSubTitleToCellCenterYMargin = margin;
+            return weakSelf;
+        };
+    }
+    return _subCellSubTitleSpaceToCellCenterYMargin;
 }
 
 @end

@@ -29,7 +29,9 @@
         cell = [BLSettingSexCell cellWithTableView:tableView withData:model];
     }else if (model.cellType == BLSettingCellTypeSexLargeImage){//性别大图选择类型
         cell = [BLSettingSexLargeImageCell cellWithTableView:tableView withData:model];
-    }else{ //默认类型 显示 图标 标题 详情 箭头
+    }else if(model.cellType ==  BLSettingCellTypeSubTitle){//子标题类型
+        cell = [BLSettingSubTitleCell cellWithTableView:tableView withData:model];
+    }else { //默认类型 显示 图标 标题 详情 箭头
         cell = [BLSettingNormalCell cellWithTableView:tableView withData:model];
     }
     //设置数据
@@ -131,6 +133,28 @@
     .style([BLSettingStyle style]);
     return model;
 }
+
+
+/**
+ 快速子标题类型模型
+ @param iconName 可以是本地图也可以是网络图地址
+ @param title 标题
+ @param subTitle 副标题
+ @param switchIsOn 开关状态
+ @param action 开关点击事件
+ @return BLSettingModel
+ */
++ (BLSettingModel*)subTitleWithIcon:(NSString*)iconName title:(NSString*)title subTitle:(NSString*)subTitle switchIsOn:(BOOL)switchIsOn switchAction:(cellSwitchAction)action{
+    //样式对象
+    BLSettingStyle *style = [BLSettingStyle style];
+    style.leftTitleFont([UIFont systemFontOfSize:15]).leftTitleColor(BLSETTINGHEXCOLOR(0x3f3f3f)).descTitleFont([UIFont systemFontOfSize:11]).descTitleColor(BLSETTINGHEXCOLOR(0xd5d5d5));
+    //带样式初始化方法
+    BLSettingModel *model =  [BLSettingModel modelStyle:style];
+    model.type(BLSettingCellTypeSubTitle).cellH(50)
+    .leftIconName(iconName).titleText(title).descTitle(subTitle).switchOn(switchIsOn).switchAction(action).style(style);
+    return model;
+}
+
 
 + (UIImage*)bundleForArrowIcon{
     NSBundle * bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[BLSettingBaseCell class]] pathForResource:@"BLSetting" ofType:@"bundle"]];

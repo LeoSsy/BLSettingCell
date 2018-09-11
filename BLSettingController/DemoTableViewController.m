@@ -31,6 +31,18 @@
     _datas = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
+    
+
+    BLSettingModel *model8001  = [BLSettingFactory subTitleWithIcon:nil title:@"夜间不接单" subTitle:@"每天00:00-06:00期间不推送订单" switchIsOn:YES switchAction:^(BLSettingModel *model, BOOL switchIsOn) {
+        NSLog(@"switchIsOn==%zd",switchIsOn);
+    }];
+    [self.datas addObject:model8001];
+    
+    BLSettingModel *model8002  = [BLSettingFactory subTitleWithIcon:@"kehu_icon_kaluli" title:@"夜间不接单" subTitle:@"每天00:00-06:00期间不推送订单" switchIsOn:YES switchAction:^(BLSettingModel *model, BOOL switchIsOn) {
+        NSLog(@"switchIsOn==%zd",switchIsOn);
+    }];
+    [self.datas addObject:model8002];
+
         
     BLSettingModel *model800 = [BLSettingFactory textFieldWithIcon:nil title:@"教练手机号" placeHolder:@"请输入教练手机号" textMaxLength:11 didChangeAction:^(BLSettingModel *model, UITextField *textField) {
         
@@ -68,7 +80,7 @@
     md006.style(stylemh006);
     [self.datas addObject:md006];
 
-
+    
     BLSettingModel *md0002 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标展示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
     }];

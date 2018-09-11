@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043AA85E21467AEF002449C2 /* BLSettingSubTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AA85D21467AEF002449C2 /* BLSettingSubTitleCell.m */; };
+		043AA86321475F38002449C2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 043AA86221475F38002449C2 /* README.md */; };
 		04669DC92113E4E800BFA20A /* BLSettingFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DB82113E4E800BFA20A /* BLSettingFactory.m */; };
 		04669DCB2113E4E800BFA20A /* BLSettingConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04669DBB2113E4E800BFA20A /* BLSettingConst.m */; };
 		04669DCC2113E4E800BFA20A /* BLSetting.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04669DBD2113E4E800BFA20A /* BLSetting.bundle */; };
@@ -56,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		043AA85C21467AEF002449C2 /* BLSettingSubTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLSettingSubTitleCell.h; sourceTree = "<group>"; };
+		043AA85D21467AEF002449C2 /* BLSettingSubTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLSettingSubTitleCell.m; sourceTree = "<group>"; };
+		043AA86221475F38002449C2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		04669DB02113E4E800BFA20A /* BLSettingConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSettingConst.h; sourceTree = "<group>"; };
 		04669DB12113E4E800BFA20A /* BLSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSetting.h; sourceTree = "<group>"; };
 		04669DB82113E4E800BFA20A /* BLSettingFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSettingFactory.m; sourceTree = "<group>"; };
@@ -193,6 +198,8 @@
 				048CD6C4212E44B100B3D499 /* BLSettingSexCell.m */,
 				048CD6C2212E44B100B3D499 /* BLSettingSexLargeImageCell.h */,
 				048CD6BB212E44B100B3D499 /* BLSettingSexLargeImageCell.m */,
+				043AA85C21467AEF002449C2 /* BLSettingSubTitleCell.h */,
+				043AA85D21467AEF002449C2 /* BLSettingSubTitleCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -238,6 +245,7 @@
 				04669DAF2113E4E800BFA20A /* BLSettingCell */,
 				04BE0B18211149690054E43E /* AppDelegate.h */,
 				04BE0B19211149690054E43E /* AppDelegate.m */,
+				043AA86221475F38002449C2 /* README.md */,
 				04BE0B7A21129BD80054E43E /* DemoGroupTableViewController.h */,
 				04BE0B7921129BD80054E43E /* DemoGroupTableViewController.m */,
 				04BE0B7821129BD80054E43E /* DemoTableViewController.h */,
@@ -405,6 +413,7 @@
 			files = (
 				04669DCC2113E4E800BFA20A /* BLSetting.bundle in Resources */,
 				04BE0B7F21129BE50054E43E /* Main.storyboard in Resources */,
+				043AA86321475F38002449C2 /* README.md in Resources */,
 				04BE0B25211149690054E43E /* LaunchScreen.storyboard in Resources */,
 				04BE0B22211149690054E43E /* Assets.xcassets in Resources */,
 			);
@@ -490,6 +499,7 @@
 			files = (
 				048CD6DC212E44B100B3D499 /* BLSettingModel.m in Sources */,
 				048CD6D4212E44B100B3D499 /* BLSettingBaseCell.m in Sources */,
+				043AA85E21467AEF002449C2 /* BLSettingSubTitleCell.m in Sources */,
 				04669DCB2113E4E800BFA20A /* BLSettingConst.m in Sources */,
 				048CD6D3212E44B100B3D499 /* BLSettingSexLargeImageCell.m in Sources */,
 				04669DC92113E4E800BFA20A /* BLSettingFactory.m in Sources */,
