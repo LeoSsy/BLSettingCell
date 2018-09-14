@@ -11,6 +11,8 @@
 @interface BLSettingSwitchCell()
 /**右边的开关*/
 @property(nonatomic,strong)UISwitch *switchV;
+/**覆盖在开关上面的按钮*/
+@property(nonatomic,strong)UIButton *switchButton;
 @end
 
 @implementation BLSettingSwitchCell
@@ -22,8 +24,12 @@
     [super buildSubview];
     _switchV = [[UISwitch alloc] init];
     _switchV.onTintColor = self.dataModel.settingStyle.switchOnTintColor;
-    [_switchV addTarget:self action:@selector(switchStateChanged:) forControlEvents:UIControlEventValueChanged];
     [self.contentView addSubview:_switchV];
+    
+    _switchButton = [[UIButton alloc] init];
+    [_switchButton addTarget:self action:@selector(switchButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:_switchButton];
+
 }
 
 /**
@@ -35,6 +41,9 @@
         make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin*0.35);
         make.centerY.equalTo(self.titleL);
     }];
+    [_switchButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.equalTo(_switchV);
+    }];
 }
 
 /**
@@ -45,6 +54,7 @@
     if (!dataModel)  return;
     [super configModel:dataModel];
     [self.switchV setOn:dataModel.switchIsOn];
+    self.switchButton.selected = dataModel.switchIsOn;
     _switchV.onTintColor = self.dataModel.settingStyle.switchOnTintColor;
     [_switchV mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin*0.35);
@@ -55,12 +65,17 @@
 /**
  开关按钮被点击了
  */
-- (void)switchStateChanged:(UISwitch *)switchV {
-    if (!self.dataModel) return;
-    self.dataModel.switchOn(switchV.isOn);
+- (void)switchButtonClicked:(UIButton*)btn {
+    btn.selected = !btn.selected;
+    //如果不需要延迟状态展示 就设置开关的状态
+    if (!self.dataModel.switchIsDelyOn) {
+        [self.switchV setOn:btn.selected animated:YES];
+        self.dataModel.switchOn(btn.selected);
+    }
     if (self.dataModel.cellSwitchOperation) {
-        self.dataModel.cellSwitchOperation(self.dataModel,switchV.isOn);
+        self.dataModel.cellSwitchOperation(self.dataModel,btn.selected);
     }
 }
+
 
 @end

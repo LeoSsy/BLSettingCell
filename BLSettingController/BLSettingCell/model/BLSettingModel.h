@@ -92,6 +92,8 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 
 /**设置是否开启开关 该属性适用于开关类型*/
 @property(nonatomic,copy,readonly)DisPlayStatus switchOn;
+/**设置开关状态是否延迟响应 设置为YES后，开关的状态改变需要外部在事件回调中，改变模型值 并刷新视图*/
+@property(nonatomic,copy,readonly)DisPlayStatus switchDelyOn;
 
 #pragma mark Segument类型cell相关属性设置
 
@@ -203,6 +205,8 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 
 /** 获取是否开启开关 该属性适用于开关类型*/
 @property(nonatomic,assign,readonly)BOOL switchIsOn;
+/**获取开关状态是否延迟响应*/
+@property(nonatomic,assign,readonly)BOOL switchIsDelyOn;
 
 #pragma mark Segument类型cell相关属性
 /** 获取选中第几个 0  1 该属性适用于segument类型*/

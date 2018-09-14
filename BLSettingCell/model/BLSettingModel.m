@@ -26,6 +26,7 @@
 @synthesize cellH = _cellH;
 @synthesize style = _style;
 @synthesize switchOn = _switchOn;
+@synthesize switchDelyOn = _switchDelyOn;
 @synthesize segumentSelIndex = _segumentSelIndex;
 @synthesize segumentTitlesArr = _segumentTitlesArr;
 @synthesize textFieldPlaceHolder = _textFieldPlaceHolder;
@@ -67,6 +68,7 @@
 @synthesize cellHeight = _cellHeight;
 @synthesize settingStyle = _settingStyle;
 @synthesize switchIsOn = _switchIsOn;
+@synthesize switchIsDelyOn = _switchIsDelyOn;
 @synthesize selectIndex = _selectIndex;
 @synthesize segumentTitleArr = _segumentTitleArr;
 @synthesize textFieldPlaceHolderText = _textFieldPlaceHolderText;
@@ -340,6 +342,17 @@
         };
     }
     return _switchOn;
+}
+
+- (DisPlayStatus)switchDelyOn {
+    if (!_switchDelyOn) {
+        __weak typeof(self) weakSelf = self;
+        _switchDelyOn = ^(BOOL status){
+            _switchIsDelyOn = status;
+            return weakSelf;
+        };
+    }
+    return _switchDelyOn;
 }
 
 - (CellHeight)cellH {

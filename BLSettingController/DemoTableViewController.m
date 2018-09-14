@@ -36,6 +36,7 @@
     BLSettingModel *model8001  = [BLSettingFactory subTitleWithIcon:nil title:@"夜间不接单" subTitle:@"每天00:00-06:00期间不推送订单" switchIsOn:YES switchAction:^(BLSettingModel *model, BOOL switchIsOn) {
         NSLog(@"switchIsOn==%zd",switchIsOn);
     }];
+    model8001.switchDelyOn(YES);
     [self.datas addObject:model8001];
     
     BLSettingModel *model8002  = [BLSettingFactory subTitleWithIcon:@"kehu_icon_kaluli" title:@"夜间不接单" subTitle:@"每天00:00-06:00期间不推送订单" switchIsOn:YES switchAction:^(BLSettingModel *model, BOOL switchIsOn) {
