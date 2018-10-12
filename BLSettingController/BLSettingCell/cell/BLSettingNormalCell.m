@@ -37,6 +37,7 @@
     [super buildSubview];
     _descL = [[UILabel alloc] init];
     _descL.textAlignment = NSTextAlignmentRight;
+    _descL.backgroundColor = [UIColor redColor];
     [ self.contentView addSubview:_descL];
 
     _arrowV = [[UIImageView alloc] initWithImage:[BLSettingFactory bundleForArrowIcon]];
@@ -108,15 +109,20 @@
             self.arrowV.image = [BLSettingFactory bundleForArrowIcon];
         }
         _arrowV.hidden = NO;
+        CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
+        if (width==0 && height ==0) {
+            width = self.arrowV.image.size.width;
+            height = self.arrowV.image.size.height;
+        }
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
-            make.width.mas_equalTo(self.dataModel.settingStyle.arrowSize.width);
-            make.height.mas_equalTo(self.dataModel.settingStyle.arrowSize.height);
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(height);
         }];
         
-        CGFloat margin = self.dataModel.settingStyle.rightDescToRightArrowMargin > 0 ? self.dataModel.settingStyle.rightDescToRightArrowMargin : BLSettingBaseMargin;
+        CGFloat margin = self.dataModel.settingStyle.rightDescToRightArrowMargin != 0 ? self.dataModel.settingStyle.rightDescToRightArrowMargin : -BLSettingBaseMargin;
         [_descL mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.arrowV.mas_left).offset(-margin);
+            make.right.equalTo(self.arrowV.mas_left).offset(margin);
         }];
     }else{
         _arrowV.hidden = YES;

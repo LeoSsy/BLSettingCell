@@ -61,12 +61,16 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 #pragma mark 通用属性设置设置
 /**设置左侧图标名字 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource leftIconName;
+/**设置左侧占位图片 必须是本地图片*/
+@property(nonatomic,copy,readonly)IconNameResource leftIconPlaceholder;
 /**设置左侧图标 传入一个UIImage对象*/
 @property(nonatomic,copy,readonly)IconImage leftIconImage;
 /**设置左侧图标多状态图片 默认状态和选中状态图片*/
 @property(nonatomic,copy,readonly)SexViewLargeImageDataConfig leftIconNormalSelImageName;
 /**设置右侧图标 可以是本地图片 也可以是远程图片地址*/
 @property(nonatomic,copy,readonly)IconNameResource rightIconName;
+/**设置右侧占位图片 必须是本地图片*/
+@property(nonatomic,copy,readonly)IconNameResource rightIconPlaceholder;
 /**设置右侧图标 传入一个UIImage对象*/
 @property(nonatomic,copy,readonly)IconImage rightIconImage;
 /**设置右侧图标多状态图片 默认状态和选中状态图片*/
@@ -169,6 +173,8 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 
 /**获取左侧图标名字*/
 @property(nonatomic,strong,readonly)NSString *leftImageName;
+/**获取左侧占位图片名称*/
+@property(nonatomic,copy,readonly)NSString *leftIconPlaceholderName;
 /**获取左侧图标 得到的是一个UIImage对象*/
 @property(nonatomic,strong,readonly)UIImage* leftImageObj;
 //====左侧图标多状态属性====
@@ -178,6 +184,8 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 @property(nonatomic,strong,readonly)NSString *leftSelectedImageName;
 /**获取右侧图标*/
 @property(nonatomic,strong,readonly)NSString *rightImageName;
+/**获取右侧占位图片名称*/
+@property(nonatomic,copy,readonly)NSString *rightIconPlaceholderName;
 /**获取右侧图标 得到的是一个UIImage对象*/
 @property(nonatomic,strong,readonly)UIImage* rightImageObj;
 //====右侧图标多状态属性====

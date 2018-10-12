@@ -65,11 +65,11 @@ typedef BLSettingStyle *(^CellSeporatorStyle)(UITableViewCellSelectionStyle sele
 @property (nonatomic,copy, readonly) IconSize arrowIconSize;
 /**设置下划线左右间距 上下值设置无效*/
 @property (nonatomic,copy, readonly) SpaceToSuperViewLRMargin bottomLineEdgeInsets;
-/**设置左侧标题距离左侧图标的间距*/
+/**设置左侧标题距离左侧图标的间距 默认为为 15 设置正数则表示文字左侧距离图标距离变大，负数则距离变小*/
 @property (nonatomic,copy, readonly) SettingSize leftTitleSpaceToLeftIconMargin;
-/**设置右侧详情标题距离右侧箭头的间距*/
+/**设置右侧详情标题距离右侧箭头的间距 默认为为 -15 设置正数则表示文字右侧距离箭头距离变小，负数则距离变大*/
 @property (nonatomic,copy, readonly) SettingSize rightDescSpaceToRightArrowMargin;
-/**设置右侧图标距离右侧箭头的间距*/
+/**设置右侧图标距离右侧箭头的间距 默认为为 -15 设置正数则表示文字右侧距离箭头距离变小，负数则距离变大*/
 @property (nonatomic,copy, readonly) SettingSize rightIconSpaceToRightArrowMargin;
 /**设置个人资料类型cell的上边标题距离cell中心点Y的间距*/
 @property (nonatomic,copy, readonly) SettingSize avaterTitleSpaceToCellCenterYMargin;

@@ -89,7 +89,8 @@
     }else if (dataModel.leftImageName){
         self.showIcon = YES;
         if ([dataModel.leftImageName hasPrefix:@"http://"] || [dataModel.leftImageName hasPrefix:@"https://"] ) {
-            [self.iconV sd_setImageWithURL:[NSURL URLWithString:dataModel.leftImageName] placeholderImage:nil options:0];
+            UIImage *placeImage = dataModel.leftIconPlaceholderName ?  [UIImage imageNamed:dataModel.leftIconPlaceholderName] : nil;
+            [self.iconV sd_setImageWithURL:[NSURL URLWithString:dataModel.leftImageName] placeholderImage:placeImage options:0];
         }else{
             self.iconV.image = [UIImage imageNamed:dataModel.leftImageName];
         }
@@ -163,7 +164,8 @@
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
         }];
-        CGFloat margin = self.dataModel.settingStyle.leftTitleToLeftIconMargin > 0 ? self.dataModel.settingStyle.leftTitleToLeftIconMargin : BLSettingBaseMargin;
+        
+        CGFloat margin = self.dataModel.settingStyle.leftTitleToLeftIconMargin != 0 ? self.dataModel.settingStyle.leftTitleToLeftIconMargin : BLSettingBaseMargin;
         [self.titleL mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.iconV.mas_right).offset(margin);
         }];

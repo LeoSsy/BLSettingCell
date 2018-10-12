@@ -70,7 +70,8 @@
         self.rightIconV.image = dataModel.rightImageObj;
     }else if (dataModel.rightImageName){
         if ([dataModel.rightImageName hasPrefix:@"http://"] || [dataModel.rightImageName hasPrefix:@"https://"] ) {
-            [self.rightIconV sd_setImageWithURL:[NSURL URLWithString:dataModel.rightImageName] placeholderImage:nil options:0];
+            UIImage *placeImage = dataModel.rightIconPlaceholderName ?  [UIImage imageNamed:dataModel.rightIconPlaceholderName] : nil;
+            [self.rightIconV sd_setImageWithURL:[NSURL URLWithString:dataModel.rightImageName] placeholderImage:placeImage options:0];
         }else{
             self.rightIconV.image = [UIImage imageNamed:dataModel.rightImageName];
         }
@@ -104,15 +105,19 @@
         }
         _arrowV.hidden = NO;
         CGFloat width = self.dataModel.settingStyle.arrowSize.width;CGFloat height = self.dataModel.settingStyle.arrowSize.height;
+        if (width==0 && height ==0) {
+            width = self.arrowV.image.size.width;
+            height = self.arrowV.image.size.height;
+        }
         [_arrowV mas_updateConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.contentView).offset(-self.dataModel.settingStyle.cellContentRightMargin);
             make.width.mas_equalTo(width);
             make.height.mas_equalTo(height);
         }];
         
-        CGFloat margin = self.dataModel.settingStyle.rightIconToRightArrowMargin > 0 ? self.dataModel.settingStyle.rightIconToRightArrowMargin : BLSettingBaseMargin;
+        CGFloat margin = self.dataModel.settingStyle.rightIconToRightArrowMargin != 0 ? self.dataModel.settingStyle.rightIconToRightArrowMargin : -BLSettingBaseMargin;
         [_rightIconV mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.arrowV.mas_left).offset(-margin);
+            make.right.equalTo(self.arrowV.mas_left).offset(margin);
         }];
     }else{
         _arrowV.hidden = YES;

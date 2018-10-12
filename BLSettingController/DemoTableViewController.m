@@ -81,10 +81,21 @@
     md006.style(stylemh006);
     [self.datas addObject:md006];
 
+    //测试占位图
+    BLSettingStyle *md00002Style = [BLSettingStyle style];
+    md00002Style.rightIconSpaceToRightArrowMargin(10);
+    BLSettingModel *md00002 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标展示箭头" rightIcon:@"http://bpic.588ku.com/back_pic/05/65/77/765b72ce9489d7f.jpg" showArrow:YES cellClickAction:^(BLSettingModel *model) {
+        model.descTitle(@"我被点击了");
+    }];
+    md00002.rightIconPlaceholder(@"completeinfo_xingbie_nv_selected").style(md00002Style);
+    [self.datas addObject:md00002];
+    
+    
     
     BLSettingModel *md0002 =  [BLSettingFactory normalWithIcon:@"kehu_icon_niaotong" title:@"右侧图标展示箭头" rightIcon:@"kehu_icon_shijian" showArrow:YES cellClickAction:^(BLSettingModel *model) {
         model.descTitle(@"我被点击了");
     }];
+    
     md0002.rightIconNormalSelImageName(^(NSString *__autoreleasing *normalImage, NSString *__autoreleasing *selectedImage) {
         *normalImage = @"man_no_select";
         *selectedImage = @"edit_man_click";
@@ -93,7 +104,8 @@
     
     //默认样式
     //创建性别大图选择类型样式
-//    BLSettingStyle *style0001 = [BLSettingStyle style];
+    BLSettingStyle *style0001 = [BLSettingStyle style];
+    style0001.rightDescSpaceToRightArrowMargin(10);
     BLSettingModel *md0001 = [BLSettingFactory normalWithIcon:@"kehu_icon_jihua" title:@"我是默认样式" detailTitle:@"我是默认描述" showArrow:YES cellClickAction:nil];
     md0001.cellH(120).cellClikedAction(^(BLSettingModel *model) {
         NSLog(@"%@", model.indexPath);
@@ -104,6 +116,7 @@
             [weakSelf.tableView reloadData];
         });
     });
+    md0001.style(style0001);
     md0001.leftIconNormalSelImageName(^(NSString *__autoreleasing *normalImage, NSString *__autoreleasing *selectedImage) {
         *normalImage = @"man_no_select";
         *selectedImage = @"edit_man_click";

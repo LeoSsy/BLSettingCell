@@ -11,9 +11,11 @@
 @implementation BLSettingModel
 @synthesize type = _type;
 @synthesize leftIconName = _leftIconName;
+@synthesize leftIconPlaceholder = _leftIconPlaceholder;
 @synthesize leftIconImage = _leftIconImage;
 @synthesize leftIconNormalSelImageName = _leftIconNormalSelImageName;
 @synthesize rightIconName = _rightIconName;
+@synthesize rightIconPlaceholder = _rightIconPlaceholder;
 @synthesize rightIconImage = _rightIconImage;
 @synthesize rightIconNormalSelImageName = _rightIconNormalSelImageName;
 @synthesize arrowIconName = _arrowIconName;
@@ -50,10 +52,12 @@
 @synthesize sexAction = _sexAction;
 
 @synthesize leftImageName = _leftImageName;
+@synthesize leftIconPlaceholderName = _leftIconPlaceholderName;
 @synthesize leftImageObj = _leftImageObj;
 @synthesize leftNormalImageName = _leftNormalImageName;
 @synthesize leftSelectedImageName = _leftSelectedImageName;
 @synthesize rightImageName = _rightImageName;
+@synthesize rightIconPlaceholderName = _rightIconPlaceholderName;
 @synthesize rightImageObj = _rightImageObj;
 @synthesize rightNormalImageName = _rightNormalImageName;
 @synthesize rightSelectedImageName = _rightSelectedImageName;
@@ -165,6 +169,17 @@
     return _leftIconName;
 }
 
+- (IconNameResource)leftIconPlaceholder {
+    if (!_leftIconPlaceholder) {
+        __weak typeof(self) weakSelf = self;
+        _leftIconPlaceholder = ^(NSString *imageName){
+            _leftIconPlaceholderName = imageName;
+            return weakSelf;
+        };
+    }
+    return _leftIconPlaceholder;
+}
+
 - (IconImage)leftIconImage {
     if (!_leftIconImage) {
         __weak typeof(self) weakSelf = self;
@@ -213,6 +228,17 @@
         };
     }
     return _rightIconName;
+}
+
+- (IconNameResource)rightIconPlaceholder {
+    if (!_rightIconPlaceholder) {
+        __weak typeof(self) weakSelf = self;
+        _rightIconPlaceholder = ^(NSString *imageName){
+            _rightIconPlaceholderName = imageName;
+            return weakSelf;
+        };
+    }
+    return _rightIconPlaceholder;
 }
 
 - (IconImage)rightIconImage {
