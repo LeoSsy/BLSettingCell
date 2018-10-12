@@ -209,7 +209,6 @@
     [self.contentView addSubview:_featureHintL];
     
     _underline = [[UIView alloc] init];
-    _underline.backgroundColor = [UIColor redColor];
     [self.contentView addSubview:_underline];  
 }
 

@@ -37,7 +37,6 @@
     [super buildSubview];
     _descL = [[UILabel alloc] init];
     _descL.textAlignment = NSTextAlignmentRight;
-    _descL.backgroundColor = [UIColor redColor];
     [ self.contentView addSubview:_descL];
 
     _arrowV = [[UIImageView alloc] initWithImage:[BLSettingFactory bundleForArrowIcon]];
