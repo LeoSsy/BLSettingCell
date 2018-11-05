@@ -363,7 +363,7 @@
 - (ExtDictionary)extDictionary {
     if (!_extDictionary) {
         __weak typeof(self) weakSelf = self;
-        _extDictionary = ^(NSDictionary *ext){
+        _extDictionary = ^(NSMutableDictionary *ext){
             _ext = ext;
             return weakSelf;
         };
