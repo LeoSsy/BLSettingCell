@@ -213,7 +213,7 @@ typedef BLSettingModel *(^ExtDictionary)(NSDictionary *ext);
 /**获取是否显示下划线 默认显示*/
 @property(nonatomic,assign,readonly)BOOL isShowUnderLine;
 /**获取扩展属性字段*/
-@property(nonatomic,strong,readonly)NSDictionary *ext;
+@property(nonatomic,strong)NSDictionary *ext;
 
 #pragma mark 开关类型cell相关属性
 

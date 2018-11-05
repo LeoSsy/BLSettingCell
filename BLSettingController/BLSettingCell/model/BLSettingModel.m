@@ -69,7 +69,6 @@
 @synthesize detailAttributeString = _detailAttributeString;
 @synthesize isShowArrow = _isShowArrow;
 @synthesize isShowUnderLine = _isShowUnderLine;
-@synthesize ext = _ext;
 @synthesize cellType = _cellType;
 @synthesize cellHeight = _cellHeight;
 @synthesize settingStyle = _settingStyle;
