@@ -46,6 +46,8 @@ typedef BLSettingModel *(^SexSelType)(BLSettingSexSelectType sexSelType);
 typedef BLSettingModel *(^SexViewDataConfig)(sexVDataConfig config);
 typedef BLSettingModel *(^SexViewLargeImageDataConfig)(sexLargeImageDataConfig config);
 typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
+typedef BLSettingModel *(^ExtDictionary)(NSDictionary *ext);
+
 
 @interface BLSettingModel : NSObject
 ///====外部设置属性值=====
@@ -91,6 +93,8 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 @property(nonatomic,copy,readonly)DisPlayStatus showArrow;
 /**设置是否显示下划线 默认显示*/
 @property(nonatomic,copy,readonly)DisPlayStatus showUnderLine;
+/**设置扩展属性字段*/
+@property(nonatomic,copy,readonly)ExtDictionary extDictionary;
 
 #pragma mark 开关类型cell相关属性设置
 
@@ -208,6 +212,8 @@ typedef BLSettingModel *(^TextAlignmentMode)(NSTextAlignment alignment);
 @property(nonatomic,assign,readonly)BOOL isShowArrow;
 /**获取是否显示下划线 默认显示*/
 @property(nonatomic,assign,readonly)BOOL isShowUnderLine;
+/**获取扩展属性字段*/
+@property(nonatomic,strong,readonly)NSDictionary *ext;
 
 #pragma mark 开关类型cell相关属性
 

@@ -25,6 +25,7 @@
 @synthesize descAttribute = _descAttribute;
 @synthesize showArrow = _showArrow;
 @synthesize showUnderLine = _showUnderLine;
+@synthesize extDictionary = _extDictionary;
 @synthesize cellH = _cellH;
 @synthesize style = _style;
 @synthesize switchOn = _switchOn;
@@ -68,6 +69,7 @@
 @synthesize detailAttributeString = _detailAttributeString;
 @synthesize isShowArrow = _isShowArrow;
 @synthesize isShowUnderLine = _isShowUnderLine;
+@synthesize ext = _ext;
 @synthesize cellType = _cellType;
 @synthesize cellHeight = _cellHeight;
 @synthesize settingStyle = _settingStyle;
@@ -357,6 +359,17 @@
         };
     }
     return _showUnderLine;
+}
+
+- (ExtDictionary)extDictionary {
+    if (!_extDictionary) {
+        __weak typeof(self) weakSelf = self;
+        _extDictionary = ^(NSDictionary *ext){
+            _ext = ext;
+            return weakSelf;
+        };
+    }
+    return _extDictionary;
 }
 
 - (DisPlayStatus)switchOn {
