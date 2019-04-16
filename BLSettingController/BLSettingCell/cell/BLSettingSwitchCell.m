@@ -24,12 +24,8 @@
     [super buildSubview];
     _switchV = [[UISwitch alloc] init];
     _switchV.onTintColor = self.dataModel.settingStyle.switchOnTintColor;
+    [_switchV addTarget:self action:@selector(switchButtonClicked:) forControlEvents:UIControlEventValueChanged| UIControlEventTouchDragExit];
     [self.contentView addSubview:_switchV];
-    
-    _switchButton = [[UIButton alloc] init];
-    [_switchButton addTarget:self action:@selector(switchButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:_switchButton];
-
 }
 
 /**
@@ -62,18 +58,17 @@
 }
 
 #pragma mark event
+
 /**
  开关按钮被点击了
  */
-- (void)switchButtonClicked:(UIButton*)btn {
-    btn.selected = !btn.selected;
+- (void)switchButtonClicked:(UISwitch*)switchV {
     //如果不需要延迟状态展示 就设置开关的状态
     if (!self.dataModel.switchIsDelyOn) {
-        [self.switchV setOn:btn.selected animated:YES];
-        self.dataModel.switchOn(btn.selected);
+        self.dataModel.switchOn(switchV.isOn);
     }
     if (self.dataModel.cellSwitchOperation) {
-        self.dataModel.cellSwitchOperation(self.dataModel,btn.selected);
+        self.dataModel.cellSwitchOperation(self.dataModel,switchV.isOn);
     }
 }
 
